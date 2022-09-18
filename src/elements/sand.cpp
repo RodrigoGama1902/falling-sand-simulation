@@ -11,28 +11,8 @@ Sand::Sand() : Element()
 void Sand::Update(Grid &grid, int x, int y)
 {
 
-    // grid.SetElement(x, y + 1, Eleme);
-
     Null *null_elm = new Null();
 
-    grid.SetElement(x, y - 1, *this);
     grid.SetElement(x, y, *null_elm);
-
-    /*
-    if (grid.GetElement(x, y + 1).elmColor.a == 0)
-    {
-        grid.SetElement(x, y + 1, *this);
-        grid.SetElement(x, y, Element());
-    }
-    else if (grid.GetElement(x + 1, y + 1).elmColor.a == 0)
-    {
-        grid.SetElement(x + 1, y + 1, *this);
-        grid.SetElement(x, y, Element());
-    }
-    else if (grid.GetElement(x - 1, y + 1).elmColor.a == 0)
-    {
-        grid.SetElement(x - 1, y + 1, *this);
-        grid.SetElement(x, y, Element());
-    }
-    */
+    grid.SetElement(x, y + 1, *this);
 }

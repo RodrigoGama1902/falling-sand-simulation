@@ -15,6 +15,7 @@ public:
     void SetElement(uint32_t x, uint32_t y, Element &elm);
     void Update();
     void Draw();
+    void SwapGrids();
 
     Element &GetElement(uint32_t x, uint32_t y);
 
@@ -26,7 +27,9 @@ private:
     uint32_t mHeight;
 
     Screen *mScreen;
-    std::vector<Element *> gridData;
+
+    std::vector<std::vector<Element *>> gridData;
+    std::vector<std::vector<Element *>> gridDataNext;
 };
 
 #endif

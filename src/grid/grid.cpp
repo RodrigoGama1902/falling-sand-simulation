@@ -9,7 +9,8 @@ Grid::Grid(Screen &srcScreen)
     mWidth = srcScreen.Width();
     mHeight = srcScreen.Height();
     mScreen = &srcScreen;
-    gridData = std::vector<Element *>(mWidth * mHeight, new Null());
+    gridData = std::vector<std::vector<Element *>>(mWidth, std::vector<Element *>(mHeight, new Null()));
+    gridDataNext = std::vector<std::vector<Element *>>(mWidth, std::vector<Element *>(mHeight, new Null()));
 }
 
 Grid::~Grid()
@@ -23,9 +24,11 @@ void Grid::Update()
     {
         for (uint32_t x = 0; x < mWidth; x++)
         {
-            gridData[y * mWidth + x]->Update(*this, x, y);
+            gridData[x][y]->Update(*this, x, y);
         }
     }
+
+    SwapGrids();
 }
 
 void Grid::Draw()
@@ -35,19 +38,22 @@ void Grid::Draw()
     {
         for (uint32_t x = 0; x < mWidth; x++)
         {
-            mScreen->Draw(*(gridData[y * mWidth + x]), x, y); // Drawing Element
-
-            // gridData[y * mWidth + x].Render();
+            mScreen->Draw(x, y, gridData[x][y]->elmColor);
         }
     }
 }
 
 void Grid::SetElement(uint32_t x, uint32_t y, Element &elm)
 {
-    gridData[y * mWidth + x] = &elm;
+    gridDataNext[x][y] = &elm;
 }
 
 Element &Grid::GetElement(uint32_t x, uint32_t y)
 {
-    return *(gridData[y * mWidth + x]);
+    return *gridData[x][y];
+}
+
+void Grid::SwapGrids()
+{
+    gridData = gridDataNext;
 }
