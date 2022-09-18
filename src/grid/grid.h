@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include "element.h"
 #include "Screen.h"
+#include <vector>
 
 class Grid
 {
@@ -25,7 +26,7 @@ private:
     uint32_t mHeight;
 
     Screen *mScreen;
-    Element *gridData;
+    std::vector<Element *> gridData;
 };
 
 #endif

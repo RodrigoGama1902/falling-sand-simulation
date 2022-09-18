@@ -1,5 +1,6 @@
 #include "sand.h"
 #include "element.h"
+#include "null.h"
 #include <iostream>
 
 Sand::Sand() : Element()
@@ -9,10 +10,13 @@ Sand::Sand() : Element()
 
 void Sand::Update(Grid &grid, int x, int y)
 {
-    std::cout << "Sand Update" << std::endl;
 
     // grid.SetElement(x, y + 1, Eleme);
-    // grid.SetElement(x, y - 1, *this);
+
+    Null *null_elm = new Null();
+
+    grid.SetElement(x, y - 1, *this);
+    grid.SetElement(x, y, *null_elm);
 
     /*
     if (grid.GetElement(x, y + 1).elmColor.a == 0)

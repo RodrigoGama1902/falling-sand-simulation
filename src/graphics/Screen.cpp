@@ -157,7 +157,7 @@ void Screen::Draw(const Line2D &line, const Color &color)
     }
 }
 
-void Screen::Draw(const Element &elm, int x, int y)
+void Screen::Draw(Element &elm, int x, int y)
 {
     assert(moptrWindow);
     if (moptrWindow)
