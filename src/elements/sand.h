@@ -1,15 +1,9 @@
-#ifndef _SAND_H_
-#define _SAND_H_
-
 #include "element.h"
+#include "grid.h"
 
 class Sand : public Element
 {
 public:
     Sand();
-    ~Sand();
-    void Update();
-    void Render();
+    virtual void Update(Grid &grid, int x, int y) override;
 };
-
-#endif

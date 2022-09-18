@@ -3,14 +3,14 @@
 
 #include "Color.h"
 
+struct Grid;
+
 class Element
 {
 public:
     Element();
 
-    virtual ~Element();
-    virtual void Update();
-    virtual void Render();
+    virtual void Update(Grid &grid, int x, int y) = 0;
 
     Color elmColor;
 };

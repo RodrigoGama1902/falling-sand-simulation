@@ -1,8 +1,8 @@
-#include "element.h"
-#include "grid.h"
-#include <iostream>
 
-Element::Element()
+#include "element.h"
+#include "null.h"
+
+Null::Null() : Element()
 {
     elmColor = Color(0, 0, 0, 0);
 }

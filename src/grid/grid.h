@@ -12,8 +12,10 @@ public:
     ~Grid();
 
     void SetElement(uint32_t x, uint32_t y, Element &elm);
-
+    void Update();
     void Draw();
+
+    Element &GetElement(uint32_t x, uint32_t y);
 
     inline uint32_t Width() const { return mWidth; }
     inline uint32_t Height() const { return mHeight; }

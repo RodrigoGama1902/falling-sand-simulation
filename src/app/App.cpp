@@ -3,6 +3,7 @@
 #include "SDL2/SDL.h"
 #include "Line2D.h"
 #include "grid.h"
+#include "brush.h"
 
 const int SCR_MAG = 3; // Screen magnification
 
@@ -53,10 +54,11 @@ void App::Run()
 
         // uint32_t SDL_GetMouseState(int *x, int *y);
         // Line2D line1(Vec2D(SCREEN_WIDTH, SCREEN_HEIGHT), Vec2D(0, 0));
-        // theScreen.Draw(line1, Color::Red());
-        // theScreen.SwapScreen();
+        // mScreen.Draw(line1, Color::Red());
+        // mScreen.SwapScreen();
 
         Grid grid(mScreen);
+        Brush brush(&grid);
 
         uint32_t lastTick = SDL_GetTicks();
         uint32_t currentTick = lastTick;
@@ -67,7 +69,6 @@ void App::Run()
         SDL_Event sdlEvent;
 
         bool running = true;
-        // bool drawing = false;
 
         while (running)
         {
@@ -89,23 +90,17 @@ void App::Run()
                 switch (sdlEvent.type)
                 {
 
-                    /*
-                    case SDL_MOUSEBUTTONDOWN:
-                        drawing = true;
-                        break;
+                case SDL_MOUSEBUTTONDOWN:
+                    brush.ToggleDraw(true);
+                    break;
 
-                    case SDL_MOUSEBUTTONUP:
-                        drawing = false;
-                        LAST_X = -1;
-                        LAST_Y = -1;
-                        break;
+                case SDL_MOUSEBUTTONUP:
+                    brush.ToggleDraw(false);
+                    break;
 
-                    case SDL_MOUSEMOTION:
-                        if (drawing)
-                        {
-                            draw_on_mouse_click(mScreen);
-                        }
-                        break;*/
+                case SDL_MOUSEMOTION:
+                    brush.Draw(sdlEvent.button.x / SCR_MAG, sdlEvent.button.y / SCR_MAG, *brush.currentElement);
+                    break;
 
                 case SDL_QUIT:
                     running = false;
@@ -116,6 +111,7 @@ void App::Run()
             while (accumulator >= dt)
             {
                 // Update current scene by dt
+                grid.Update();
                 accumulator -= dt;
             }
 
