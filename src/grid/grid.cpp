@@ -45,11 +45,21 @@ void Grid::Draw()
 
 void Grid::SetElement(uint32_t x, uint32_t y, Element &elm)
 {
+    if (x >= mWidth || y >= mHeight)
+    {
+        return;
+    }
+
     gridDataNext[x][y] = &elm;
 }
 
 Element &Grid::GetElement(uint32_t x, uint32_t y)
 {
+    if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
+    {
+        return *new Null();
+    }
+
     return *gridData[x][y];
 }
 

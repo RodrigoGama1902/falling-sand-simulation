@@ -13,6 +13,7 @@ public:
     virtual void Update(Grid &grid, int x, int y) = 0;
 
     Color elmColor;
+    bool solid;
 };
 
 #endif

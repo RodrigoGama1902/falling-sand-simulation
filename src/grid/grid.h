@@ -22,6 +22,9 @@ public:
     inline uint32_t Width() const { return mWidth; }
     inline uint32_t Height() const { return mHeight; }
 
+    int GetWidth() { return mWidth; }
+    int GetHeight() { return mHeight; }
+
 private:
     uint32_t mWidth;
     uint32_t mHeight;
