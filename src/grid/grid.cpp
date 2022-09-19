@@ -60,7 +60,7 @@ Element &Grid::GetElement(uint32_t x, uint32_t y)
         return *new Null();
     }
 
-    return *gridData[x][y];
+    return *gridDataNext[x][y];
 }
 
 void Grid::SwapGrids()

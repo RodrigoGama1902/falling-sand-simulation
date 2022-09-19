@@ -26,16 +26,6 @@ void Water::Update(Grid &grid, int x, int y)
         grid.SetElement(x, y + 1, *this);
         grid.SetElement(x, y, *null_elm);
     }
-    else if (grid.GetElement(x + 1, y + 1).solid == false)
-    {
-        grid.SetElement(x + 1, y + 1, *this);
-        grid.SetElement(x, y, *null_elm);
-    }
-    else if (grid.GetElement(x - 1, y + 1).solid == false)
-    {
-        grid.SetElement(x - 1, y + 1, *this);
-        grid.SetElement(x, y, *null_elm);
-    }
 
     else if (grid.GetElement(x + 1, y).solid == false)
     {
