@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cassert>
 #include <cmath>
+#include <random>
 
 Screen::Screen() : mWidth(0), mHeight(0), moptrWindow(nullptr), mnoptrWindowSurface(nullptr)
 {
@@ -157,7 +158,7 @@ void Screen::Draw(const Line2D &line, const Color &color)
     }
 }
 
-void Screen::Draw(Element &elm, int x, int y)
+void Screen::Draw(int x, int y, Element &elm)
 {
     assert(moptrWindow);
     if (moptrWindow)

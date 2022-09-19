@@ -16,7 +16,7 @@ void Water::Update(Grid &grid, int x, int y)
 
     // Water Simulation
 
-    if (y + 1 >= grid.GetHeight())
+    if (y + 1 >= grid.GetHeight() || y - 1 < 0 || x + 1 >= grid.GetWidth() || x - 1 < 0)
     {
         return;
     }
@@ -24,6 +24,18 @@ void Water::Update(Grid &grid, int x, int y)
     if (grid.GetElement(x, y + 1).solid == false)
     {
         grid.SetElement(x, y + 1, *this);
+        grid.SetElement(x, y, *null_elm);
+    }
+
+    else if (grid.GetElement(x + 1, y + 1).solid == false)
+    {
+        grid.SetElement(x + 1, y + 1, *this);
+        grid.SetElement(x, y, *null_elm);
+    }
+
+    else if (grid.GetElement(x - 1, y + 1).solid == false)
+    {
+        grid.SetElement(x - 1, y + 1, *this);
         grid.SetElement(x, y, *null_elm);
     }
 

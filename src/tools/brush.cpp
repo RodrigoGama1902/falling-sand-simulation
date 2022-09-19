@@ -9,7 +9,7 @@
 
 Brush::Brush(Grid *grid)
 {
-    mElement = new Sand();
+    mElement = nullptr;
     mGrid = grid;
     last_x_pos = -1;
     last_y_pos = -1;

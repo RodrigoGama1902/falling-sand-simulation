@@ -38,7 +38,7 @@ void Grid::Draw()
     {
         for (uint32_t x = 0; x < mWidth; x++)
         {
-            mScreen->Draw(x, y, gridData[x][y]->elmColor);
+            mScreen->Draw(x, y, *gridData[x][y]);
         }
     }
 }
