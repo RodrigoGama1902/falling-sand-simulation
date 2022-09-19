@@ -1,13 +1,13 @@
-#ifndef _SAND_H_
-#define _SAND_H_
+#ifndef _WALL_H_
+#define _WALL_H_
 
 #include "element.h"
 #include "grid.h"
 
-class Sand : public Element
+class Wall : public Element
 {
 public:
-    Sand();
+    Wall();
     virtual void Update(Grid &grid, int x, int y) override;
 };
 

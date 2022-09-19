@@ -6,6 +6,7 @@
 #include "brush.h"
 #include "sand.h"
 #include "water.h"
+#include "wall.h"
 #include <iostream>
 
 const int SCR_MAG = 3; // Screen magnification
@@ -67,6 +68,7 @@ void App::Run()
 
         Sand *sand_element = new Sand();
         Water *water_element = new Water();
+        Wall *wall_element = new Wall();
 
         uint32_t lastTick = SDL_GetTicks();
         uint32_t currentTick = lastTick;
@@ -112,6 +114,9 @@ void App::Run()
                         break;
                     case SDL_BUTTON_RIGHT:
                         brush.SetElement(*water_element);
+                        break;
+                    case SDL_BUTTON_MIDDLE:
+                        brush.SetElement(*wall_element);
                         break;
                     default:
                         brush.SetElement(*sand_element);
