@@ -6,6 +6,7 @@
 
 Sand::Sand() : Element()
 {
+    std::cout << "Sand created" << std::endl;
     elmColor = Color(255, 255, 0, 255);
     solid = true;
 }
