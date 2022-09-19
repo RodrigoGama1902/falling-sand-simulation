@@ -4,6 +4,9 @@
 #include "Line2D.h"
 #include "grid.h"
 #include "brush.h"
+#include "sand.h"
+#include "water.h"
+#include <iostream>
 
 const int SCR_MAG = 3; // Screen magnification
 
@@ -54,11 +57,16 @@ void App::Run()
 
         // uint32_t SDL_GetMouseState(int *x, int *y);
         // Line2D line1(Vec2D(SCREEN_WIDTH, SCREEN_HEIGHT), Vec2D(0, 0));
-        // mScreen.Draw(line1, Color::Red());
-        // mScreen.SwapScreen();
+        // theScreen.Draw(line1, Color::Red());
+        // theScreen.SwapScreen();
 
         Grid grid(mScreen);
         Brush brush(&grid);
+
+        // Init Elements
+
+        Sand *sand_element = new Sand();
+        Water *water_element = new Water();
 
         uint32_t lastTick = SDL_GetTicks();
         uint32_t currentTick = lastTick;
@@ -90,16 +98,30 @@ void App::Run()
                 switch (sdlEvent.type)
                 {
 
-                case SDL_MOUSEBUTTONDOWN:
-                    brush.ToggleDraw(true);
-                    break;
-
                 case SDL_MOUSEBUTTONUP:
                     brush.ToggleDraw(false);
                     break;
 
+                case SDL_MOUSEBUTTONDOWN:
+                    brush.ToggleDraw(true);
+
+                    switch (sdlEvent.button.button)
+                    {
+                    case SDL_BUTTON_LEFT:
+                        brush.SetElement(*sand_element);
+                        break;
+                    case SDL_BUTTON_RIGHT:
+                        brush.SetElement(*water_element);
+                        break;
+                    default:
+                        brush.SetElement(*sand_element);
+                        break;
+                    }
+                    break;
+
                 case SDL_MOUSEMOTION:
-                    brush.Draw(sdlEvent.button.x / SCR_MAG, sdlEvent.button.y / SCR_MAG, *brush.currentElement);
+
+                    brush.Draw(sdlEvent.motion.x / SCR_MAG, sdlEvent.motion.y / SCR_MAG);
                     break;
 
                 case SDL_QUIT:

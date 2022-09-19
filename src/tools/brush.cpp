@@ -9,20 +9,20 @@
 
 Brush::Brush(Grid *grid)
 {
+    mElement = new Sand();
     mGrid = grid;
-    currentElement = new Sand();
     last_x_pos = -1;
     last_y_pos = -1;
 }
 
-void Brush::Draw(uint32_t x, uint32_t y, Element &elm)
+void Brush::Draw(uint32_t x, uint32_t y)
 {
     if (!drawing)
     {
         return;
     }
 
-    mGrid->SetElement(x, y, *currentElement);
+    mGrid->SetElement(x, y, *mElement);
 
     last_x_pos = x;
     last_y_pos = y;
@@ -40,4 +40,9 @@ void Brush::ToggleDraw(bool toggle)
         last_y_pos = -1;
         drawing = false;
     }
+}
+
+void Brush::SetElement(Element &elm)
+{
+    mElement = &elm;
 }

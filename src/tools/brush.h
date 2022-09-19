@@ -9,16 +9,18 @@ class Brush
 public:
     Brush(Grid *grid);
 
-    void Draw(uint32_t x, uint32_t y, Element &elm);
+    void Draw(uint32_t x, uint32_t y);
     void ToggleDraw(bool toggle);
-    bool is_drawing() { return drawing; };
+    void SetElement(Element &elm);
 
-    Element *currentElement;
+    bool is_drawing() { return drawing; };
 
 private:
     bool drawing = false;
     int last_x_pos;
     int last_y_pos;
+
+    Element *mElement;
     Grid *mGrid;
 };
 
