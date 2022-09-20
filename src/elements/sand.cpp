@@ -3,12 +3,13 @@
 #include "null.h"
 #include <iostream>
 #include <random>
+#include <time.h>
 
 Sand::Sand() : Element()
 {
-    std::cout << "Sand created" << std::endl;
-    elmColor = Color(255, 255, 0, 255);
     solid = true;
+    int m = rand() % 100;
+    elmColor = Color(255 * m, 255 * m, 0 * m, 255);
 }
 
 void Sand::Update(Grid &grid, int x, int y)

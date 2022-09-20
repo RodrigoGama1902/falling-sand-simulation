@@ -9,6 +9,11 @@ class Wall : public Element
 public:
     Wall();
     virtual void Update(Grid &grid, int x, int y) override;
+
+    virtual Element *clone() const
+    {
+        return new Wall(); // call the copy ctor.
+    }
 };
 
 #endif

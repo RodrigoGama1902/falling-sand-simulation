@@ -22,7 +22,10 @@ void Brush::Draw(uint32_t x, uint32_t y)
         return;
     }
 
-    mGrid->SetElement(x, y, *mElement);
+    mGrid->SetElement(x, y, *mElement->clone());
+
+    // mGrid->SetElement(x, y, *mElement); this will not create a new instance of the element, but will instead just copy the pointer to the element,
+    //                                     optimized for performance, but colors cannot be instantiated.
 
     last_x_pos = x;
     last_y_pos = y;

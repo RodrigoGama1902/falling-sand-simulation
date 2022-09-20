@@ -11,6 +11,7 @@ public:
     Element();
 
     virtual void Update(Grid &grid, int x, int y) = 0;
+    virtual Element *clone() const = 0;
 
     Color elmColor;
     bool solid;

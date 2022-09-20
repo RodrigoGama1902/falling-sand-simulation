@@ -4,5 +4,4 @@
 
 Element::Element()
 {
-    elmColor = Color(0, 0, 0, 0);
 }

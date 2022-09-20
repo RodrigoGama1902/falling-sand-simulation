@@ -9,6 +9,11 @@ class Water : public Element
 public:
     Water();
     virtual void Update(Grid &grid, int x, int y) override;
+
+    virtual Element *clone() const
+    {
+        return new Water(); // call the copy ctor.
+    }
 };
 
 #endif

@@ -6,6 +6,8 @@
 #include <cassert>
 #include <cmath>
 #include <random>
+#include "Color.h"
+#include <ctime>
 
 Screen::Screen() : mWidth(0), mHeight(0), moptrWindow(nullptr), mnoptrWindowSurface(nullptr)
 {
@@ -80,6 +82,7 @@ void Screen::SwapScreen(bool update)
 }
 
 void Screen::Draw(int x, int y, const Color &color)
+
 {
     assert(moptrWindow);
     if (moptrWindow)

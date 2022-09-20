@@ -1,5 +1,4 @@
 
-#include <iostream>
 #include "app/App.h"
 
 const int SCREEN_WIDTH = 224;
@@ -11,6 +10,5 @@ int main(int argc, const char *argv[])
     {
         App::Singleton().Run();
     }
-    //
     return 0;
 }

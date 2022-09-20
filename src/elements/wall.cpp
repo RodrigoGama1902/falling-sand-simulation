@@ -5,8 +5,10 @@
 
 Wall::Wall() : Element()
 {
-    elmColor = Color(211, 211, 211, 255);
     solid = true;
+
+    int m = rand() % 100;
+    elmColor = Color(255 * m, 255 * m, 255 * m, 255);
 }
 
 void Wall::Update(Grid &grid, int x, int y)

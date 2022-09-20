@@ -8,6 +8,7 @@
 #include "water.h"
 #include "wall.h"
 #include <iostream>
+#include <time.h>
 
 const int SCR_MAG = 3; // Screen magnification
 
@@ -60,6 +61,8 @@ void App::Run()
         // Line2D line1(Vec2D(SCREEN_WIDTH, SCREEN_HEIGHT), Vec2D(0, 0));
         // theScreen.Draw(line1, Color::Red());
         // theScreen.SwapScreen();
+
+        srand(time(NULL)); // Seed the random number generator
 
         Grid grid(mScreen);
         Brush brush(&grid);
