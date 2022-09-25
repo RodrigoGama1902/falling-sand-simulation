@@ -15,6 +15,7 @@ int main(int argc, const char *argv[])
 
 // TODO
 
+// Study remove the NextGrid Data
 // Better classes structure
 // Add post processing methods
 // Better water sim (water is very slow to move)

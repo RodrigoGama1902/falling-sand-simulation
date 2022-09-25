@@ -9,7 +9,7 @@ static uint32_t minFPS = -1;
 
 void DisplayFPS(uint32_t frameTime)
 {
-    if (SDL_GetTicks() > 1000) // Starting FPS counter after app stabilization
+    if (SDL_GetTicks() > 3000) // Starting FPS counter after app stabilization
     {
         uint32_t fps = (frameTime > 0) ? 1000.0f / frameTime : 0.0f;
 

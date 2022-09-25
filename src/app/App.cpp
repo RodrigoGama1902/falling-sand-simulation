@@ -43,8 +43,8 @@ void App::Run()
         Water *water_element = new Water();
         Wall *wall_element = new Wall();
 
-        Grid grid(mScreen, sand_element, 50); // Create a grid with 50% cells filled
-        // Grid grid(mScreen);
+        // Grid grid(mScreen, sand_element, 60); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
+        Grid grid(mScreen);
 
         Brush brush(&grid);
 
