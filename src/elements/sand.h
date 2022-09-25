@@ -6,6 +6,12 @@
 
 class Sand : public Element
 {
+
+private:
+    int velocity_y;
+    int velocity_direction;
+    int friction;
+
 public:
     Sand();
     virtual void Update(Grid &grid, int x, int y) override;
