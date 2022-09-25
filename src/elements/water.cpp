@@ -1,7 +1,9 @@
 #include "water.h"
 #include "element.h"
 #include "null.h"
+
 #include <iostream>
+#include <typeinfo>
 
 Water::Water() : Element()
 {
@@ -27,6 +29,10 @@ void Water::Update(Grid &grid, int x, int y)
 
     if (moving)
     {
+
+        if (typeid(grid.GetElement(x, y + 1)) == typeid(Null) && typeid(grid.GetElement(x, y + 2)) == typeid(Water))
+            grid.SetElement(x, y + 1, *this);
+
         int rand_add_color = rand() % 2;
 
         if (rand_add_color == 1)
@@ -103,4 +109,6 @@ void Water::Update(Grid &grid, int x, int y)
     {
         moving = false;
     }
+
+    // Checking water empty spaces
 }

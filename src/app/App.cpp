@@ -9,36 +9,9 @@
 #include "wall.h"
 #include <iostream>
 #include <time.h>
+#include "AppUtils.h"
 
-const int SCR_MAG = 5; // Screen magnification
-
-int LAST_X = -1;
-int LAST_Y = -1;
-
-void draw_on_mouse_click(Screen &theScreen)
-{
-    int x, y;
-
-    uint32_t buttons = SDL_GetMouseState(&x, &y);
-
-    if ((buttons & SDL_BUTTON_LMASK) != 0)
-    {
-        if (LAST_X != -1 && LAST_Y != -1)
-        {
-            Line2D line(LAST_X, LAST_Y, x / SCR_MAG, y / SCR_MAG);
-            theScreen.Draw(line, Color::Red());
-        }
-        else
-        {
-            theScreen.Draw(x / SCR_MAG, y / SCR_MAG, Color::Red());
-        }
-
-        LAST_X = x / SCR_MAG;
-        LAST_Y = y / SCR_MAG;
-    }
-
-    theScreen.SwapScreen(true);
-}
+const int SCR_MAG = 4; // Screen magnification
 
 App &App::Singleton()
 {
@@ -137,11 +110,13 @@ void App::Run()
             {
                 // Update current scene by dt
                 grid.Update();
+                DisplayFPS(frameTime);
+
                 accumulator -= dt;
 
+                // Brush Draw
                 int xMouse, yMouse;
                 SDL_GetMouseState(&xMouse, &yMouse);
-
                 if (brush.is_drawing())
                     brush.Draw(xMouse / SCR_MAG, yMouse / SCR_MAG);
             }
