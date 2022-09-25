@@ -11,8 +11,6 @@
 #include <time.h>
 #include "AppUtils.h"
 
-const int SCR_MAG = 3; // Screen magnification
-
 App &App::Singleton()
 {
     static App theApp;
@@ -22,6 +20,7 @@ App &App::Singleton()
 bool App::Init(uint32_t width, uint32_t height, uint32_t mag)
 {
     mnoptrWindow = mScreen.Init(width, height, mag);
+    screenMag = mag;
     return mnoptrWindow != nullptr;
 }
 
@@ -43,7 +42,7 @@ void App::Run()
         Water *water_element = new Water();
         Wall *wall_element = new Wall();
 
-        Grid grid(mScreen, water_element, 20); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
+        Grid grid(mScreen, sand_element, 50); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
         // Grid grid(mScreen);
 
         Brush brush(&grid);
@@ -120,7 +119,7 @@ void App::Run()
                 int xMouse, yMouse;
                 SDL_GetMouseState(&xMouse, &yMouse);
                 if (brush.is_drawing())
-                    brush.Draw(xMouse / SCR_MAG, yMouse / SCR_MAG);
+                    brush.Draw(xMouse / screenMag, yMouse / screenMag);
             }
 
             // Render

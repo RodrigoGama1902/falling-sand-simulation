@@ -1,12 +1,12 @@
 
 #include "app/App.h"
 
-const int SCREEN_WIDTH = 1920 / 4;
-const int SCREEN_HEIGHT = 1080 / 4;
+const int SCREEN_WIDTH = 648 * 0.8;
+const int SCREEN_HEIGHT = 364 * 0.8;
 
 int main(int argc, const char *argv[])
 {
-    if (App::Singleton().Init(SCREEN_WIDTH, SCREEN_HEIGHT, 3))
+    if (App::Singleton().Init(SCREEN_WIDTH, SCREEN_HEIGHT, 2))
     {
         App::Singleton().Run();
     }
@@ -17,7 +17,6 @@ int main(int argc, const char *argv[])
 
 // Study remove the NextGrid Data
 // Better classes structure
-// Swap if element is more dense than the one it is moving into (like water and sand)
 // Add post processing methods
 // Better water sim (water is very slow to move)
 // Add brush circle shape
