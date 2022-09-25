@@ -1,6 +1,5 @@
 #include "wall.h"
 #include "element.h"
-#include "null.h"
 #include <iostream>
 
 Wall::Wall() : Element()

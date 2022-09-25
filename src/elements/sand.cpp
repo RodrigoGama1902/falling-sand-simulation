@@ -1,6 +1,5 @@
 #include "sand.h"
 #include "element.h"
-#include "null.h"
 #include <iostream>
 #include <random>
 #include <time.h>
