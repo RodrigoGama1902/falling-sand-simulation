@@ -127,11 +127,6 @@ void App::Run()
                     }
                     break;
 
-                case SDL_MOUSEMOTION:
-
-                    brush.Draw(sdlEvent.motion.x / SCR_MAG, sdlEvent.motion.y / SCR_MAG);
-                    break;
-
                 case SDL_QUIT:
                     running = false;
                     break;
@@ -143,6 +138,12 @@ void App::Run()
                 // Update current scene by dt
                 grid.Update();
                 accumulator -= dt;
+
+                int xMouse, yMouse;
+                SDL_GetMouseState(&xMouse, &yMouse);
+
+                if (brush.is_drawing())
+                    brush.Draw(xMouse / SCR_MAG, yMouse / SCR_MAG);
             }
 
             // Render
