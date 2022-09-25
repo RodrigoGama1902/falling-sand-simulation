@@ -4,13 +4,27 @@
 #include "element.h"
 #include "null.h"
 
-Grid::Grid(Screen &srcScreen)
+Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Null(), 100)
 {
-    mWidth = srcScreen.Width();
-    mHeight = srcScreen.Height();
-    mScreen = &srcScreen;
-    gridData = std::vector<std::vector<Element *>>(mWidth, std::vector<Element *>(mHeight, new Null()));
-    gridDataNext = std::vector<std::vector<Element *>>(mWidth, std::vector<Element *>(mHeight, new Null()));
+}
+
+Grid::Grid(Screen &mScreen, Element *elmFill, int fillPercent)
+{
+    mWidth = mScreen.Width();
+    mHeight = mScreen.Height();
+    this->mScreen = &mScreen;
+
+    gridData = std::vector<std::vector<Element *>>(mWidth, std::vector<Element *>(mHeight));
+    gridDataNext = std::vector<std::vector<Element *>>(mWidth, std::vector<Element *>(mHeight));
+
+    for (uint32_t x = 0; x < mWidth; x++)
+    {
+        for (uint32_t y = 0; y < mHeight; y++)
+        {
+            if (rand() % 100 < fillPercent)
+                gridDataNext[x][y] = elmFill->clone();
+        }
+    }
 }
 
 Grid::~Grid()
@@ -24,7 +38,10 @@ void Grid::Update()
     {
         for (uint32_t x = 0; x < mWidth; x++)
         {
-            gridData[x][y]->Update(*this, x, y);
+            if (gridData[x][y] != nullptr)
+            {
+                gridData[x][y]->Update(*this, x, y);
+            }
         }
     }
 
@@ -38,29 +55,32 @@ void Grid::Draw()
     {
         for (uint32_t x = 0; x < mWidth; x++)
         {
-            mScreen->Draw(x, y, *gridData[x][y]);
+            if (gridData[x][y] != nullptr)
+            {
+                mScreen->Draw(x, y, *gridData[x][y]);
+            }
         }
     }
 }
 
-void Grid::SetElement(uint32_t x, uint32_t y, Element &elm)
+void Grid::SetElement(uint32_t x, uint32_t y, Element *elm)
 {
     if (x >= mWidth || y >= mHeight)
     {
         return;
     }
 
-    gridDataNext[x][y] = &elm;
+    gridDataNext[x][y] = elm;
 }
 
-Element &Grid::GetElement(uint32_t x, uint32_t y)
+Element *Grid::GetElement(uint32_t x, uint32_t y)
 {
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
     {
-        return *new Null();
+        return new Null();
     }
 
-    return *gridDataNext[x][y];
+    return gridDataNext[x][y];
 }
 
 void Grid::SwapGrids()

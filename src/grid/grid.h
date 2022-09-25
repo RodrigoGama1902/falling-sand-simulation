@@ -10,14 +10,16 @@ class Grid
 {
 public:
     Grid(Screen &mScreen);
+    Grid(Screen &mScreen, Element *elmFill, int fillPercent);
+
     ~Grid();
 
-    void SetElement(uint32_t x, uint32_t y, Element &elm);
+    void SetElement(uint32_t x, uint32_t y, Element *elm);
     void Update();
     void Draw();
     void SwapGrids();
 
-    Element &GetElement(uint32_t x, uint32_t y);
+    Element *GetElement(uint32_t x, uint32_t y);
 
     inline uint32_t Width() const { return mWidth; }
     inline uint32_t Height() const { return mHeight; }

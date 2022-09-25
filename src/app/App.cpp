@@ -11,7 +11,7 @@
 #include <time.h>
 #include "AppUtils.h"
 
-const int SCR_MAG = 4; // Screen magnification
+const int SCR_MAG = 3; // Screen magnification
 
 App &App::Singleton()
 {
@@ -37,14 +37,16 @@ void App::Run()
 
         srand(time(NULL)); // Seed the random number generator
 
-        Grid grid(mScreen);
-        Brush brush(&grid);
-
         // Init Elements
 
         Sand *sand_element = new Sand();
         Water *water_element = new Water();
         Wall *wall_element = new Wall();
+
+        Grid grid(mScreen, sand_element, 50); // Create a grid with 50% cells filled
+        // Grid grid(mScreen);
+
+        Brush brush(&grid);
 
         uint32_t lastTick = SDL_GetTicks();
         uint32_t currentTick = lastTick;

@@ -18,19 +18,10 @@ Sand::Sand() : Element()
 void Sand::Update(Grid &grid, int x, int y)
 {
 
-    Null *null_elm = new Null();
-
-    // stop at screen y edge
-
-    if (y + 1 >= grid.GetHeight())
+    if (grid.GetElement(x, y + 1) == nullptr) // Check if is falling
     {
-        return;
-    }
-
-    if (grid.GetElement(x, y + 1).solid == false) // Check if is falling
-    {
-        grid.SetElement(x, y + 1, *this);
-        grid.SetElement(x, y, *null_elm);
+        grid.SetElement(x, y + 1, this);
+        grid.SetElement(x, y, nullptr);
         velocity_y++;
         moving = true;
         return; // return since nothing can be done
@@ -48,10 +39,10 @@ void Sand::Update(Grid &grid, int x, int y)
         else
             x_check = x - 1;
 
-        if (grid.GetElement(x_check, y).solid == false)
+        if (grid.GetElement(x_check, y) == nullptr)
         {
-            grid.SetElement(x_check, y, *this);
-            grid.SetElement(x, y, *null_elm);
+            grid.SetElement(x_check, y, this);
+            grid.SetElement(x, y, nullptr);
             velocity_y -= friction;
             return;
         }
@@ -62,17 +53,17 @@ void Sand::Update(Grid &grid, int x, int y)
         velocity_y = 0;
     }
 
-    if (grid.GetElement(x + 1, y + 1).solid == false)
+    if (grid.GetElement(x + 1, y + 1) == nullptr)
     {
-        grid.SetElement(x + 1, y + 1, *this);
-        grid.SetElement(x, y, *null_elm);
+        grid.SetElement(x + 1, y + 1, this);
+        grid.SetElement(x, y, nullptr);
         return;
     }
 
-    if (grid.GetElement(x - 1, y + 1).solid == false)
+    if (grid.GetElement(x - 1, y + 1) == nullptr)
     {
-        grid.SetElement(x - 1, y + 1, *this);
-        grid.SetElement(x, y, *null_elm);
+        grid.SetElement(x - 1, y + 1, this);
+        grid.SetElement(x, y, nullptr);
         return;
     }
 }

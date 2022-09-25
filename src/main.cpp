@@ -1,12 +1,12 @@
 
 #include "app/App.h"
 
-const int SCREEN_WIDTH = 384;
-const int SCREEN_HEIGHT = 216;
+const int SCREEN_WIDTH = 1920 / 4;
+const int SCREEN_HEIGHT = 1080 / 4;
 
 int main(int argc, const char *argv[])
 {
-    if (App::Singleton().Init(SCREEN_WIDTH, SCREEN_HEIGHT, 4))
+    if (App::Singleton().Init(SCREEN_WIDTH, SCREEN_HEIGHT, 3))
     {
         App::Singleton().Run();
     }

@@ -18,20 +18,8 @@ Water::Water() : Element()
 void Water::Update(Grid &grid, int x, int y)
 {
 
-    Null *null_elm = new Null();
-
-    // Water Simulation
-
-    if (y + 1 >= grid.GetHeight() || y - 1 < 0 || x + 1 >= grid.GetWidth() || x - 1 < 0)
-    {
-        return;
-    }
-
     if (moving)
     {
-
-        if (typeid(grid.GetElement(x, y + 1)) == typeid(Null) && typeid(grid.GetElement(x, y + 2)) == typeid(Water))
-            grid.SetElement(x, y + 1, *this);
 
         int rand_add_color = rand() % 2;
 
@@ -77,33 +65,33 @@ void Water::Update(Grid &grid, int x, int y)
 
     moving = true;
 
-    if (grid.GetElement(x, y + 1).solid == false)
+    if (grid.GetElement(x, y + 1) == nullptr)
     {
-        grid.SetElement(x, y + 1, *this);
-        grid.SetElement(x, y, *null_elm);
+        grid.SetElement(x, y + 1, this);
+        grid.SetElement(x, y, nullptr);
     }
 
-    else if (grid.GetElement(x + 1, y + 1).solid == false)
+    else if (grid.GetElement(x + 1, y + 1) == nullptr)
     {
-        grid.SetElement(x + 1, y + 1, *this);
-        grid.SetElement(x, y, *null_elm);
+        grid.SetElement(x + 1, y + 1, this);
+        grid.SetElement(x, y, nullptr);
     }
 
-    else if (grid.GetElement(x - 1, y + 1).solid == false)
+    else if (grid.GetElement(x - 1, y + 1) == nullptr)
     {
-        grid.SetElement(x - 1, y + 1, *this);
-        grid.SetElement(x, y, *null_elm);
+        grid.SetElement(x - 1, y + 1, this);
+        grid.SetElement(x, y, nullptr);
     }
 
-    else if (grid.GetElement(x + 1, y).solid == false)
+    else if (grid.GetElement(x + 1, y) == nullptr)
     {
-        grid.SetElement(x + 1, y, *this);
-        grid.SetElement(x, y, *null_elm);
+        grid.SetElement(x + 1, y, this);
+        grid.SetElement(x, y, nullptr);
     }
-    else if (grid.GetElement(x - 1, y).solid == false)
+    else if (grid.GetElement(x - 1, y) == nullptr)
     {
-        grid.SetElement(x - 1, y, *this);
-        grid.SetElement(x, y, *null_elm);
+        grid.SetElement(x - 1, y, this);
+        grid.SetElement(x, y, nullptr);
     }
     else
     {
