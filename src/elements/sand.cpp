@@ -12,7 +12,7 @@ Sand::Sand() : Element()
     elmColor = Color(255 * m, 255 * m, 0 * m, 255);
     velocity_y = 0;
     velocity_direction = -1;
-    friction = 40;
+    friction = 10;
 }
 
 void Sand::Update(Grid &grid, int x, int y)
@@ -32,7 +32,7 @@ void Sand::Update(Grid &grid, int x, int y)
         grid.SetElement(x, y + 1, *this);
         grid.SetElement(x, y, *null_elm);
         velocity_y++;
-        elmColor.SetRed(elmColor.GetRed() + 1);
+        moving = true;
         return; // return since nothing can be done
     }
 

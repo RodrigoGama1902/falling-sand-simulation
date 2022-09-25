@@ -10,7 +10,7 @@
 #include <iostream>
 #include <time.h>
 
-const int SCR_MAG = 3; // Screen magnification
+const int SCR_MAG = 5; // Screen magnification
 
 int LAST_X = -1;
 int LAST_Y = -1;

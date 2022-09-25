@@ -4,4 +4,5 @@
 
 Element::Element()
 {
+    moving = false;
 }

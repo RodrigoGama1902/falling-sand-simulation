@@ -14,7 +14,13 @@ public:
     virtual Element *clone() const = 0;
 
     Color elmColor;
+    Color elmMinColor;
+    Color elmMaxColor;
+    int elmColorFadeFrequency;
+    int currentColorFadeFrequency;
+
     bool solid;
+    bool moving;
 };
 
 #endif
