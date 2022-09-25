@@ -2,9 +2,10 @@
 #include <iostream>
 #include "Screen.h"
 #include "element.h"
-#include "null.h"
+#include "sand.h"
+#include "wall.h"
 
-Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Null(), 100)
+Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Sand(), 0)
 {
 }
 
@@ -77,7 +78,7 @@ Element *Grid::GetElement(uint32_t x, uint32_t y)
 {
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
     {
-        return new Null();
+        return new Wall();
     }
 
     return gridDataNext[x][y];
