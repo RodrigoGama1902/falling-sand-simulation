@@ -84,6 +84,13 @@ Element *Grid::GetElement(uint32_t x, uint32_t y)
     return gridDataNext[x][y];
 }
 
+void Grid::SwapElements(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2)
+{
+    Element *temp = gridData[x1][y1];
+    gridDataNext[x1][y1] = gridDataNext[x2][y2];
+    gridDataNext[x2][y2] = temp;
+}
+
 void Grid::SwapGrids()
 {
     gridData = gridDataNext;

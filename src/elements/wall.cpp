@@ -8,6 +8,7 @@ Wall::Wall() : Element()
 
     int m = rand() % 100;
     elmColor = Color(255 * m, 255 * m, 255 * m, 255);
+    density = 100;
 }
 
 void Wall::Update(Grid &grid, int x, int y)

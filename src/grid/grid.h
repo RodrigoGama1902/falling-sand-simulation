@@ -15,6 +15,8 @@ public:
     ~Grid();
 
     void SetElement(uint32_t x, uint32_t y, Element *elm);
+    void SwapElements(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
+
     void Update();
     void Draw();
     void SwapGrids();

@@ -16,10 +16,14 @@ public:
     Color elmColor;
     Color elmMinColor;
     Color elmMaxColor;
+
     int elmColorFadeFrequency;
     int currentColorFadeFrequency;
 
+    int x_direction;
+
     bool solid;
+    int density;
     bool moving;
 };
 
