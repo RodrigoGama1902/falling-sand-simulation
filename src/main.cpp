@@ -19,7 +19,6 @@ int main(int argc, const char *argv[])
 // Better classes structure
 // Add post processing methods
 // Better water sim (water is very slow to move)
-// Add brush circle shape
 // Create clone points, when the space bar is pressed, a spawn of this element will be created
 
 // For the future

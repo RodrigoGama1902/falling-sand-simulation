@@ -21,7 +21,6 @@ void Water::Update(Grid &grid, int x, int y)
 
     if (moving)
     {
-
         int rand_add_color = rand() % 2;
 
         if (rand_add_color == 1)
