@@ -2,6 +2,8 @@
 #define _SCREEN_H_
 
 #include <stdint.h>
+#include <vector>
+
 #include "ScreenBuffer.h"
 #include "Color.h"
 #include "element.h"
@@ -42,6 +44,7 @@ private:
     Screen &operator=(const Screen &rhs); // Disable assignment operator, that's why it's private
 
     void ClearScreen();
+    void FillPoly(const std::vector<Vec2D> &points, const Color &color);
 
     uint32_t mWidth;
     uint32_t mHeight;

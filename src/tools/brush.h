@@ -11,6 +11,9 @@ public:
     Brush(Grid *grid);
 
     void Draw(uint32_t x, uint32_t y);
+    void FillElement(const std::vector<Vec2D> &points);
+    void DrawElementCircle(const Circle &circle);
+
     void DrawCursor(Screen &screen, uint32_t x, uint32_t y);
 
     void ToggleDraw(bool toggle);
