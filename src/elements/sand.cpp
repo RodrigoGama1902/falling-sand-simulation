@@ -9,6 +9,7 @@ Sand::Sand() : Element()
     solid = true;
     int m = rand() % 100;
     elmColor = Color(255 * m, 255 * m, 0 * m, 255);
+    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
 
     velocity_y = 0;
     friction = 20;
@@ -16,7 +17,6 @@ Sand::Sand() : Element()
 
 void Sand::Update(Grid &grid, int x, int y)
 {
-    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
 
     if (grid.GetElement(x, y + 1) != nullptr && !grid.GetElement(x, y + 1)->solid)
     {
@@ -28,7 +28,17 @@ void Sand::Update(Grid &grid, int x, int y)
         grid.SetElement(x, y + 1, this);
         grid.SetElement(x, y, nullptr);
         velocity_y++;
-        moving = true;
+    }
+
+    else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
+    {
+        grid.SetElement(x + x_direction, y + 1, this);
+        grid.SetElement(x, y, nullptr);
+    }
+    else if (grid.GetElement(x + (x_direction * -1), y + 1) == nullptr)
+    {
+        grid.SetElement(x + (x_direction * -1), y + 1, this);
+        grid.SetElement(x, y, nullptr);
     }
     else if (velocity_y > 0)
     {
@@ -37,22 +47,10 @@ void Sand::Update(Grid &grid, int x, int y)
             grid.SetElement(x + x_direction, y, this);
             grid.SetElement(x, y, nullptr);
             velocity_y -= friction;
-            return;
         }
-    }
-    else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
-    {
-        grid.SetElement(x + x_direction, y + 1, this);
-        grid.SetElement(x, y, nullptr);
-    }
-    else if (grid.GetElement(x + x_direction * -1, y + 1) == nullptr)
-    {
-        grid.SetElement(x + x_direction * -1, y + 1, this);
-        grid.SetElement(x, y, nullptr);
     }
     else
     {
         velocity_y = 0;
-        moving = false;
     }
 }
