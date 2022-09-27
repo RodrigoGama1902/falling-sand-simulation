@@ -13,12 +13,15 @@ Water::Water() : Element()
     elmColorFadeFrequency = 5;
     currentColorFadeFrequency = 0;
     solid = false;
-    x_direction = rand() % 2 == 0 ? -1 : 1;
+
+    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
+    velocity_y = 0;
+    friction = 20;
 }
 
 void Water::Update(Grid &grid, int x, int y)
 {
-    /*
+
     if (moving)
     {
         int rand_add_color = rand() % 2;
@@ -62,48 +65,68 @@ void Water::Update(Grid &grid, int x, int y)
             currentColorFadeFrequency--;
         }
     }
-    */
+
     moving = true;
 
-    if (grid.GetElement(x, y + 1) == nullptr) // checking down
+    if (grid.GetElement(x, y + 1) == nullptr) // Check if is falling
     {
         grid.SetElement(x, y + 1, this);
         grid.SetElement(x, y, nullptr);
+        velocity_y++;
     }
 
-    else if (grid.GetElement(x + x_direction, y + 1) == nullptr) // checking down and right
+    else if (grid.GetElement(x + (x_direction * -1), y) == nullptr)
     {
-        grid.SetElement(x + x_direction, y + 1, this);
-        grid.SetElement(x, y, nullptr);
+
+        x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
+
+        if (grid.GetElement(x + (x_direction * -1), y) == nullptr)
+        {
+            grid.SetElement(x + (x_direction * -1), y, this);
+            grid.SetElement(x, y, nullptr);
+        }
+        else if (grid.GetElement(x + (x_direction * -1), y + 1) == nullptr)
+        {
+            grid.SetElement(x + (x_direction * -1), y + 1, this);
+            grid.SetElement(x, y, nullptr);
+        }
     }
 
-    else if (grid.GetElement(x + x_direction * -1, y + 1) == nullptr) // checking down and left
+    else if (grid.GetElement(x + x_direction, y) == nullptr)
     {
-        grid.SetElement(x + x_direction * -1, y + 1, this);
-        grid.SetElement(x, y, nullptr);
+
+        x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
+
+        if (grid.GetElement(x + x_direction, y) == nullptr)
+        {
+            grid.SetElement(x + x_direction, y, this);
+            grid.SetElement(x, y, nullptr);
+        }
+        else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
+        {
+            grid.SetElement(x + x_direction, y + 1, this);
+            grid.SetElement(x, y, nullptr);
+        }
     }
 
-    else // Checking left and right
+    else if (velocity_y > 0)
     {
         if (grid.GetElement(x + x_direction, y) == nullptr)
         {
             grid.SetElement(x + x_direction, y, this);
             grid.SetElement(x, y, nullptr);
-
-            x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction, comment this line to make water flow in one direction until it hits an obstacle
+            velocity_y -= friction;
         }
-
-        else if (grid.GetElement(x + x_direction * -1, y) == nullptr)
+        else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
         {
-            grid.SetElement(x + x_direction * -1, y, this);
+            grid.SetElement(x + x_direction, y + 1, this);
             grid.SetElement(x, y, nullptr);
-
-            x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
+            velocity_y -= friction;
         }
+    }
 
-        else
-        {
-            moving = false;
-        }
+    else
+    {
+        velocity_y = 0;
     }
 }

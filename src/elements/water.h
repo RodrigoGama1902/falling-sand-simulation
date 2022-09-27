@@ -14,6 +14,11 @@ public:
     {
         return new Water(); // call the copy ctor.
     }
+
+private:
+    int velocity_y;
+    int velocity_direction;
+    int friction;
 };
 
 #endif
