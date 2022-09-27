@@ -1,7 +1,7 @@
 
 #include "app/App.h"
 
-const bool DEBUG_MODE = true; // With debug mode, the frames will passing by pressing the keyboard up key
+const bool DEBUG_MODE = false;
 
 int main(int argc, const char *argv[])
 {

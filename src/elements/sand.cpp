@@ -29,33 +29,40 @@ void Sand::Update(Grid &grid, int x, int y)
         velocity_y++;
     }
 
-    else if (grid.GetElement(x + (x_direction * -1), y + 1) == nullptr)
+    else if (grid.GetElement(x + (x_direction * -1), y) == nullptr)
     {
-        grid.SetElement(x + (x_direction * -1), y + 1, this);
-        grid.SetElement(x, y, nullptr);
-    }
-    else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
-    {
-        grid.SetElement(x + x_direction, y + 1, this);
-        grid.SetElement(x, y, nullptr);
+
+        if (grid.GetElement(x + (x_direction * -1), y + 1) == nullptr)
+        {
+            grid.SetElement(x + (x_direction * -1), y + 1, this);
+            grid.SetElement(x, y, nullptr);
+        }
     }
 
-    /*
-     else if (velocity_y > 0)
-     {
-         if (grid.GetElement(x + x_direction, y) == nullptr)
-         {
-             grid.SetElement(x + x_direction, y, this);
-             grid.SetElement(x, y, nullptr);
-             velocity_y -= friction;
-         }
-         else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
-         {
-             grid.SetElement(x + x_direction, y + 1, this);
-             grid.SetElement(x, y, nullptr);
-             velocity_y -= friction;
-         }
-     }*/
+    else if (grid.GetElement(x + x_direction, y) == nullptr)
+    {
+        if (grid.GetElement(x + x_direction, y + 1) == nullptr)
+        {
+            grid.SetElement(x + x_direction, y + 1, this);
+            grid.SetElement(x, y, nullptr);
+        }
+    }
+
+    else if (velocity_y > 0)
+    {
+        if (grid.GetElement(x + x_direction, y) == nullptr)
+        {
+            grid.SetElement(x + x_direction, y, this);
+            grid.SetElement(x, y, nullptr);
+            velocity_y -= friction;
+        }
+        else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
+        {
+            grid.SetElement(x + x_direction, y + 1, this);
+            grid.SetElement(x, y, nullptr);
+            velocity_y -= friction;
+        }
+    }
 
     else
     {

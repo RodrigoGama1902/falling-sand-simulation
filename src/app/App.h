@@ -16,6 +16,9 @@ public:
     inline uint32_t Width() const { return mScreen.Width(); }
     inline uint32_t Height() const { return mScreen.Height(); }
 
+    void togglePointerSkipping(bool toggle);
+    bool GetPointerSkipping() const { return isPointerSkipping; };
+
     int screenMag;
 
 private:
@@ -23,6 +26,7 @@ private:
     SDL_Window *mnoptrWindow;
 
     bool debug;
+    bool isPointerSkipping;
 };
 
 #endif

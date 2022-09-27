@@ -44,6 +44,11 @@ bool App::Init(bool debug)
     return mnoptrWindow != nullptr;
 }
 
+void App::togglePointerSkipping(bool toggle)
+{
+    isPointerSkipping = toggle;
+}
+
 void App::Run()
 {
     if (!mnoptrWindow)
@@ -73,7 +78,7 @@ void App::Run()
     uint32_t lastTick = SDL_GetTicks();
     uint32_t currentTick = lastTick;
 
-    uint32_t dt = 10;
+    uint32_t dt = debug ? 50 : 10;
     uint32_t accumulator = 0;
 
     SDL_Event sdlEvent;
@@ -104,10 +109,17 @@ void App::Run()
             switch (sdlEvent.type)
             {
 
+            case SDL_KEYDOWN:
+                if (debug)
+                {
+                    togglePointerSkipping(true);
+                    break;
+                }
+
             case SDL_KEYUP:
                 if (debug)
                 {
-                    accumulator += 10;
+                    togglePointerSkipping(false);
                     break;
                 }
 
@@ -154,6 +166,11 @@ void App::Run()
 
         int xMouse, yMouse;
         SDL_GetMouseState(&xMouse, &yMouse);
+
+        if (GetPointerSkipping())
+        {
+            accumulator += 1;
+        }
 
         while (accumulator >= dt)
         {
