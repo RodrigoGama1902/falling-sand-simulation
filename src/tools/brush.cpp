@@ -7,6 +7,9 @@
 #include "grid.h"
 #include "sand.h"
 
+#include "Circle.h"
+#include "Screen.h"
+
 Brush::Brush(Grid *grid)
 {
     mElement = nullptr;
@@ -29,6 +32,13 @@ void Brush::Draw(uint32_t x, uint32_t y)
 
     last_x_pos = x;
     last_y_pos = y;
+}
+
+void Brush::DrawCursor(Screen &screen, uint32_t x, uint32_t y)
+{
+    Circle circle(Vec2D(x, y), brush_size);
+    Color whiteColor = Color::White();
+    screen.Draw(circle, whiteColor);
 }
 
 void Brush::ToggleDraw(bool toggle)

@@ -91,7 +91,7 @@ void Water::Update(Grid &grid, int x, int y)
             grid.SetElement(x + x_direction, y, this);
             grid.SetElement(x, y, nullptr);
 
-            // x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction, comment this line to make water flow in one direction until it hits an obstacle
+            x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction, comment this line to make water flow in one direction until it hits an obstacle
         }
 
         else if (grid.GetElement(x + x_direction * -1, y) == nullptr)

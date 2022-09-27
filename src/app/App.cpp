@@ -42,7 +42,7 @@ void App::Run()
         Water *water_element = new Water();
         Wall *wall_element = new Wall();
 
-        Grid grid(mScreen, sand_element, 50); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
+        Grid grid(mScreen, sand_element, 20); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
         // Grid grid(mScreen);
 
         Brush brush(&grid);
@@ -77,6 +77,17 @@ void App::Run()
                 switch (sdlEvent.type)
                 {
 
+                case SDL_MOUSEWHEEL:
+                    if (sdlEvent.wheel.y > 0)
+                    {
+                        brush.SetBrushSize(brush.GetBrushSize() + 1);
+                    }
+                    else if (sdlEvent.wheel.y < 0)
+                    {
+                        brush.SetBrushSize(brush.GetBrushSize() - 1);
+                    }
+                    break;
+
                 case SDL_MOUSEBUTTONUP:
                     brush.ToggleDraw(false);
                     break;
@@ -107,6 +118,9 @@ void App::Run()
                 }
             }
 
+            int xMouse, yMouse;
+            SDL_GetMouseState(&xMouse, &yMouse);
+
             while (accumulator >= dt)
             {
                 // Update current scene by dt
@@ -116,14 +130,13 @@ void App::Run()
                 accumulator -= dt;
 
                 // Brush Draw
-                int xMouse, yMouse;
-                SDL_GetMouseState(&xMouse, &yMouse);
                 if (brush.is_drawing())
                     brush.Draw(xMouse / screenMag, yMouse / screenMag);
             }
 
             // Render
             grid.Draw();
+            brush.DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
             mScreen.SwapScreen();
         }
     }

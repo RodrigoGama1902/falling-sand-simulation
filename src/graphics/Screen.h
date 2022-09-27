@@ -8,6 +8,8 @@
 
 class Vec2D;
 class Line2D;
+class Circle;
+
 struct SDL_Window;
 struct SDL_Surface;
 
@@ -25,11 +27,15 @@ public:
     inline uint32_t Height() const { return mHeight; }
 
     // Draw methods
-
     void Draw(int x, int y, const Color &color);
     void Draw(const Vec2D &point, const Color &color);
-    void Draw(const Line2D &line, const Color &color);
+
+    // Element Draw
     void Draw(int x, int y, Element &elm);
+
+    // Shape Drawing
+    void Draw(const Line2D &line, const Color &color);
+    void Draw(const Circle &circle, const Color &color);
 
 private:
     Screen(const Screen &src);            // Disable copy constructor, that's why it's private

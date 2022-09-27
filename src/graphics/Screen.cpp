@@ -9,6 +9,9 @@
 #include "Color.h"
 #include <ctime>
 
+#include "Utils.h"
+#include "Circle.h"
+
 Screen::Screen() : mWidth(0), mHeight(0), moptrWindow(nullptr), mnoptrWindowSurface(nullptr)
 {
 }
@@ -167,6 +170,29 @@ void Screen::Draw(int x, int y, Element &elm)
     if (moptrWindow)
     {
         mBackBuffer.SetPixel(elm.elmColor, x, y);
+    }
+}
+
+void Screen::Draw(const Circle &circle, const Color &color)
+{
+
+    static unsigned int NUM_CIRCLE_SEGMENTS = 64;
+
+    float angle = TWO_PI / float(NUM_CIRCLE_SEGMENTS);
+
+    Vec2D p0 = Vec2D(circle.GetCenterPoint().GetX() + circle.GetRadius(), circle.GetCenterPoint().GetY());
+    Vec2D p1 = p0;
+
+    Line2D nextLineToDraw;
+
+    for (unsigned int i = 0; i < NUM_CIRCLE_SEGMENTS; i++)
+    {
+        p1.Rotate(angle, circle.GetCenterPoint());
+        nextLineToDraw.SetP0(p0);
+        nextLineToDraw.SetP1(p1);
+
+        Draw(nextLineToDraw, color);
+        p0 = p1;
     }
 }
 
