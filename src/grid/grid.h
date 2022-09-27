@@ -10,7 +10,8 @@ class Grid
 {
 public:
     Grid(Screen &mScreen);
-    Grid(Screen &mScreen, Element *elmFill, int fillPercent);
+    Grid(Screen &mScreen, bool debug);
+    Grid(Screen &mScreen, Element *elmFill, int fillPercent, bool debug = false);
 
     ~Grid();
 
@@ -19,6 +20,8 @@ public:
 
     void Update();
     void Draw();
+    void DrawNextData(); // debug
+
     void SwapGrids();
 
     Element *GetElement(uint32_t x, uint32_t y);
@@ -29,11 +32,19 @@ public:
     int GetWidth() { return mWidth; }
     int GetHeight() { return mHeight; }
 
+    uint32_t GetDebugCurrentX() { return debugCurrentX; };
+    uint32_t GetDebugCurrentY() { return debugCurrentY; };
+
 private:
     uint32_t mWidth;
     uint32_t mHeight;
 
     Screen *mScreen;
+
+    bool debug;
+
+    uint32_t debugCurrentX;
+    uint32_t debugCurrentY;
 
     std::vector<std::vector<Element *>> gridData;
     std::vector<std::vector<Element *>> gridDataNext;

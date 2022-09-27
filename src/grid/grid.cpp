@@ -9,11 +9,20 @@ Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Sand(), 0)
 {
 }
 
-Grid::Grid(Screen &mScreen, Element *elmFill, int fillPercent)
+Grid::Grid(Screen &srcScreen, bool debug) : Grid(srcScreen, new Sand(), 0)
+{
+    this->debug = debug;
+}
+
+Grid::Grid(Screen &mScreen, Element *elmFill, int fillPercent, bool debug)
 {
     mWidth = mScreen.Width();
     mHeight = mScreen.Height();
     this->mScreen = &mScreen;
+    this->debug = debug;
+
+    debugCurrentX = 0;
+    debugCurrentY = 0;
 
     gridData = std::vector<std::vector<Element *>>(mWidth, std::vector<Element *>(mHeight));
     gridDataNext = std::vector<std::vector<Element *>>(mWidth, std::vector<Element *>(mHeight));
@@ -35,18 +44,54 @@ Grid::~Grid()
 
 void Grid::Update()
 {
-    for (uint32_t y = 0; y < mHeight; y++)
+    if (debug)
     {
-        for (uint32_t x = 0; x < mWidth; x++)
+        while (gridData[debugCurrentX][debugCurrentY] == nullptr)
         {
-            if (gridData[x][y] != nullptr)
+            debugCurrentX++;
+
+            if (debugCurrentX >= mWidth)
             {
-                gridData[x][y]->Update(*this, x, y);
+                debugCurrentX = 0;
+                debugCurrentY++;
+                if (debugCurrentY >= mHeight)
+                {
+                    debugCurrentY = 0;
+                    SwapGrids();
+                    return;
+                }
+            }
+        }
+
+        gridData[debugCurrentX][debugCurrentY]->Update(*this, debugCurrentX, debugCurrentY);
+
+        debugCurrentX++;
+        if (debugCurrentX >= mWidth)
+        {
+            debugCurrentX = 0;
+            debugCurrentY++;
+            if (debugCurrentY >= mHeight)
+            {
+                debugCurrentY = 0;
             }
         }
     }
+    else
+    {
 
-    SwapGrids();
+        for (uint32_t y = 0; y < mHeight; y++)
+        {
+            for (uint32_t x = 0; x < mWidth; x++)
+            {
+                if (gridData[x][y] != nullptr)
+                {
+                    gridData[x][y]->Update(*this, x, y);
+                }
+            }
+        }
+
+        SwapGrids();
+    }
 }
 
 void Grid::Draw()
@@ -59,6 +104,20 @@ void Grid::Draw()
             if (gridData[x][y] != nullptr)
             {
                 mScreen->Draw(x, y, *gridData[x][y]);
+            }
+        }
+    }
+}
+
+void Grid::DrawNextData()
+{
+    for (uint32_t y = 0; y < mHeight; y++)
+    {
+        for (uint32_t x = 0; x < mWidth; x++)
+        {
+            if (gridDataNext[x][y] != nullptr)
+            {
+                mScreen->Draw(x, y, *gridDataNext[x][y]);
             }
         }
     }

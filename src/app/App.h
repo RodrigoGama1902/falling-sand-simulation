@@ -10,7 +10,7 @@ class App
 {
 public:
     static App &Singleton();
-    bool Init(uint32_t width, uint32_t height, uint32_t mag);
+    bool Init(bool debug);
     void Run();
 
     inline uint32_t Width() const { return mScreen.Width(); }
@@ -21,6 +21,8 @@ public:
 private:
     Screen mScreen;
     SDL_Window *mnoptrWindow;
+
+    bool debug;
 };
 
 #endif

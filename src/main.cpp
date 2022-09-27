@@ -1,12 +1,12 @@
 
 #include "app/App.h"
 
-const int SCREEN_WIDTH = 648 * 0.8;
-const int SCREEN_HEIGHT = 364 * 0.8;
+const bool DEBUG_MODE = true; // With debug mode, the frames will passing by pressing the keyboard up key
 
 int main(int argc, const char *argv[])
 {
-    if (App::Singleton().Init(SCREEN_WIDTH, SCREEN_HEIGHT, 2))
+
+    if (App::Singleton().Init(DEBUG_MODE))
     {
         App::Singleton().Run();
     }
