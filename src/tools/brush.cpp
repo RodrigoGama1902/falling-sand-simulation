@@ -168,7 +168,8 @@ void Brush::FillElement(const std::vector<Vec2D> &points)
 
                     for (int pixelX = nodeXVec[i]; pixelX < nodeXVec[i + 1]; pixelX++)
                     {
-                        mGrid->SetElement(pixelX, pixelY, mElement->clone());
+                        if (mGrid->GetElement(pixelX, pixelY) == nullptr)
+                            mGrid->SetElement(pixelX, pixelY, mElement->clone());
                     }
                 }
             }

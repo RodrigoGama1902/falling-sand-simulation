@@ -18,7 +18,7 @@ Water::Water() : Element()
 
 void Water::Update(Grid &grid, int x, int y)
 {
-
+    /*
     if (moving)
     {
         int rand_add_color = rand() % 2;
@@ -62,7 +62,7 @@ void Water::Update(Grid &grid, int x, int y)
             currentColorFadeFrequency--;
         }
     }
-
+    */
     moving = true;
 
     if (grid.GetElement(x, y + 1) == nullptr) // checking down
