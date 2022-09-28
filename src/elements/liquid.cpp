@@ -1,10 +1,10 @@
-#include "water.h"
+#include "liquid.h"
 #include "element.h"
 
 #include <iostream>
 #include <typeinfo>
 
-Water::Water() : Element()
+Liquid::Liquid() : Element()
 {
     elmColor = Color(0, 124, 200, 255);
     elmMinColor = Color(0, 78, 200, 255);
@@ -19,12 +19,11 @@ Water::Water() : Element()
     friction = 20;
 }
 
-Water::~Water()
+Liquid::~Liquid()
 {
-    std::cout << "Water destructor called" << std::endl;
 }
 
-void Water::Update(Grid &grid, int x, int y)
+void Liquid::Update(Grid &grid, int x, int y)
 {
 
     if (moving)

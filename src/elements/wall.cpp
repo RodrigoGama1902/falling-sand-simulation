@@ -13,7 +13,6 @@ Wall::Wall() : Element()
 
 Wall::~Wall()
 {
-    std::cout << "Wall destructor called" << std::endl;
 }
 
 void Wall::Update(Grid &grid, int x, int y)

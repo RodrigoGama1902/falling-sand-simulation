@@ -2,10 +2,10 @@
 #include <iostream>
 #include "Screen.h"
 #include "element.h"
-#include "sand.h"
+#include "solid.h"
 #include "wall.h"
 
-Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Sand(), 0)
+Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Solid(), 0)
 {
 }
 
@@ -39,13 +39,6 @@ Grid::~Grid()
         {
             if (gridData[x][y] != nullptr)
                 delete gridData[x][y];
-        }
-    }
-
-    for (uint32_t x = 0; x < mWidth; x++)
-    {
-        for (uint32_t y = 0; y < mHeight; y++)
-        {
             if (gridDataNext[x][y] != nullptr)
                 delete gridDataNext[x][y];
         }

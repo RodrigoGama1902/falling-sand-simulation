@@ -4,17 +4,17 @@
 #include "element.h"
 #include "grid.h"
 
-class Water : public Element
+class Liquid : public Element
 {
 public:
-    Water();
-    virtual ~Water();
+    Liquid();
+    virtual ~Liquid();
 
     virtual void Update(Grid &grid, int x, int y) override;
 
     virtual Element *clone() const
     {
-        return new Water(); // call the copy ctor.
+        return new Liquid(); // call the copy ctor.
     }
 
 private:

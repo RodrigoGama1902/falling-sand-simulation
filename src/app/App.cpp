@@ -4,8 +4,8 @@
 #include "Line2D.h"
 #include "grid.h"
 #include "brush.h"
-#include "sand.h"
-#include "water.h"
+#include "solid.h"
+#include "liquid.h"
 #include "wall.h"
 #include <iostream>
 #include <time.h>
@@ -71,8 +71,8 @@ void App::Run()
 
     // Init Elements
 
-    Sand *sand_element = new Sand();
-    Water *water_element = new Water();
+    Solid *sand_element = new Solid();
+    Liquid *water_element = new Liquid();
     Wall *wall_element = new Wall();
 
     // Grid grid(mScreen, sand_element, 20, debug = debug); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill

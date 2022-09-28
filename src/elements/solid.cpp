@@ -1,10 +1,10 @@
-#include "sand.h"
+#include "solid.h"
 #include "element.h"
 #include <iostream>
 #include <random>
 #include <time.h>
 
-Sand::Sand() : Element()
+Solid::Solid() : Element()
 {
     solid = true;
     int m = rand() % 100;
@@ -14,12 +14,11 @@ Sand::Sand() : Element()
     friction = 20;
 }
 
-Sand::~Sand()
+Solid::~Solid()
 {
-    std::cout << "Sand destructor called" << std::endl;
 }
 
-void Sand::Update(Grid &grid, int x, int y)
+void Solid::Update(Grid &grid, int x, int y)
 {
 
     if (grid.GetElement(x, y + 1) != nullptr && !grid.GetElement(x, y + 1)->solid)

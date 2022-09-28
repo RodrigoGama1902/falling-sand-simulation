@@ -4,23 +4,23 @@
 #include "element.h"
 #include "grid.h"
 
-class Sand : public Element
+class Solid : public Element
 {
 
 private:
-    virtual ~Sand();
+    virtual ~Solid();
 
     int velocity_y;
     int velocity_direction;
     int friction;
 
 public:
-    Sand();
+    Solid();
     virtual void Update(Grid &grid, int x, int y) override;
 
     virtual Element *clone() const
     {
-        return new Sand(); // call the copy ctor.
+        return new Solid(); // call the copy ctor.
     }
 };
 
