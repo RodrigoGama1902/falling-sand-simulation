@@ -135,17 +135,17 @@ void App::Run()
                     grid.Clear();
                 }
 
-                if (sdlEvent.key.keysym.sym == SDLK_LEFT && debug)
+                if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debug)
                 {
                     togglePointerSkipping(true);
                 }
                 break;
 
             case SDL_KEYUP:
-                if (sdlEvent.key.keysym.sym == SDLK_LEFT && debug)
+                if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debug)
                 {
                     togglePointerSkipping(false);
-                                }
+                }
                 break;
 
             case SDL_MOUSEWHEEL:
@@ -169,6 +169,20 @@ void App::Run()
 
             case SDL_MOUSEBUTTONDOWN:
                 brush.ToggleDraw(true);
+
+                // TODO set erase brush, and add default element to brush when starting
+
+                switch (sdlEvent.button.button)
+                {
+                case SDL_BUTTON_LEFT:
+                    break;
+                case SDL_BUTTON_RIGHT:
+                    break;
+                case SDL_BUTTON_MIDDLE:
+                    break;
+                default:
+                    break;
+                }
                 break;
 
             case SDL_QUIT:
@@ -190,23 +204,33 @@ void App::Run()
         while (accumulator >= dt)
         {
             // Update current scene by dt
-            grid.Update();
-            DisplayFPS(frameTime);
 
-            accumulator -= dt;
+            if (debug)
+            {
+                grid.DebugUpdate();
+            }
+            else
+            {
+                grid.Update();
+            }
+
+            DisplayFPS(frameTime);
 
             // Brush Draw
             if (brush.is_drawing())
                 brush.Draw(xMouse / screenMag, yMouse / screenMag);
+
+            accumulator -= dt;
         }
 
         // Render
+
         brush.DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
 
         if (debug)
         {
-            grid.DrawNextData();
-            mScreen.Draw(grid.GetDebugCurrentX(), grid.GetDebugCurrentY(), Color::Red());
+            grid.DrawNextData();                                                          // Draw the next data to the screen, since it is being every each cell
+            mScreen.Draw(grid.GetDebugCurrentX(), grid.GetDebugCurrentY(), Color::Red()); // Draw the current cell being updated
         }
         else
         {

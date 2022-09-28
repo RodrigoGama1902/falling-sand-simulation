@@ -42,30 +42,12 @@ Grid::~Grid()
     // delete[] gridData;
 }
 
-void Grid::Update()
+void Grid::DebugUpdate()
 {
-    if (debug)
+    while (gridData[debugCurrentX][debugCurrentY] == nullptr)
     {
-        while (gridData[debugCurrentX][debugCurrentY] == nullptr)
-        {
-            debugCurrentX++;
-
-            if (debugCurrentX >= mWidth)
-            {
-                debugCurrentX = 0;
-                debugCurrentY++;
-                if (debugCurrentY >= mHeight)
-                {
-                    debugCurrentY = 0;
-                    SwapGrids();
-                    return;
-                }
-            }
-        }
-
-        gridData[debugCurrentX][debugCurrentY]->Update(*this, debugCurrentX, debugCurrentY);
-
         debugCurrentX++;
+
         if (debugCurrentX >= mWidth)
         {
             debugCurrentX = 0;
@@ -73,25 +55,40 @@ void Grid::Update()
             if (debugCurrentY >= mHeight)
             {
                 debugCurrentY = 0;
+                SwapGrids();
+                return;
             }
         }
     }
-    else
+
+    gridData[debugCurrentX][debugCurrentY]->Update(*this, debugCurrentX, debugCurrentY);
+
+    debugCurrentX++;
+    if (debugCurrentX >= mWidth)
     {
-
-        for (uint32_t y = 0; y < mHeight; y++)
+        debugCurrentX = 0;
+        debugCurrentY++;
+        if (debugCurrentY >= mHeight)
         {
-            for (uint32_t x = 0; x < mWidth; x++)
+            debugCurrentY = 0;
+        }
+    }
+}
+
+void Grid::Update()
+{
+    for (uint32_t y = 0; y < mHeight; y++)
+    {
+        for (uint32_t x = 0; x < mWidth; x++)
+        {
+            if (gridData[x][y] != nullptr)
             {
-                if (gridData[x][y] != nullptr)
-                {
-                    gridData[x][y]->Update(*this, x, y);
-                }
+                gridData[x][y]->Update(*this, x, y);
             }
         }
-
-        SwapGrids();
     }
+
+    SwapGrids();
 }
 
 void Grid::Draw()
