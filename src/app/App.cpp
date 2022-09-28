@@ -17,9 +17,9 @@ const int DEBUG_SCREEN_HEIGHT = 364 * 0.1;
 const int DEBUG_SCREEN_MAG = 20;
 
 // PRODUCTION
-const int SCREEN_WIDTH = 648 * 0.8;
-const int SCREEN_HEIGHT = 364 * 0.8;
-const int SCREEN_MAG = 2;
+const int SCREEN_WIDTH = 648 * 0.7;
+const int SCREEN_HEIGHT = 364 * 0.7;
+const int SCREEN_MAG = 3;
 
 App &App::Singleton()
 {
@@ -241,8 +241,6 @@ void App::Run()
 
         // Render
 
-        brush.DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
-
         if (debug)
         {
             grid.DrawNextData();                                                          // Draw the next data to the screen, since it is being every each cell
@@ -252,6 +250,8 @@ void App::Run()
         {
             grid.Draw();
         }
+
+        brush.DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
 
         mScreen.SwapScreen();
     }
