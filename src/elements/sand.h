@@ -8,6 +8,8 @@ class Sand : public Element
 {
 
 private:
+    virtual ~Sand();
+
     int velocity_y;
     int velocity_direction;
     int friction;

@@ -14,6 +14,11 @@ Sand::Sand() : Element()
     friction = 20;
 }
 
+Sand::~Sand()
+{
+    std::cout << "Sand destructor called" << std::endl;
+}
+
 void Sand::Update(Grid &grid, int x, int y)
 {
 

@@ -8,6 +8,8 @@ class Water : public Element
 {
 public:
     Water();
+    virtual ~Water();
+
     virtual void Update(Grid &grid, int x, int y) override;
 
     virtual Element *clone() const

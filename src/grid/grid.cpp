@@ -33,7 +33,23 @@ Grid::Grid(Screen &mScreen, Element *elmFill, int fillPercent)
 
 Grid::~Grid()
 {
-    // delete[] gridData;
+    for (uint32_t x = 0; x < mWidth; x++)
+    {
+        for (uint32_t y = 0; y < mHeight; y++)
+        {
+            if (gridData[x][y] != nullptr)
+                delete gridData[x][y];
+        }
+    }
+
+    for (uint32_t x = 0; x < mWidth; x++)
+    {
+        for (uint32_t y = 0; y < mHeight; y++)
+        {
+            if (gridDataNext[x][y] != nullptr)
+                delete gridDataNext[x][y];
+        }
+    }
 }
 
 void Grid::DebugUpdate(bool fullSkip)

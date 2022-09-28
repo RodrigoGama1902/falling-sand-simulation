@@ -8,6 +8,8 @@ class Wall : public Element
 {
 public:
     Wall();
+    virtual ~Wall();
+
     virtual void Update(Grid &grid, int x, int y) override;
 
     virtual Element *clone() const

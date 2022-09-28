@@ -220,6 +220,9 @@ void App::Run()
         {
             // Update current scene by dt
 
+            if (brush.is_drawing())
+                brush.Draw(xMouse / screenMag, yMouse / screenMag);
+
             if (debug)
             {
                 grid.DebugUpdate(GetPointerFullSkip());
@@ -230,11 +233,7 @@ void App::Run()
                 grid.Update();
             }
 
-            DisplayFPS(frameTime);
-
-            // Brush Draw
-            if (brush.is_drawing())
-                brush.Draw(xMouse / screenMag, yMouse / screenMag);
+            // DisplayFPS(frameTime);
 
             accumulator -= dt;
         }

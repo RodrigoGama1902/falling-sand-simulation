@@ -19,6 +19,11 @@ Water::Water() : Element()
     friction = 20;
 }
 
+Water::~Water()
+{
+    std::cout << "Water destructor called" << std::endl;
+}
+
 void Water::Update(Grid &grid, int x, int y)
 {
 
