@@ -9,17 +9,11 @@ Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Sand(), 0)
 {
 }
 
-Grid::Grid(Screen &srcScreen, bool debug) : Grid(srcScreen, new Sand(), 0)
-{
-    this->debug = debug;
-}
-
-Grid::Grid(Screen &mScreen, Element *elmFill, int fillPercent, bool debug)
+Grid::Grid(Screen &mScreen, Element *elmFill, int fillPercent)
 {
     mWidth = mScreen.Width();
     mHeight = mScreen.Height();
     this->mScreen = &mScreen;
-    this->debug = debug;
 
     debugCurrentX = 0;
     debugCurrentY = 0;
@@ -42,8 +36,29 @@ Grid::~Grid()
     // delete[] gridData;
 }
 
-void Grid::DebugUpdate()
+void Grid::DebugUpdate(bool fullSkip)
 {
+    if (fullSkip)
+    {
+        while (debugCurrentY < mHeight)
+        {
+            while (debugCurrentX < mWidth)
+            {
+                if (gridData[debugCurrentX][debugCurrentY] != nullptr)
+                    gridData[debugCurrentX][debugCurrentY]->Update(*this, debugCurrentX, debugCurrentY);
+                debugCurrentX++;
+            }
+            debugCurrentX = 0;
+            debugCurrentY++;
+        }
+        SwapGrids();
+
+        debugCurrentX = 0;
+        debugCurrentY = 0;
+
+        return;
+    }
+
     while (gridData[debugCurrentX][debugCurrentY] == nullptr)
     {
         debugCurrentX++;

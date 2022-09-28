@@ -49,6 +49,11 @@ void App::togglePointerSkipping(bool toggle)
     isPointerSkipping = toggle;
 }
 
+void App::togglePointerFullSkip(bool toggle)
+{
+    isPointerFullSkip = toggle;
+}
+
 void App::Run()
 {
     if (!mnoptrWindow)
@@ -71,9 +76,9 @@ void App::Run()
     Wall *wall_element = new Wall();
 
     // Grid grid(mScreen, sand_element, 20, debug = debug); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
-    Grid grid(mScreen, debug = debug);
+    Grid grid(mScreen);
 
-    Brush brush(&grid);
+    Brush brush(&grid, *sand_element);
 
     uint32_t lastTick = SDL_GetTicks();
     uint32_t currentTick = lastTick;
@@ -139,12 +144,21 @@ void App::Run()
                 {
                     togglePointerSkipping(true);
                 }
+
+                if (sdlEvent.key.keysym.sym == SDLK_DOWN && debug)
+                {
+                    togglePointerFullSkip(true);
+                }
                 break;
 
             case SDL_KEYUP:
                 if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debug)
                 {
                     togglePointerSkipping(false);
+                }
+                if (sdlEvent.key.keysym.sym == SDLK_DOWN && debug)
+                {
+                    togglePointerFullSkip(false);
                 }
                 break;
 
@@ -197,9 +211,10 @@ void App::Run()
         SDL_GetMouseState(&xMouse, &yMouse);
 
         if (GetPointerSkipping())
-        {
             accumulator += 1;
-        }
+
+        if (GetPointerFullSkip())
+            accumulator += 50;
 
         while (accumulator >= dt)
         {
@@ -207,7 +222,8 @@ void App::Run()
 
             if (debug)
             {
-                grid.DebugUpdate();
+                grid.DebugUpdate(GetPointerFullSkip());
+                togglePointerFullSkip(false);
             }
             else
             {

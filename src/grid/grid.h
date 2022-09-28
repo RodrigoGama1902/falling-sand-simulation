@@ -11,7 +11,7 @@ class Grid
 public:
     Grid(Screen &mScreen);
     Grid(Screen &mScreen, bool debug);
-    Grid(Screen &mScreen, Element *elmFill, int fillPercent, bool debug = false);
+    Grid(Screen &mScreen, Element *elmFill, int fillPercent);
 
     ~Grid();
 
@@ -19,7 +19,7 @@ public:
     void SwapElements(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
 
     void Update();
-    void DebugUpdate();
+    void DebugUpdate(bool fullSkip = false);
 
     void Draw();
     void DrawNextData(); // debug
@@ -42,8 +42,6 @@ private:
     uint32_t mHeight;
 
     Screen *mScreen;
-
-    bool debug;
 
     uint32_t debugCurrentX;
     uint32_t debugCurrentY;

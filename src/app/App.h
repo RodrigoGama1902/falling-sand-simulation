@@ -17,7 +17,10 @@ public:
     inline uint32_t Height() const { return mScreen.Height(); }
 
     void togglePointerSkipping(bool toggle);
+    void togglePointerFullSkip(bool toggle);
+
     bool GetPointerSkipping() const { return isPointerSkipping; };
+    bool GetPointerFullSkip() const { return isPointerFullSkip; };
 
     int screenMag;
 
@@ -27,6 +30,7 @@ private:
 
     bool debug;
     bool isPointerSkipping;
+    bool isPointerFullSkip;
 };
 
 #endif

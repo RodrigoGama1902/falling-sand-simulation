@@ -8,7 +8,7 @@
 class Brush
 {
 public:
-    Brush(Grid *grid);
+    Brush(Grid *grid, Element &defaultElement);
 
     void Draw(uint32_t x, uint32_t y);
     void FillElement(const std::vector<Vec2D> &points);

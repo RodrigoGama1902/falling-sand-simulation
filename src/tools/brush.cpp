@@ -12,9 +12,9 @@
 #include "Circle.h"
 #include "Screen.h"
 
-Brush::Brush(Grid *grid)
+Brush::Brush(Grid *grid, Element &defaultElement)
 {
-    mElement = nullptr;
+    mElement = &defaultElement;
     mGrid = grid;
     last_x_pos = -1;
     last_y_pos = -1;
