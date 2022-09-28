@@ -133,6 +133,19 @@ void Grid::SetElement(uint32_t x, uint32_t y, Element *elm)
     gridDataNext[x][y] = elm;
 }
 
+void Grid::Clear()
+{
+    for (uint32_t y = 0; y < mHeight; y++)
+    {
+        for (uint32_t x = 0; x < mWidth; x++)
+        {
+            gridDataNext[x][y] = nullptr;
+        }
+    }
+
+    SwapGrids();
+}
+
 Element *Grid::GetElement(uint32_t x, uint32_t y)
 {
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)

@@ -110,28 +110,57 @@ void App::Run()
             {
 
             case SDL_KEYDOWN:
-                if (debug)
+
+                if (sdlEvent.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    running = false;
+                }
+                if (sdlEvent.key.keysym.sym == SDLK_1)
+                {
+                    brush.SetElement(*sand_element);
+                }
+
+                if (sdlEvent.key.keysym.sym == SDLK_2)
+                {
+                    brush.SetElement(*water_element);
+                }
+
+                if (sdlEvent.key.keysym.sym == SDLK_3)
+                {
+                    brush.SetElement(*wall_element);
+                }
+
+                if (sdlEvent.key.keysym.sym == SDLK_BACKSPACE)
+                {
+                    grid.Clear();
+                }
+
+                if (sdlEvent.key.keysym.sym == SDLK_LEFT && debug)
                 {
                     togglePointerSkipping(true);
-                    break;
                 }
+                break;
 
             case SDL_KEYUP:
-                if (debug)
+                if (sdlEvent.key.keysym.sym == SDLK_LEFT && debug)
                 {
                     togglePointerSkipping(false);
-                    break;
-                }
+                                }
+                break;
 
             case SDL_MOUSEWHEEL:
+
                 if (sdlEvent.wheel.y > 0)
                 {
                     brush.SetBrushSize(brush.GetBrushSize() + 1);
+                    break;
                 }
                 else if (sdlEvent.wheel.y < 0)
                 {
                     brush.SetBrushSize(brush.GetBrushSize() - 1);
+                    break;
                 }
+
                 break;
 
             case SDL_MOUSEBUTTONUP:
@@ -140,26 +169,12 @@ void App::Run()
 
             case SDL_MOUSEBUTTONDOWN:
                 brush.ToggleDraw(true);
-
-                switch (sdlEvent.button.button)
-                {
-                case SDL_BUTTON_LEFT:
-                    brush.SetElement(*sand_element);
-                    break;
-                case SDL_BUTTON_RIGHT:
-                    brush.SetElement(*water_element);
-                    break;
-                case SDL_BUTTON_MIDDLE:
-                    brush.SetElement(*wall_element);
-                    break;
-                default:
-                    brush.SetElement(*sand_element);
-                    break;
-                }
                 break;
 
             case SDL_QUIT:
                 running = false;
+                break;
+            default:
                 break;
             }
         }

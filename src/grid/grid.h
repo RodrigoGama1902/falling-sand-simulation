@@ -21,7 +21,7 @@ public:
     void Update();
     void Draw();
     void DrawNextData(); // debug
-
+    void Clear();
     void SwapGrids();
 
     Element *GetElement(uint32_t x, uint32_t y);
