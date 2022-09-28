@@ -8,7 +8,6 @@ Wall::Wall() : Element()
 
     int m = rand() % 100;
     elmColor = Color(255 * m, 255 * m, 255 * m, 255);
-    density = 100;
 }
 
 Wall::~Wall()

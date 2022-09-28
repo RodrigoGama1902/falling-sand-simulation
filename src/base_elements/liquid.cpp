@@ -6,17 +6,6 @@
 
 Liquid::Liquid() : Element()
 {
-    elmColor = Color(0, 124, 200, 255);
-    elmMinColor = Color(0, 78, 200, 255);
-    elmMaxColor = Color(0, 140, 200, 255);
-    density = 0;
-    elmColorFadeFrequency = 5;
-    currentColorFadeFrequency = 0;
-    solid = false;
-
-    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
-    velocity_y = 0;
-    friction = 20;
 }
 
 Liquid::~Liquid()
@@ -25,7 +14,6 @@ Liquid::~Liquid()
 
 void Liquid::Update(Grid &grid, int x, int y)
 {
-
     if (moving)
     {
         int rand_add_color = rand() % 2;
@@ -131,6 +119,7 @@ void Liquid::Update(Grid &grid, int x, int y)
 
     else
     {
+        moving = false;
         velocity_y = 0;
     }
 }

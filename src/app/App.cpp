@@ -5,11 +5,13 @@
 #include "grid.h"
 #include "brush.h"
 #include "solid.h"
-#include "liquid.h"
 #include "wall.h"
 #include <iostream>
 #include <time.h>
 #include "AppUtils.h"
+
+#include "Water.h"
+#include "Honey.h"
 
 // DEBUG
 const int DEBUG_SCREEN_WIDTH = 648 * 0.1;
@@ -72,8 +74,9 @@ void App::Run()
     // Init Elements
 
     Solid *sand_element = new Solid();
-    Liquid *water_element = new Liquid();
+    Water *water_element = new Water();
     Wall *wall_element = new Wall();
+    Honey *honey_element = new Honey();
 
     // Grid grid(mScreen, sand_element, 20, debug = debug); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
     Grid grid(mScreen);
@@ -133,6 +136,11 @@ void App::Run()
                 if (sdlEvent.key.keysym.sym == SDLK_3)
                 {
                     brush.SetElement(*wall_element);
+                }
+
+                if (sdlEvent.key.keysym.sym == SDLK_4)
+                {
+                    brush.SetElement(*honey_element);
                 }
 
                 if (sdlEvent.key.keysym.sym == SDLK_BACKSPACE)

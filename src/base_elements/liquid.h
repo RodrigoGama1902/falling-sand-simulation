@@ -1,8 +1,10 @@
-#ifndef _WATER_H_
-#define _WATER_H_
+#ifndef _LIQUID_H_
+#define _LIQUID_H_
 
 #include "element.h"
 #include "grid.h"
+
+#include <iostream>
 
 class Liquid : public Element
 {
@@ -14,13 +16,13 @@ public:
 
     virtual Element *clone() const
     {
+        std::cout << "Liquid::clone()" << std::endl;
         return new Liquid(); // call the copy ctor.
     }
 
-private:
-    int velocity_y;
-    int velocity_direction;
-    int friction;
+protected:
+    int density;
+    bool solid = false;
 };
 
 #endif

@@ -15,8 +15,10 @@ int main(int argc, const char *argv[])
 
 // TODO
 
-// Add element destructors
 // Better main app structure
+// Water density and viscosity
+// Water is noisy
+
 // Study remove the NextGrid Data
 // Better water sim (water is very slow to move)
 // Better classes structure

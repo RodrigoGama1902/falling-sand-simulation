@@ -1,5 +1,5 @@
-#ifndef _SAND_H_
-#define _SAND_H_
+#ifndef _SOLID_H_
+#define _SOLID_H_
 
 #include "element.h"
 #include "grid.h"

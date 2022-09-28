@@ -9,8 +9,8 @@ class Element
 {
 public:
     Element();
-
     virtual ~Element();
+
     virtual void Update(Grid &grid, int x, int y) = 0;
     virtual Element *clone() const = 0;
 
@@ -24,7 +24,9 @@ public:
     int x_direction;
 
     bool solid;
-    int density;
+    int velocity_y;
+    int friction;
+
     bool moving;
 };
 
