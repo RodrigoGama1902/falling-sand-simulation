@@ -1,7 +1,7 @@
 
 #include "app/App.h"
 
-const bool DEBUG_MODE = true;
+const bool DEBUG_MODE = false;
 
 int main(int argc, const char *argv[])
 {
@@ -15,11 +15,12 @@ int main(int argc, const char *argv[])
 
 // TODO
 
+// Add element destructors
+// Better main app structure
 // Study remove the NextGrid Data
-// Better classes structure
-// Add post processing methods
 // Better water sim (water is very slow to move)
-// Create clone points, when the space bar is pressed, a spawn of this element will be created
+// Better classes structure
+// Optimization
 
 // For the future
 
@@ -27,3 +28,5 @@ int main(int argc, const char *argv[])
 // Add a way to save and load grids
 // Add a way to create custom elements
 // mix different fluid elements, to get a new one with different color
+// Add post processing methods
+// Create clone points, when the space bar is pressed, a spawn of this element will be created

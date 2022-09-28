@@ -145,6 +145,17 @@ void Grid::SetElement(uint32_t x, uint32_t y, Element *elm)
     gridDataNext[x][y] = elm;
 }
 
+void Grid::RemoveElement(uint32_t x, uint32_t y)
+{
+    if (x >= mWidth || y >= mHeight)
+    {
+        return;
+    }
+
+    gridDataNext[x][y] = nullptr;
+    gridData[x][y] = nullptr;
+}
+
 void Grid::Clear()
 {
     for (uint32_t y = 0; y < mHeight; y++)

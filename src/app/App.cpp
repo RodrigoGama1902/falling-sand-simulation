@@ -184,13 +184,13 @@ void App::Run()
             case SDL_MOUSEBUTTONDOWN:
                 brush.ToggleDraw(true);
 
-                // TODO set erase brush, and add default element to brush when starting
-
                 switch (sdlEvent.button.button)
                 {
                 case SDL_BUTTON_LEFT:
+                    brush.SetErasing(false);
                     break;
                 case SDL_BUTTON_RIGHT:
+                    brush.SetErasing(true);
                     break;
                 case SDL_BUTTON_MIDDLE:
                     break;

@@ -17,6 +17,8 @@ public:
     void DrawCursor(Screen &screen, uint32_t x, uint32_t y);
 
     void ToggleDraw(bool toggle);
+    void SetErasing(bool set_bool) { erasing = set_bool; }
+
     void SetElement(Element &elm);
 
     bool is_drawing() { return drawing; };
@@ -26,6 +28,8 @@ public:
 
 private:
     bool drawing = false;
+    bool erasing = false;
+
     int brush_size = 5;
 
     int last_x_pos;
