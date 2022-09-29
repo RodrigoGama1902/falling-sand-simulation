@@ -87,8 +87,11 @@ void Grid::DebugUpdate(bool fullSkip)
         }
     }
 
-    gridData[debugCurrentX][debugCurrentY]->odd_even_check = odd_even_check;
-    gridData[debugCurrentX][debugCurrentY]->Update(*this, debugCurrentX, debugCurrentY);
+    if (gridData[debugCurrentX][debugCurrentY]->odd_even_check != odd_even_check)
+    {
+        gridData[debugCurrentX][debugCurrentY]->odd_even_check = odd_even_check;
+        gridData[debugCurrentX][debugCurrentY]->Update(*this, debugCurrentX, debugCurrentY);
+    }
 
     debugCurrentX++;
     if (debugCurrentX >= mWidth)
@@ -106,14 +109,31 @@ void Grid::DebugUpdate(bool fullSkip)
 
 void Grid::Update()
 {
-    for (uint32_t y = 0; y < mHeight; y++)
+    if (odd_even_check)
     {
-        for (uint32_t x = 0; x < mWidth; x++)
+        for (uint32_t y = 0; y < mHeight; y++)
         {
-            if (gridData[x][y] != nullptr && gridData[x][y]->odd_even_check != odd_even_check)
+            for (uint32_t x = 0; x < mWidth; x++)
             {
-                gridData[x][y]->odd_even_check = odd_even_check;
-                gridData[x][y]->Update(*this, x, y);
+                if (gridData[x][y] != nullptr && gridData[x][y]->odd_even_check != odd_even_check)
+                {
+                    gridData[x][y]->odd_even_check = odd_even_check;
+                    gridData[x][y]->Update(*this, x, y);
+                }
+            }
+        }
+    }
+    else
+    {
+        for (uint32_t y = 0; y < mHeight; y++)
+        {
+            for (int32_t x = mWidth - 1; x >= 0; x--)
+            {
+                if (gridData[x][y] != nullptr && gridData[x][y]->odd_even_check != odd_even_check)
+                {
+                    gridData[x][y]->odd_even_check = odd_even_check;
+                    gridData[x][y]->Update(*this, x, y);
+                }
             }
         }
     }

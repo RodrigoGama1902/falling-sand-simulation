@@ -15,6 +15,7 @@ Liquid::~Liquid()
 
 void Liquid::Update(Grid &grid, int x, int y)
 {
+    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
 
     if (moving)
     {
@@ -88,13 +89,23 @@ void Liquid::Update(Grid &grid, int x, int y)
         grid.SetElement(new_x, y, this);
         grid.SetElement(x, y, nullptr);
     }
+    else if (grid.GetElement(x + (x_direction * -1), y + 1) == nullptr)
+    {
+        grid.SetElement(x + (x_direction * -1), y + 1, this);
+        grid.SetElement(x, y, nullptr);
+        velocity_y -= friction;
+    }
+    else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
+    {
+        grid.SetElement(x + x_direction, y + 1, this);
+        grid.SetElement(x, y, nullptr);
+        velocity_y -= friction;
+    }
     else
     {
         moving = false;
         velocity_y = 0;
     }
-
-    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
 
     /*
     else if (velocity_y > 0)
