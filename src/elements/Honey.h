@@ -17,8 +17,8 @@ public:
     }
 
     int density = 0;
-    int elmColorFadeFrequency = 5;
-    int currentColorFadeFrequency = 0;
+    int elmColorFadeFrequency = 200;
+    int currentColorFadeFrequency = 200;
 
 private:
     int velocity_y = 0;

@@ -19,12 +19,13 @@ public:
     }
 
     int density = 0;
-    int elmColorFadeFrequency = 5;
+    int elmColorFadeFrequency = 0;
     int currentColorFadeFrequency = 0;
 
 private:
     int velocity_y = 0;
     int friction = 20;
+    int fadeStep = 1;
 };
 
 #endif

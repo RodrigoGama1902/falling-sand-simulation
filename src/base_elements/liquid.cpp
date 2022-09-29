@@ -100,7 +100,7 @@ void Liquid::Update(Grid &grid, int x, int y)
             grid.SetElement(x, y, nullptr);
         }
     }
-
+    /*
     else if (velocity_y > 0)
     {
         if (grid.GetElement(x + x_direction, y) == nullptr)
@@ -115,7 +115,7 @@ void Liquid::Update(Grid &grid, int x, int y)
             grid.SetElement(x, y, nullptr);
             velocity_y -= friction;
         }
-    }
+    }*/
 
     else
     {

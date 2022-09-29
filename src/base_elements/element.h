@@ -18,9 +18,6 @@ public:
     Color elmMinColor;
     Color elmMaxColor;
 
-    int elmColorFadeFrequency;
-    int currentColorFadeFrequency;
-
     int x_direction;
 
     bool solid;
