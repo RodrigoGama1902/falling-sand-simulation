@@ -87,11 +87,8 @@ void Grid::DebugUpdate(bool fullSkip)
         }
     }
 
-    if (gridData[debugCurrentX][debugCurrentY]->odd_even_check != odd_even_check)
-    {
-        gridData[debugCurrentX][debugCurrentY]->odd_even_check = odd_even_check;
-        gridData[debugCurrentX][debugCurrentY]->Update(*this, debugCurrentX, debugCurrentY);
-    }
+    gridData[debugCurrentX][debugCurrentY]->odd_even_check = odd_even_check;
+    gridData[debugCurrentX][debugCurrentY]->Update(*this, debugCurrentX, debugCurrentY);
 
     debugCurrentX++;
     if (debugCurrentX >= mWidth)

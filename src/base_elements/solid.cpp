@@ -36,23 +36,16 @@ void Solid::Update(Grid &grid, int x, int y)
         velocity_y++;
     }
 
-    else if (grid.GetElement(x + (x_direction * -1), y) == nullptr)
+    else if (grid.GetElement(x + (x_direction * -1), y + 1) == nullptr)
     {
-
-        if (grid.GetElement(x + (x_direction * -1), y + 1) == nullptr)
-        {
-            grid.SetElement(x + (x_direction * -1), y + 1, this);
-            grid.SetElement(x, y, nullptr);
-        }
+        grid.SetElement(x + (x_direction * -1), y + 1, this);
+        grid.SetElement(x, y, nullptr);
     }
 
-    else if (grid.GetElement(x + x_direction, y) == nullptr)
+    else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
     {
-        if (grid.GetElement(x + x_direction, y + 1) == nullptr)
-        {
-            grid.SetElement(x + x_direction, y + 1, this);
-            grid.SetElement(x, y, nullptr);
-        }
+        grid.SetElement(x + x_direction, y + 1, this);
+        grid.SetElement(x, y, nullptr);
     }
 
     else if (velocity_y > 0)
