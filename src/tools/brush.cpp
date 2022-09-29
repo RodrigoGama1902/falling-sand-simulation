@@ -175,7 +175,14 @@ void Brush::FillElement(const std::vector<Vec2D> &points)
                         else
                         {
                             if (mGrid->GetElement(pixelX, pixelY) == nullptr)
-                                mGrid->SetElement(pixelX, pixelY, mElement->clone());
+                            {
+                                // spawn probability
+                                if (rand() % 100 < mElement->spawn_probability)
+                                {
+                                    mGrid->SetElement(pixelX, pixelY, mElement->clone());
+                                }
+                            }
+                            // mGrid->SetElement(pixelX, pixelY, mElement);
                         }
                     }
                 }

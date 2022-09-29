@@ -26,6 +26,8 @@ public:
 
     bool moving;
 
+    int spawn_probability;
+
     bool odd_even_check;
 };
 

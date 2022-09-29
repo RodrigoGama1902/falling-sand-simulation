@@ -12,6 +12,8 @@ Solid::Solid() : Element()
     x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
     velocity_y = 0;
     friction = 20;
+
+    spawn_probability = 10;
 }
 
 Solid::~Solid()

@@ -22,12 +22,12 @@ public:
 
 protected:
     int density;
-    int dispersion = 5;
     bool solid = false;
 
     int elmColorFadeFrequency;
     int fadeStep;
     int currentColorFadeFrequency;
+    int dispersion;
 };
 
 #endif

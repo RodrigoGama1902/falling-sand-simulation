@@ -6,6 +6,7 @@
 
 Liquid::Liquid() : Element()
 {
+    spawn_probability = 10;
 }
 
 Liquid::~Liquid()
@@ -14,6 +15,7 @@ Liquid::~Liquid()
 
 void Liquid::Update(Grid &grid, int x, int y)
 {
+
     if (moving)
     {
         int rand_add_color = rand() % 2;
@@ -67,39 +69,33 @@ void Liquid::Update(Grid &grid, int x, int y)
         velocity_y++;
     }
 
-    else if (grid.GetElement(x + (x_direction * -1), y) == nullptr)
-    {
-
-        x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
-
-        if (grid.GetElement(x + (x_direction * -1), y) == nullptr)
-        {
-            grid.SetElement(x + (x_direction * -1), y, this);
-            grid.SetElement(x, y, nullptr);
-        }
-        else if (grid.GetElement(x + (x_direction * -1), y + 1) == nullptr)
-        {
-            grid.SetElement(x + (x_direction * -1), y + 1, this);
-            grid.SetElement(x, y, nullptr);
-        }
-    }
-
     else if (grid.GetElement(x + x_direction, y) == nullptr)
     {
+        int new_x{x + x_direction};
 
-        x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
+        for (int i = 2; i < dispersion; i++)
+        {
+            if (grid.GetElement(x + (x_direction * i), y) == nullptr)
+            {
+                new_x = x + (x_direction * i);
+            }
+            else
+            {
+                break;
+            }
+        }
 
-        if (grid.GetElement(x + x_direction, y) == nullptr)
-        {
-            grid.SetElement(x + x_direction, y, this);
-            grid.SetElement(x, y, nullptr);
-        }
-        else if (grid.GetElement(x + x_direction, y + 1) == nullptr)
-        {
-            grid.SetElement(x + x_direction, y + 1, this);
-            grid.SetElement(x, y, nullptr);
-        }
+        grid.SetElement(new_x, y, this);
+        grid.SetElement(x, y, nullptr);
     }
+    else
+    {
+        moving = false;
+        velocity_y = 0;
+    }
+
+    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
+
     /*
     else if (velocity_y > 0)
     {
@@ -116,10 +112,4 @@ void Liquid::Update(Grid &grid, int x, int y)
             velocity_y -= friction;
         }
     }*/
-
-    else
-    {
-        moving = false;
-        velocity_y = 0;
-    }
 }

@@ -19,8 +19,8 @@ const int DEBUG_SCREEN_HEIGHT = 364 * 0.1;
 const int DEBUG_SCREEN_MAG = 20;
 
 // PRODUCTION
-const int SCREEN_WIDTH = 648 * 0.7;
-const int SCREEN_HEIGHT = 364 * 0.7;
+const int SCREEN_WIDTH = 648 * 0.8;
+const int SCREEN_HEIGHT = 364 * 0.8;
 const int SCREEN_MAG = 3;
 
 App &App::Singleton()

@@ -8,6 +8,8 @@ Wall::Wall() : Element()
 
     int m = rand() % 100;
     elmColor = Color(255 * m, 255 * m, 255 * m, 255);
+
+    spawn_probability = 100;
 }
 
 Wall::~Wall()
