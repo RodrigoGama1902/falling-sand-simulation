@@ -24,6 +24,7 @@ void Solid::Update(Grid &grid, int x, int y)
     if (grid.GetElement(x, y + 1) != nullptr && !grid.GetElement(x, y + 1)->solid)
     {
         grid.SwapElements(x, y, x, y + 1);
+        y += 1;
     }
 
     if (grid.GetElement(x, y + 1) == nullptr) // Check if is falling

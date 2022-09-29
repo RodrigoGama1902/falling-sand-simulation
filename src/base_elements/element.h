@@ -25,6 +25,8 @@ public:
     int friction;
 
     bool moving;
+
+    bool odd_even_check;
 };
 
 #endif

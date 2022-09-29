@@ -24,9 +24,7 @@ public:
     void DebugUpdate(bool fullSkip = false);
 
     void Draw();
-    void DrawNextData(); // debug
     void Clear();
-    void SwapGrids();
 
     Element *GetElement(uint32_t x, uint32_t y);
 
@@ -40,6 +38,8 @@ public:
     uint32_t GetDebugCurrentY() { return debugCurrentY; };
 
 private:
+    bool odd_even_check;
+
     uint32_t mWidth;
     uint32_t mHeight;
 
@@ -49,7 +49,6 @@ private:
     uint32_t debugCurrentY;
 
     std::vector<std::vector<Element *>> gridData;
-    std::vector<std::vector<Element *>> gridDataNext;
 };
 
 #endif

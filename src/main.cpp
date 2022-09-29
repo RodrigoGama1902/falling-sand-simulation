@@ -1,7 +1,7 @@
 
 #include "app/App.h"
 
-const bool DEBUG_MODE = true;
+const bool DEBUG_MODE = false;
 
 int main(int argc, const char *argv[])
 {

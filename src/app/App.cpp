@@ -248,15 +248,10 @@ void App::Run()
 
         // Render
 
-        if (debug)
-        {
-            grid.DrawNextData();                                                          // Draw the next data to the screen, since it is being every each cell
+        grid.Draw();
+
+        if (debug)                                                                        // Draw the next data to the screen, since it is being every each cell
             mScreen.Draw(grid.GetDebugCurrentX(), grid.GetDebugCurrentY(), Color::Red()); // Draw the current cell being updated
-        }
-        else
-        {
-            grid.Draw();
-        }
 
         brush.DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
 
