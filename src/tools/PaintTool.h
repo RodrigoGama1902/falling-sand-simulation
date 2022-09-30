@@ -19,10 +19,10 @@ public:
     PaintTool(Grid *grid, Element &defaultElement);
     virtual ~PaintTool();
 
-    virtual void Draw(uint32_t x, uint32_t y) = 0;
+    virtual void Draw(uint32_t x, uint32_t y, Element *elm) = 0;
     virtual void DrawCursor(Screen &screen, uint32_t x, uint32_t y) = 0;
 
-    void FillElement(const std::vector<Vec2D> &points);
+    void FillElement(const std::vector<Vec2D> &points, Element *elm);
 
     void SetElement(Element &elm);
     void ToggleDraw(bool toggle);

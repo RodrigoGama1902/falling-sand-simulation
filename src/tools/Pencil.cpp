@@ -8,9 +8,9 @@ Pencil::~Pencil()
 {
 }
 
-void Pencil::Draw(uint32_t x, uint32_t y)
+void Pencil::Draw(uint32_t x, uint32_t y, Element *elm)
 {
-    mGrid->SetElement(x, y, mElement->clone());
+    mGrid->SetElement(x, y, elm->clone());
 
     last_x_pos = x;
     last_y_pos = y;

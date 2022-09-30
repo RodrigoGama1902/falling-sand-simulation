@@ -45,7 +45,7 @@ void PaintTool::SetElement(Element &elm)
     mElement = &elm;
 }
 
-void PaintTool::FillElement(const std::vector<Vec2D> &points)
+void PaintTool::FillElement(const std::vector<Vec2D> &points, Element *elm)
 {
     if (points.size() > 0)
     {
@@ -130,9 +130,9 @@ void PaintTool::FillElement(const std::vector<Vec2D> &points)
                         {
                             if (mGrid->GetElement(pixelX, pixelY) == nullptr)
                             {
-                                if (rand() % 100 < mElement->spawn_probability)
+                                if (rand() % 100 < elm->spawn_probability)
                                 {
-                                    mGrid->SetElement(pixelX, pixelY, mElement->clone());
+                                    mGrid->SetElement(pixelX, pixelY, elm->clone());
                                 }
                             }
                         }

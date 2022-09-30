@@ -13,10 +13,10 @@ public:
     Brush(Grid *grid, Element &defaultElement);
     virtual ~Brush();
 
-    virtual void Draw(uint32_t x, uint32_t y) override;
+    virtual void Draw(uint32_t x, uint32_t y, Element *elm) override;
     virtual void DrawCursor(Screen &screen, uint32_t x, uint32_t y) override;
 
-    void DrawElementCircle(const Circle &circle);
+    void DrawElementCircle(const Circle &circle, Element *elm);
     void SetBrushSize(int size) { brush_size = size; };
     int GetBrushSize() { return brush_size; };
 

@@ -9,7 +9,7 @@ public:
     Pencil(Grid *grid, Element &defaultElement);
     virtual ~Pencil();
 
-    virtual void Draw(uint32_t x, uint32_t y) override;
+    virtual void Draw(uint32_t x, uint32_t y, Element *elm) override;
     virtual void DrawCursor(Screen &screen, uint32_t x, uint32_t y) override;
 };
 

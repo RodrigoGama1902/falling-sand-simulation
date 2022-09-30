@@ -133,24 +133,16 @@ void App::Run()
                     running = false;
                 }
                 if (sdlEvent.key.keysym.sym == SDLK_1)
-                {
-                    brush.SetElement(*sand_element);
-                }
+                    active_element = sand_element;
 
                 if (sdlEvent.key.keysym.sym == SDLK_2)
-                {
-                    brush.SetElement(*water_element);
-                }
+                    active_element = water_element;
 
                 if (sdlEvent.key.keysym.sym == SDLK_3)
-                {
-                    brush.SetElement(*wall_element);
-                }
+                    active_element = wall_element;
 
                 if (sdlEvent.key.keysym.sym == SDLK_4)
-                {
-                    brush.SetElement(*honey_element);
-                }
+                    active_element = honey_element;
 
                 if (sdlEvent.key.keysym.sym == SDLK_BACKSPACE)
                 {
@@ -196,6 +188,14 @@ void App::Run()
 
             case SDL_MOUSEBUTTONUP:
                 brush.ToggleDraw(false);
+
+                switch (sdlEvent.button.button)
+                {
+                case SDL_BUTTON_MIDDLE:
+                    toolHandler.SetTool(&brush);
+                    break;
+                }
+
                 break;
 
             case SDL_MOUSEBUTTONDOWN:
@@ -242,7 +242,7 @@ void App::Run()
             // Update current scene by dt
 
             if (brush.is_drawing())
-                toolHandler.GetTool()->Draw(xMouse / screenMag, yMouse / screenMag);
+                toolHandler.GetTool()->Draw(xMouse / screenMag, yMouse / screenMag, active_element);
 
             if (debug)
             {
