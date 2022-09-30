@@ -15,7 +15,6 @@
 
 PaintTool::PaintTool(Grid *grid, Element &defaultElement)
 {
-    mElement = &defaultElement;
     mGrid = grid;
     cursorColor = Color::White();
     last_x_pos = -1;
@@ -38,11 +37,6 @@ void PaintTool::ToggleDraw(bool toggle)
         last_y_pos = -1;
         drawing = false;
     }
-}
-
-void PaintTool::SetElement(Element &elm)
-{
-    mElement = &elm;
 }
 
 void PaintTool::FillElement(const std::vector<Vec2D> &points, Element *elm)

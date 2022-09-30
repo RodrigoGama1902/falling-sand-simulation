@@ -10,7 +10,10 @@ Pencil::~Pencil()
 
 void Pencil::Draw(uint32_t x, uint32_t y, Element *elm)
 {
-    mGrid->SetElement(x, y, elm->clone());
+    if (erasing)
+        mGrid->RemoveElement(x, y);
+    else
+        mGrid->SetElement(x, y, elm->clone());
 
     last_x_pos = x;
     last_y_pos = y;

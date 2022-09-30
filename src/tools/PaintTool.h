@@ -24,7 +24,6 @@ public:
 
     void FillElement(const std::vector<Vec2D> &points, Element *elm);
 
-    void SetElement(Element &elm);
     void ToggleDraw(bool toggle);
     void SetErasing(bool set_bool) { erasing = set_bool; }
 
@@ -38,8 +37,6 @@ protected:
     int last_y_pos;
 
     Color cursorColor;
-
-    Element *mElement;
     Grid *mGrid;
 };
 

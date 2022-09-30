@@ -24,11 +24,6 @@ Brush::~Brush()
 
 void Brush::Draw(uint32_t x, uint32_t y, Element *elm)
 {
-    if (!drawing)
-    {
-        return;
-    }
-
     Circle elmCircle = Circle(Vec2D(x, y), brush_size);
     DrawElementCircle(elmCircle, elm);
 

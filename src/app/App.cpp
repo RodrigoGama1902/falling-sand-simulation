@@ -187,7 +187,7 @@ void App::Run()
                 break;
 
             case SDL_MOUSEBUTTONUP:
-                brush.ToggleDraw(false);
+                toolHandler.GetTool()->ToggleDraw(false);
 
                 switch (sdlEvent.button.button)
                 {
@@ -199,21 +199,22 @@ void App::Run()
                 break;
 
             case SDL_MOUSEBUTTONDOWN:
-                brush.ToggleDraw(true);
 
                 switch (sdlEvent.button.button)
                 {
                 case SDL_BUTTON_LEFT:
                     toolHandler.SetTool(&brush);
-                    brush.SetErasing(false);
-
+                    toolHandler.GetTool()->ToggleDraw(true);
+                    toolHandler.GetTool()->SetErasing(false);
                     break;
                 case SDL_BUTTON_RIGHT:
-                    brush.SetErasing(true);
+                    toolHandler.GetTool()->ToggleDraw(true);
+                    toolHandler.GetTool()->SetErasing(true);
                     break;
                 case SDL_BUTTON_MIDDLE:
                     toolHandler.SetTool(&pencil);
-                    brush.SetErasing(false);
+                    toolHandler.GetTool()->ToggleDraw(true);
+                    toolHandler.GetTool()->SetErasing(false);
                     break;
                 default:
                     break;
@@ -241,7 +242,7 @@ void App::Run()
         {
             // Update current scene by dt
 
-            if (brush.is_drawing())
+            if (toolHandler.GetTool()->is_drawing())
                 toolHandler.GetTool()->Draw(xMouse / screenMag, yMouse / screenMag, active_element);
 
             if (debug)
