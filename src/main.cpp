@@ -13,7 +13,9 @@ int main(int argc, const char *argv[])
     return 0;
 }
 
+//------------------------------------------------
 // TODO
+//------------------------------------------------
 
 // GENERAL ---------------------------------------
 
@@ -24,13 +26,20 @@ int main(int argc, const char *argv[])
 // ELEMENTS STRUCTURE ----------------------------
 
 // Add move and render method that will be called from update method.
+// Add Gas Element
 
 // SIMULATION ------------------------------------
 
-// Add gravity
 // Liquid density (Less dense liquids should swap with more dense liquids)
+// Add gravity
+
+// RENDER ----------------------------------------
+
 // Liquid color fade in is changing green only, refactor to change all colors, and make it fade in with different speeds
-// Add Gas Element
+
+// BUGS ------------------------------------------
+
+// When drawing, if draw out of the app screen, it crashes for some reason
 
 // FOR THE FUTURE -------------------------------
 
