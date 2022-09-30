@@ -15,14 +15,24 @@ int main(int argc, const char *argv[])
 
 // TODO
 
-// Better main app structure
+// GENERAL ---------------------------------------
+
+// Better main app.cpp structure
+// Fix #include different name styles, organize and remove unused #includes
+// Optimization
+
+// ELEMENTS STRUCTURE ----------------------------
+
+// Add move and render method that will be called from update method.
+
+// SIMULATION ------------------------------------
+
 // Add gravity
 // Liquid density (Less dense liquids should swap with more dense liquids)
 // Liquid color fade in is changing green only, refactor to change all colors, and make it fade in with different speeds
 // Add Gas Element
-// Optimization
 
-// For the future
+// FOR THE FUTURE -------------------------------
 
 // Add HSV color changes
 // Add a way to save and load grids

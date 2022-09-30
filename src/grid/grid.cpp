@@ -169,7 +169,7 @@ void Grid::RemoveElement(uint32_t x, uint32_t y)
     {
         return;
     }
-
+    delete gridData[x][y];
     gridData[x][y] = nullptr;
 }
 
