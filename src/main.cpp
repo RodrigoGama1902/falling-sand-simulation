@@ -19,6 +19,7 @@ int main(int argc, const char *argv[])
 // Better main app structure
 // Liquid color fade in is changing green only, refactor to change all colors, and make it fade in with different speeds
 // Liquid density and viscosity
+// Add Gas Element
 // Optimization
 
 // For the future

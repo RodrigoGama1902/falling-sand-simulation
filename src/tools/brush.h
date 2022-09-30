@@ -5,38 +5,23 @@
 #include "grid.h"
 #include "Screen.h"
 
-class Brush
+#include "PaintTool.h"
+
+class Brush : public PaintTool
 {
 public:
     Brush(Grid *grid, Element &defaultElement);
+    virtual ~Brush();
 
-    void Draw(uint32_t x, uint32_t y);
-    void FillElement(const std::vector<Vec2D> &points);
+    virtual void Draw(uint32_t x, uint32_t y) override;
+    virtual void DrawCursor(Screen &screen, uint32_t x, uint32_t y) override;
+
     void DrawElementCircle(const Circle &circle);
-
-    void DrawCursor(Screen &screen, uint32_t x, uint32_t y);
-
-    void ToggleDraw(bool toggle);
-    void SetErasing(bool set_bool) { erasing = set_bool; }
-
-    void SetElement(Element &elm);
-
-    bool is_drawing() { return drawing; };
-
     void SetBrushSize(int size) { brush_size = size; };
     int GetBrushSize() { return brush_size; };
 
-private:
-    bool drawing = false;
-    bool erasing = false;
-
+protected:
     int brush_size = 5;
-
-    int last_x_pos;
-    int last_y_pos;
-
-    Element *mElement;
-    Grid *mGrid;
 };
 
 #endif
