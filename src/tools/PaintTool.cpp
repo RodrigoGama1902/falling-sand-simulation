@@ -17,6 +17,7 @@ PaintTool::PaintTool(Grid *grid, Element &defaultElement)
 {
     mElement = &defaultElement;
     mGrid = grid;
+    cursorColor = Color::White();
     last_x_pos = -1;
     last_y_pos = -1;
 }
@@ -129,13 +130,11 @@ void PaintTool::FillElement(const std::vector<Vec2D> &points)
                         {
                             if (mGrid->GetElement(pixelX, pixelY) == nullptr)
                             {
-                                // spawn probability
                                 if (rand() % 100 < mElement->spawn_probability)
                                 {
                                     mGrid->SetElement(pixelX, pixelY, mElement->clone());
                                 }
                             }
-                            // mGrid->SetElement(pixelX, pixelY, mElement);
                         }
                     }
                 }

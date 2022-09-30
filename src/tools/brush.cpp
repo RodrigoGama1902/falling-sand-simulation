@@ -32,9 +32,6 @@ void Brush::Draw(uint32_t x, uint32_t y)
     Circle elmCircle = Circle(Vec2D(x, y), brush_size);
     DrawElementCircle(elmCircle);
 
-    // mGrid->SetElement(x, y, *mElement); // this will not create a new instance of the element, but will instead just copy the pointer to the element,
-    //   optimized for performance, but colors cannot be instantiated.
-
     last_x_pos = x;
     last_y_pos = y;
 }
@@ -42,8 +39,7 @@ void Brush::Draw(uint32_t x, uint32_t y)
 void Brush::DrawCursor(Screen &screen, uint32_t x, uint32_t y)
 {
     Circle circle(Vec2D(x, y), brush_size);
-    Color whiteColor = Color::White();
-    screen.Draw(circle, whiteColor);
+    screen.Draw(circle, cursorColor);
 }
 
 void Brush::DrawElementCircle(const Circle &circle)

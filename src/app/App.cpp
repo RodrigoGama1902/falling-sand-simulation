@@ -3,12 +3,16 @@
 #include "SDL2/SDL.h"
 #include "Line2D.h"
 #include "grid.h"
-#include "brush.h"
 #include "solid.h"
 #include "wall.h"
+
 #include <iostream>
 #include <time.h>
 #include "AppUtils.h"
+
+#include "ToolHandler.h"
+#include "Pencil.h"
+#include "Brush.h"
 
 #include "Water.h"
 #include "Honey.h"
@@ -78,10 +82,15 @@ void App::Run()
     Wall *wall_element = new Wall();
     Honey *honey_element = new Honey();
 
+    Element *active_element = sand_element;
+
     // Grid grid(mScreen, sand_element, 20, debug = debug); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
     Grid grid(mScreen);
 
     Brush brush(&grid, *sand_element);
+    Pencil pencil(&grid, *sand_element);
+
+    ToolHandler toolHandler(brush);
 
     uint32_t lastTick = SDL_GetTicks();
     uint32_t currentTick = lastTick;
@@ -195,12 +204,16 @@ void App::Run()
                 switch (sdlEvent.button.button)
                 {
                 case SDL_BUTTON_LEFT:
+                    toolHandler.SetTool(&brush);
                     brush.SetErasing(false);
+
                     break;
                 case SDL_BUTTON_RIGHT:
                     brush.SetErasing(true);
                     break;
                 case SDL_BUTTON_MIDDLE:
+                    toolHandler.SetTool(&pencil);
+                    brush.SetErasing(false);
                     break;
                 default:
                     break;
@@ -229,7 +242,7 @@ void App::Run()
             // Update current scene by dt
 
             if (brush.is_drawing())
-                brush.Draw(xMouse / screenMag, yMouse / screenMag);
+                toolHandler.GetTool()->Draw(xMouse / screenMag, yMouse / screenMag);
 
             if (debug)
             {
@@ -253,7 +266,7 @@ void App::Run()
         if (debug)                                                                        // Draw the next data to the screen, since it is being every each cell
             mScreen.Draw(grid.GetDebugCurrentX(), grid.GetDebugCurrentY(), Color::Red()); // Draw the current cell being updated
 
-        brush.DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
+        toolHandler.GetTool()->DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
 
         mScreen.SwapScreen();
     }

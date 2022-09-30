@@ -5,6 +5,9 @@
 #include <vector>
 
 #include "Vec2D.h"
+#include "grid.h"
+#include "Screen.h"
+#include "element.h"
 
 class Element;
 class Screen;
@@ -33,6 +36,8 @@ protected:
 
     int last_x_pos;
     int last_y_pos;
+
+    Color cursorColor;
 
     Element *mElement;
     Grid *mGrid;
