@@ -1,7 +1,7 @@
 #ifndef _BRUSH_H_
 #define _BRUSH_H_
 
-#include "element.h"
+#include "Element.h"
 #include "grid.h"
 #include "Screen.h"
 

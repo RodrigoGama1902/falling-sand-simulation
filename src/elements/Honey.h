@@ -1,8 +1,8 @@
 #ifndef _HONEY_H_
 #define _HONEY_H_
 
-#include "element.h"
-#include "liquid.h"
+#include "Element.h"
+#include "Liquid.h"
 #include "Color.h"
 
 class Honey : public Liquid

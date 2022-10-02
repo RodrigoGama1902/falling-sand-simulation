@@ -2,7 +2,7 @@
 #define _GRID_H_
 
 #include <stdint.h>
-#include "element.h"
+#include "Element.h"
 #include "Screen.h"
 #include <vector>
 

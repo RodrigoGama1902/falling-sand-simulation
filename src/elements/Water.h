@@ -1,8 +1,8 @@
 #ifndef _WATER_H_
 #define _WATER_H_
 
-#include "element.h"
-#include "liquid.h"
+#include "Element.h"
+#include "Liquid.h"
 #include "Color.h"
 
 #include <iostream>

@@ -2,7 +2,7 @@
 #define _TOOL_HANDLER_H_
 
 #include "PaintTool.h"
-#include "element.h"
+#include "Element.h"
 
 class ToolHandler
 {

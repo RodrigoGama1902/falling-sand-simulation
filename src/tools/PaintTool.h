@@ -7,7 +7,7 @@
 #include "Vec2D.h"
 #include "grid.h"
 #include "Screen.h"
-#include "element.h"
+#include "Element.h"
 
 class Element;
 class Screen;

@@ -6,7 +6,7 @@
 
 #include "ScreenBuffer.h"
 #include "Color.h"
-#include "element.h"
+#include "Element.h"
 
 class Vec2D;
 class Line2D;

@@ -1,4 +1,4 @@
-#include "element.h"
+#include "Element.h"
 #include "grid.h"
 #include <iostream>
 

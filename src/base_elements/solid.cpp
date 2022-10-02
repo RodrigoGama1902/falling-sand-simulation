@@ -1,5 +1,5 @@
 #include "Solid.h"
-#include "element.h"
+#include "Element.h"
 #include <iostream>
 #include <random>
 #include <time.h>

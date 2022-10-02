@@ -1,7 +1,7 @@
 #ifndef _STATIC_SOLID_H_
 #define _STATIC_SOLID_H_
 
-#include "element.h"
+#include "Element.h"
 #include "grid.h"
 #include "Solid.h"
 
@@ -14,11 +14,6 @@ public:
     virtual void Render() override;
     virtual void Update(Grid &grid, int x, int y) override;
     virtual void Move(Grid &grid, int x, int y) override;
-
-    virtual Element *clone() const
-    {
-        return new StaticSolid(); // call the copy ctor.
-    }
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include "grid.h"
 #include <iostream>
 #include "Screen.h"
-#include "element.h"
+#include "Element.h"
 #include "Sand.h"
 #include "Wall.h"
 

@@ -1,7 +1,7 @@
 #ifndef _WALL_H_
 #define _WALL_H_
 
-#include "element.h"
+#include "Element.h"
 #include "StaticSolid.h"
 #include "Color.h"
 

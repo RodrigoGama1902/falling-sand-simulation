@@ -1,5 +1,5 @@
 #include "brush.h"
-#include "element.h"
+#include "Element.h"
 #include "SDL2/SDL.h"
 #include "Screen.h"
 #include "Color.h"

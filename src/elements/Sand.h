@@ -1,7 +1,7 @@
 #ifndef _SAND_H_
 #define _SAND_H_
 
-#include "element.h"
+#include "Element.h"
 #include "MovableSolid.h"
 #include "Color.h"
 

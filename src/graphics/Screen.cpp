@@ -88,95 +88,86 @@ void Screen::SwapScreen(bool update)
 void Screen::Draw(int x, int y, const Color &color)
 
 {
+    /*
     assert(moptrWindow);
     if (moptrWindow)
     {
-        mBackBuffer.SetPixel(color, x, y);
-    }
+
+    }*/
+
+    mBackBuffer.SetPixel(color, x, y);
 }
 
 void Screen::Draw(const Vec2D &point, const Color &color)
 {
-    assert(moptrWindow);
-    if (moptrWindow)
-    {
-        mBackBuffer.SetPixel(color, point.GetX(), point.GetY());
-    }
+    mBackBuffer.SetPixel(color, point.GetX(), point.GetY());
 }
 
 void Screen::Draw(const Line2D &line, const Color &color)
 {
-    assert(moptrWindow);
-    if (moptrWindow)
+    int dx, dy;
+
+    int x0 = roundf(line.GetP0().GetX());
+    int y0 = roundf(line.GetP0().GetY());
+    int x1 = roundf(line.GetP1().GetX());
+    int y1 = roundf(line.GetP1().GetY());
+
+    dx = x1 - x0;
+    dy = y1 - y0;
+
+    signed const char ix((dx > 0) - (dx < 0)); // evaluate to 1 or -1
+    signed const char iy((dy > 0) - (dy < 0));
+
+    dx = abs(dx) * 2;
+    dy = abs(dy) * 2;
+
+    Draw(x0, y0, color);
+
+    if (dx >= dy) // go along x
     {
-        int dx, dy;
+        int d = dy - dx / 2;
 
-        int x0 = roundf(line.GetP0().GetX());
-        int y0 = roundf(line.GetP0().GetY());
-        int x1 = roundf(line.GetP1().GetX());
-        int y1 = roundf(line.GetP1().GetY());
-
-        dx = x1 - x0;
-        dy = y1 - y0;
-
-        signed const char ix((dx > 0) - (dx < 0)); // evaluate to 1 or -1
-        signed const char iy((dy > 0) - (dy < 0));
-
-        dx = abs(dx) * 2;
-        dy = abs(dy) * 2;
-
-        Draw(x0, y0, color);
-
-        if (dx >= dy) // go along x
+        while (x0 != x1) // keep looping along x until x0 is equal to the x1 (the end point x)
         {
-            int d = dy - dx / 2;
-
-            while (x0 != x1) // keep looping along x until x0 is equal to the x1 (the end point x)
+            if (d >= 0) // if d is greater than 0, then we need to move along y (Get to the upper or lower pixel)
             {
-                if (d >= 0) // if d is greater than 0, then we need to move along y (Get to the upper or lower pixel)
-                {
-                    d -= dx;
-                    y0 += iy;
-                }
-
-                d += dy;
-                x0 += ix; // move along x
-
-                Draw(x0, y0, color);
-            }
-        }
-        else // go along y
-        {
-            int d = dx - dy / 2;
-
-            while (y0 != y1)
-            {
-                if (d >= 0)
-                {
-                    d -= dy;
-                    x0 += ix;
-                }
-                d += dx;
+                d -= dx;
                 y0 += iy;
-
-                Draw(x0, y0, color);
             }
+
+            d += dy;
+            x0 += ix; // move along x
+
+            Draw(x0, y0, color);
+        }
+    }
+    else // go along y
+    {
+        int d = dx - dy / 2;
+
+        while (y0 != y1)
+        {
+            if (d >= 0)
+            {
+                d -= dy;
+                x0 += ix;
+            }
+            d += dx;
+            y0 += iy;
+
+            Draw(x0, y0, color);
         }
     }
 }
 
 void Screen::Draw(int x, int y, Element &elm)
 {
-    assert(moptrWindow);
-    if (moptrWindow)
-    {
-        mBackBuffer.SetPixel(elm.elmColor, x, y);
-    }
+    elm.Render();
+    mBackBuffer.SetPixel(elm.elmColor, x, y);
 }
 
 void Screen::Draw(const Circle &circle, const Color &color)
 {
-
     static unsigned int NUM_CIRCLE_SEGMENTS = 64;
 
     float angle = TWO_PI / float(NUM_CIRCLE_SEGMENTS);
@@ -199,11 +190,7 @@ void Screen::Draw(const Circle &circle, const Color &color)
 
 void Screen::ClearScreen()
 {
-    assert(moptrWindow);
-    if (moptrWindow)
-    {
-        SDL_FillRect(mnoptrWindowSurface, nullptr, mClearColor.GetPixelColor()); // Fill the window surface with the clear color
-    }
+    SDL_FillRect(mnoptrWindowSurface, nullptr, mClearColor.GetPixelColor()); // Fill the window surface with the clear color
 }
 
 void Screen::FillPoly(const std::vector<Vec2D> &points, const Color &color)

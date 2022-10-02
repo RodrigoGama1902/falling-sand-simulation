@@ -1,5 +1,5 @@
-#include "liquid.h"
-#include "element.h"
+#include "Liquid.h"
+#include "Element.h"
 
 #include <iostream>
 #include <typeinfo>
@@ -120,6 +120,5 @@ void Liquid::Move(Grid &grid, int x, int y)
 
 void Liquid::Update(Grid &grid, int x, int y)
 {
-    Render();
     Move(grid, x, y);
 }
