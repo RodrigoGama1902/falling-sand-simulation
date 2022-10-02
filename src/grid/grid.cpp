@@ -2,10 +2,10 @@
 #include <iostream>
 #include "Screen.h"
 #include "element.h"
-#include "solid.h"
-#include "wall.h"
+#include "Sand.h"
+#include "Wall.h"
 
-Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Solid(), 0)
+Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Sand(), 0)
 {
 }
 

@@ -11,6 +11,8 @@ public:
     Element();
     virtual ~Element();
 
+    virtual void Render() = 0;
+    virtual void Move(Grid &grid, int x, int y) = 0;
     virtual void Update(Grid &grid, int x, int y) = 0;
     virtual Element *clone() const = 0;
 

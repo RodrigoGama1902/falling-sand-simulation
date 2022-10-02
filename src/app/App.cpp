@@ -3,8 +3,6 @@
 #include "SDL2/SDL.h"
 #include "Line2D.h"
 #include "grid.h"
-#include "solid.h"
-#include "wall.h"
 
 #include <iostream>
 #include <time.h>
@@ -14,8 +12,10 @@
 #include "Pencil.h"
 #include "Brush.h"
 
+#include "Sand.h"
 #include "Water.h"
 #include "Honey.h"
+#include "Wall.h"
 
 // DEBUG
 const int DEBUG_SCREEN_WIDTH = 648 * 0.1;
@@ -77,7 +77,7 @@ void App::Run()
 
     // Init Elements
 
-    Solid *sand_element = new Solid();
+    Sand *sand_element = new Sand();
     Water *water_element = new Water();
     Wall *wall_element = new Wall();
     Honey *honey_element = new Honey();

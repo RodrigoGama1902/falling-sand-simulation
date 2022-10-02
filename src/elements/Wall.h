@@ -2,19 +2,20 @@
 #define _WALL_H_
 
 #include "element.h"
-#include "grid.h"
+#include "StaticSolid.h"
+#include "Color.h"
 
-class Wall : public Element
+#include <iostream>
+
+class Wall : public StaticSolid
 {
 public:
     Wall();
     virtual ~Wall();
 
-    virtual void Update(Grid &grid, int x, int y) override;
-
     virtual Element *clone() const
     {
-        return new Wall(); // call the copy ctor.
+        return new Wall();
     }
 };
 

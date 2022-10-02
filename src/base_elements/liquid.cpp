@@ -13,10 +13,8 @@ Liquid::~Liquid()
 {
 }
 
-void Liquid::Update(Grid &grid, int x, int y)
+void Liquid::Render()
 {
-    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
-
     if (moving)
     {
         int rand_add_color = rand() % 2;
@@ -60,6 +58,12 @@ void Liquid::Update(Grid &grid, int x, int y)
             currentColorFadeFrequency--;
         }
     }
+}
+
+void Liquid::Move(Grid &grid, int x, int y)
+{
+
+    x_direction = rand() % 2 == 0 ? -1 : 1; // Randomize direction
 
     moving = true;
 
@@ -112,4 +116,10 @@ void Liquid::Update(Grid &grid, int x, int y)
             velocity_y -= friction;
         }
     }*/
+}
+
+void Liquid::Update(Grid &grid, int x, int y)
+{
+    Render();
+    Move(grid, x, y);
 }
