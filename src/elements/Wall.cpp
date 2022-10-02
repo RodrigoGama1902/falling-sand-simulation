@@ -5,7 +5,7 @@
 Wall::Wall() : StaticSolid()
 {
     int m = rand() % 100;
-    elmColor = Color(255 * m, 255 * m, 0 * m, 255);
+    elmColor = Color(255 * m, 255 * m, 255 * m, 255);
 
     velocity_y = 0;
     friction = 20;
