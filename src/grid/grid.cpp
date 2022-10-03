@@ -75,22 +75,41 @@ void Grid::DebugFullSkipUpdate()
 
 void Grid::DebugUpdateSkipNullElement()
 {
-    while (gridData[debugCurrentX][debugCurrentY] == nullptr)
+    if (odd_even_check)
     {
-        if (odd_even_check)
+        while (gridData[debugCurrentX][debugCurrentY] == nullptr)
+        {
             debugCurrentX++;
-        else
+
+            if (debugCurrentX >= mWidth)
+            {
+                debugCurrentX = 0;
+                debugCurrentY++;
+                if (debugCurrentY >= mHeight)
+                {
+                    debugCurrentY = 0;
+                    odd_even_check = !odd_even_check;
+                    return;
+                }
+            }
+        }
+    }
+    else
+    {
+        while (gridData[debugCurrentX][debugCurrentY] == nullptr)
+        {
             debugCurrentX--;
 
-        if (debugCurrentX >= mWidth)
-        {
-            debugCurrentX = odd_even_check ? 0 : mWidth - 1;
-            debugCurrentY++;
-            if (debugCurrentY >= mHeight)
+            if (debugCurrentX >= mWidth)
             {
-                debugCurrentY = 0;
-                odd_even_check = !odd_even_check;
-                return;
+                debugCurrentX = mWidth - 1;
+                debugCurrentY++;
+                if (debugCurrentY >= mHeight)
+                {
+                    debugCurrentY = 0;
+                    odd_even_check = !odd_even_check;
+                    return;
+                }
             }
         }
     }
