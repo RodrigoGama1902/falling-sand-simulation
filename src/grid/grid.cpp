@@ -73,11 +73,33 @@ void Grid::DebugFullSkipUpdate()
     }
 }
 
+void Grid::DebugUpdateSkipNullElement()
+{
+    while (gridData[debugCurrentX][debugCurrentY] == nullptr)
+    {
+        if (odd_even_check)
+            debugCurrentX++;
+        else
+            debugCurrentX--;
+
+        if (debugCurrentX >= mWidth)
+        {
+            debugCurrentX = odd_even_check ? 0 : mWidth - 1;
+            debugCurrentY++;
+            if (debugCurrentY >= mHeight)
+            {
+                debugCurrentY = 0;
+                odd_even_check = !odd_even_check;
+                return;
+            }
+        }
+    }
+}
+
 void Grid::DebugUpdate(bool skip_null)
 {
     if (skip_null)
-        while (gridData[debugCurrentX][debugCurrentY] == nullptr)
-            DebugUpdate(false);
+        DebugUpdateSkipNullElement();
 
     if (gridData[debugCurrentX][debugCurrentY] != nullptr && gridData[debugCurrentX][debugCurrentY]->odd_even_check != odd_even_check)
     {

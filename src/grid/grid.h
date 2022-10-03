@@ -44,6 +44,7 @@ public:
 
     void Update();
 
+    void DebugUpdateSkipNullElement();
     void DebugFullSkipUpdate();
     void DebugUpdate(bool skip_null = true);
 
