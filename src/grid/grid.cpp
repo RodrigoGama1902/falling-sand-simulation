@@ -15,6 +15,7 @@ Grid::Grid(Screen &mScreen, Element *elmFill, int fillPercent)
 
     mWidth = mScreen.Width();
     mHeight = mScreen.Height();
+
     this->mScreen = &mScreen;
 
     debugCurrentX = 0;
@@ -140,7 +141,6 @@ void Grid::Update()
 
 void Grid::Draw()
 {
-
     for (uint32_t y = 0; y < mHeight; y++)
     {
         for (uint32_t x = 0; x < mWidth; x++)
@@ -156,9 +156,7 @@ void Grid::Draw()
 void Grid::SetElement(uint32_t x, uint32_t y, Element *elm)
 {
     if (x >= mWidth || y >= mHeight)
-    {
         return;
-    }
 
     gridData[x][y] = elm;
 }
@@ -166,11 +164,13 @@ void Grid::SetElement(uint32_t x, uint32_t y, Element *elm)
 void Grid::RemoveElement(uint32_t x, uint32_t y)
 {
     if (x >= mWidth || y >= mHeight)
-    {
         return;
+
+    if (gridData[x][y] != nullptr)
+    {
+        delete gridData[x][y];
+        gridData[x][y] = nullptr;
     }
-    delete gridData[x][y];
-    gridData[x][y] = nullptr;
 }
 
 void Grid::Clear()
@@ -178,18 +178,14 @@ void Grid::Clear()
     for (uint32_t y = 0; y < mHeight; y++)
     {
         for (uint32_t x = 0; x < mWidth; x++)
-        {
-            gridData[x][y] = nullptr;
-        }
+            RemoveElement(x, y);
     }
 }
 
 Element *Grid::GetElement(uint32_t x, uint32_t y)
 {
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
-    {
         return new Wall();
-    }
 
     return gridData[x][y];
 }
