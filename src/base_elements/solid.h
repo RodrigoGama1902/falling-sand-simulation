@@ -2,7 +2,7 @@
 #define _SOLID_H_
 
 #include "Element.h"
-#include "grid.h"
+#include "Grid.h"
 
 class Solid : public Element
 {

@@ -2,7 +2,7 @@
 #define _STATIC_SOLID_H_
 
 #include "Element.h"
-#include "grid.h"
+#include "Grid.h"
 #include "Solid.h"
 
 class StaticSolid : public Solid

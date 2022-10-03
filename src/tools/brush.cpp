@@ -4,7 +4,7 @@
 #include "Screen.h"
 #include "Color.h"
 #include "Line2D.h"
-#include "grid.h"
+#include "Grid.h"
 #include "Solid.h"
 #include "Utils.h"
 #include <algorithm>

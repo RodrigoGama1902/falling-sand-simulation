@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "Vec2D.h"
-#include "grid.h"
+#include "Grid.h"
 #include "Screen.h"
 #include "Element.h"
 

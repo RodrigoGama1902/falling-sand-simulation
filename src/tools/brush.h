@@ -2,7 +2,7 @@
 #define _BRUSH_H_
 
 #include "Element.h"
-#include "grid.h"
+#include "Grid.h"
 #include "Screen.h"
 
 #include "PaintTool.h"

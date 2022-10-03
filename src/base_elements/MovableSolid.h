@@ -2,7 +2,7 @@
 #define _MOVABLE_SOLID_H
 
 #include "Element.h"
-#include "grid.h"
+#include "Grid.h"
 #include "Solid.h"
 
 class MovableSolid : public Solid

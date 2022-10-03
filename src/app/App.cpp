@@ -2,7 +2,7 @@
 #include "App.h"
 #include "SDL2/SDL.h"
 #include "Line2D.h"
-#include "grid.h"
+#include "Grid.h"
 
 #include <iostream>
 #include <time.h>
@@ -247,7 +247,11 @@ void App::Run()
 
             if (debug)
             {
-                grid.DebugUpdate(GetPointerFullSkip());
+                if (GetPointerFullSkip())
+                    grid.DebugFullSkipUpdate();
+                else
+                    grid.DebugUpdate();
+
                 togglePointerFullSkip(false);
             }
             else

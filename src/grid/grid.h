@@ -43,7 +43,8 @@ public:
     void SwapElements(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
 
     void Update();
-    void DebugUpdate(bool fullSkip = false);
+    void DebugFullSkipUpdate();
+    void DebugUpdate(bool skip_null = true);
 
     void Draw();
     void Clear();

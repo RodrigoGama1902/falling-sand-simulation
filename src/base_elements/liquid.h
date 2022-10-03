@@ -2,7 +2,7 @@
 #define _LIQUID_H_
 
 #include "Element.h"
-#include "grid.h"
+#include "Grid.h"
 
 #include <iostream>
 
