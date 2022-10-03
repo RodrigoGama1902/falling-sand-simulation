@@ -268,7 +268,7 @@ void App::Run()
 
         grid.Draw();
 
-        if (debug)                                                                        // Draw the next data to the screen, since it is being every each cell
+        if (debug)
             mScreen.Draw(grid.GetDebugCurrentX(), grid.GetDebugCurrentY(), Color::Red()); // Draw the current cell being updated
 
         toolHandler.GetTool()->DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
