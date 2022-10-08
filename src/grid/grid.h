@@ -44,9 +44,7 @@ public:
 
     void Update();
 
-    void DebugUpdateSkipNullElement();
-    void DebugFullSkipUpdate();
-    void DebugUpdate(bool skip_null = true);
+    void DebugUpdate(bool skip_update_null_elements = true, bool full_grid_update = false);
 
     void Draw();
     void Clear();

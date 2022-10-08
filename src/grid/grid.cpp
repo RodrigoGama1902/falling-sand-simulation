@@ -45,62 +45,38 @@ Grid::~Grid()
     }
 }
 
-void Grid::DebugFullSkipUpdate()
+void Grid::DebugUpdate(bool skip_update_null_elements, bool full_grid_update)
 {
-    while (true)
+    // full_grid_update is a recursion that will update all the rest of the grid positions that was not updated
+
+    if (full_grid_update)
     {
-        bool grid_updated = true;
+        bool current_odd_even_check = odd_even_check;
 
-        for (uint32_t x = 0; x < mWidth; x++)
+        while (current_odd_even_check == odd_even_check)
         {
-            for (uint32_t y = 0; y < mHeight; y++)
-            {
-                if (gridData[x][y] == nullptr)
-                    continue;
-
-                if (gridData[x][y]->odd_even_check != odd_even_check)
-                    grid_updated = false;
-            }
+            DebugUpdate(false, false);
         }
-
-        if (grid_updated)
-        {
-            odd_even_check = !odd_even_check;
-            break;
-        }
-
-        DebugUpdate(false);
+        return;
     }
-}
 
-void Grid::DebugUpdateSkipNullElement()
-{
-    while (gridData[debugCurrentX][debugCurrentY] == nullptr)
+    // skip_update_null_elements is a recursion that will keeping updating the current grid position
+    // until it finds a element that is not null, so these grid positions that have null elements will be updated
+    // but not shown on the debug screen
+
+    if (skip_update_null_elements)
     {
-        if (odd_even_check)
-            debugCurrentX++;
-        else
-            debugCurrentX--;
+        int max_iterations = mWidth * mHeight;
+        int current_iteration = 0;
 
-        if (debugCurrentX >= mWidth)
+        while (gridData[debugCurrentX][debugCurrentY] == nullptr && current_iteration < max_iterations)
         {
-            debugCurrentX = odd_even_check ? 0 : mWidth - 1;
-            debugCurrentY++;
-
-            if (debugCurrentY >= mHeight)
-            {
-                debugCurrentY = 0;
-                odd_even_check = !odd_even_check;
-                return;
-            }
+            DebugUpdate(false, false);
+            current_iteration++;
         }
     }
-}
 
-void Grid::DebugUpdate(bool skip_null)
-{
-    // if (skip_null)
-    //     DebugUpdateSkipNullElement();
+    // This is the core of the debug update, it will update the current grid position, and then move to the next one
 
     if (gridData[debugCurrentX][debugCurrentY] != nullptr && gridData[debugCurrentX][debugCurrentY]->odd_even_check != odd_even_check)
     {
