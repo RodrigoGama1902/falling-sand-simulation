@@ -11,7 +11,7 @@ StaticSolid::~StaticSolid()
 {
 }
 
-void StaticSolid::Render()
+void StaticSolid::UpdateColor()
 {
 }
 

@@ -13,3 +13,7 @@ Solid::Solid() : Element()
 Solid::~Solid()
 {
 }
+
+void Solid::UpdateColor()
+{
+}

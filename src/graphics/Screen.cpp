@@ -162,7 +162,6 @@ void Screen::Draw(const Line2D &line, const Color &color)
 
 void Screen::Draw(int x, int y, Element &elm)
 {
-    elm.Render();
     mBackBuffer.SetPixel(elm.elmColor, x, y);
 }
 

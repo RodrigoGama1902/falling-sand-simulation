@@ -11,7 +11,7 @@ MovableSolid::~MovableSolid()
 {
 }
 
-void MovableSolid::Render()
+void MovableSolid::UpdateColor()
 {
 }
 
@@ -67,5 +67,6 @@ void MovableSolid::Move(Grid &grid, int x, int y)
 
 void MovableSolid::Update(Grid &grid, int x, int y)
 {
+    UpdateColor();
     Move(grid, x, y);
 }

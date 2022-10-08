@@ -13,7 +13,7 @@ Liquid::~Liquid()
 {
 }
 
-void Liquid::Render()
+void Liquid::UpdateColor()
 {
     if (moving)
     {
@@ -120,5 +120,6 @@ void Liquid::Move(Grid &grid, int x, int y)
 
 void Liquid::Update(Grid &grid, int x, int y)
 {
+    UpdateColor();
     Move(grid, x, y);
 }

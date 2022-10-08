@@ -11,6 +11,8 @@ public:
     Solid();
     virtual ~Solid();
 
+    virtual void UpdateColor() override;
+
 protected:
     int velocity_y;
     int velocity_direction;

@@ -12,7 +12,7 @@ public:
     Liquid();
     virtual ~Liquid();
 
-    virtual void Render() override;
+    virtual void UpdateColor() override;
     virtual void Move(Grid &grid, int x, int y) override;
     virtual void Update(Grid &grid, int x, int y) override;
 
