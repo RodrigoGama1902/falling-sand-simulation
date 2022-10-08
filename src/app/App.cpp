@@ -18,8 +18,8 @@
 #include "Wall.h"
 
 // DEBUG
-const int DEBUG_SCREEN_WIDTH = 648 * 0.1;
-const int DEBUG_SCREEN_HEIGHT = 364 * 0.1;
+const int DEBUG_SCREEN_WIDTH = 648 * 0.05;
+const int DEBUG_SCREEN_HEIGHT = 364 * 0.05;
 const int DEBUG_SCREEN_MAG = 20;
 
 // PRODUCTION
@@ -95,7 +95,7 @@ void App::Run()
     uint32_t lastTick = SDL_GetTicks();
     uint32_t currentTick = lastTick;
 
-    uint32_t dt = debug ? 50 : 10;
+    uint32_t dt = debug ? 10 : 10;
     uint32_t accumulator = 0;
 
     SDL_Event sdlEvent;
