@@ -23,8 +23,6 @@ private:
     SDL_Window *mnoptrWindow;
 
     bool debug;
-    bool isPointerSkipping;
-    bool isPointerFullSkip;
 };
 
 #endif
