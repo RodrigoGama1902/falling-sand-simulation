@@ -50,16 +50,6 @@ bool App::Init(bool debug)
     return mnoptrWindow != nullptr;
 }
 
-void App::togglePointerSkipping(bool toggle)
-{
-    isPointerSkipping = toggle;
-}
-
-void App::togglePointerFullSkip(bool toggle)
-{
-    isPointerFullSkip = toggle;
-}
-
 void App::Run()
 {
     if (!mnoptrWindow)
@@ -104,7 +94,6 @@ void App::Run()
 
     while (running)
     {
-
         currentTick = SDL_GetTicks();
         uint32_t frameTime = currentTick - lastTick;
 
@@ -131,44 +120,66 @@ void App::Run()
                 if (sdlEvent.key.keysym.sym == SDLK_ESCAPE)
                 {
                     running = false;
+                    break;
                 }
+
                 if (sdlEvent.key.keysym.sym == SDLK_1)
+                {
                     active_element = sand_element;
+                    break;
+                }
 
                 if (sdlEvent.key.keysym.sym == SDLK_2)
+                {
                     active_element = water_element;
+                    break;
+                }
 
                 if (sdlEvent.key.keysym.sym == SDLK_3)
+                {
                     active_element = wall_element;
+                    break;
+                }
 
                 if (sdlEvent.key.keysym.sym == SDLK_4)
+                {
                     active_element = honey_element;
+                    break;
+                }
 
                 if (sdlEvent.key.keysym.sym == SDLK_BACKSPACE)
                 {
                     grid.Clear();
+                    break;
                 }
 
                 if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debug)
                 {
-                    togglePointerSkipping(true);
+                    grid.SetIsPointerSkipping(true);
+                    break;
                 }
 
                 if (sdlEvent.key.keysym.sym == SDLK_DOWN && debug)
                 {
-                    togglePointerFullSkip(true);
+                    grid.SetIsPointerFullSkip(true);
+                    break;
                 }
+
                 break;
 
             case SDL_KEYUP:
                 if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debug)
                 {
-                    togglePointerSkipping(false);
+                    grid.SetIsPointerSkipping(false);
+                    break;
                 }
+
                 if (sdlEvent.key.keysym.sym == SDLK_DOWN && debug)
                 {
-                    togglePointerFullSkip(false);
+                    grid.SetIsPointerFullSkip(false);
+                    break;
                 }
+
                 break;
 
             case SDL_MOUSEWHEEL:
@@ -232,35 +243,24 @@ void App::Run()
         int xMouse, yMouse;
         SDL_GetMouseState(&xMouse, &yMouse);
 
-        if (GetPointerSkipping())
+        if (grid.GetPointerSkipping())
             accumulator += 1;
 
-        if (GetPointerFullSkip())
+        if (grid.GetPointerFullSkip())
             accumulator += 50;
 
         while (accumulator >= dt)
         {
             // Update current scene by dt
-
             if (toolHandler.GetTool()->is_drawing())
                 toolHandler.GetTool()->Draw(xMouse / screenMag, yMouse / screenMag, active_element);
 
             if (debug)
-            {
-                if (GetPointerFullSkip())
-                    grid.DebugUpdate(true, true);
-                else
-                    grid.DebugUpdate(true, false);
-
-                togglePointerFullSkip(false);
-            }
+                grid.DebugUpdate(true, grid.GetPointerFullSkip());
             else
-            {
                 grid.Update();
-            }
 
             // DisplayFPS(frameTime);
-
             accumulator -= dt;
         }
 
@@ -269,7 +269,7 @@ void App::Run()
         grid.Draw();
 
         if (debug)
-            mScreen.Draw(grid.GetDebugCurrentX(), grid.GetDebugCurrentY(), Color::Red()); // Draw the current cell being updated
+            grid.DrawDebuggerPointer();
 
         toolHandler.GetTool()->DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
 

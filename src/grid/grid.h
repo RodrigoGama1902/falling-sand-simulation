@@ -47,6 +47,8 @@ public:
     void DebugUpdate(bool skip_update_null_elements = true, bool full_grid_update = false);
 
     void Draw();
+    void DrawDebuggerPointer(); // Draw the current cell being updated
+
     void Clear();
 
     Element *GetElement(uint32_t x, uint32_t y);
@@ -54,14 +56,34 @@ public:
     inline uint32_t Width() const { return mWidth; }
     inline uint32_t Height() const { return mHeight; }
 
+    void SetIsPointerSkipping(bool toggle)
+    {
+        isPointerSkipping = toggle;
+        show_debugger_pointer = true;
+    };
+    void SetIsPointerFullSkip(bool toggle)
+    {
+        isPointerFullSkip = toggle;
+        show_debugger_pointer = false;
+    };
+
+    bool GetPointerSkipping() const { return isPointerSkipping; };
+    bool GetPointerFullSkip() const { return isPointerFullSkip; };
+
     int GetWidth() { return mWidth; }
     int GetHeight() { return mHeight; }
 
     uint32_t GetDebugCurrentX() { return debugCurrentX; };
     uint32_t GetDebugCurrentY() { return debugCurrentY; };
 
+    void SetShowDebuggerPointer(bool show) { show_debugger_pointer = show; }
+
 private:
     bool odd_even_check;
+    bool show_debugger_pointer;
+
+    bool isPointerSkipping;
+    bool isPointerFullSkip;
 
     uint32_t mWidth;
     uint32_t mHeight;

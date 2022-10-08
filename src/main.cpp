@@ -19,7 +19,6 @@ int main(int argc, const char *argv[])
 
 // GENERAL ---------------------------------------
 
-// Fix issue with pointer skipping
 // Better main app.cpp structure
 // Fix #include different name styles, organize and remove unused #includes
 // Optimization

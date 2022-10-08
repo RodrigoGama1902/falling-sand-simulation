@@ -12,6 +12,7 @@ Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Sand(), 0)
 Grid::Grid(Screen &mScreen, Element *elmFill, int fillPercent)
 {
     odd_even_check = true;
+    show_debugger_pointer = false;
 
     mWidth = mScreen.Width();
     mHeight = mScreen.Height();
@@ -51,14 +52,19 @@ void Grid::DebugUpdate(bool skip_update_null_elements, bool full_grid_update)
 
     if (full_grid_update)
     {
+        show_debugger_pointer = false;
         bool current_odd_even_check = odd_even_check;
 
         while (current_odd_even_check == odd_even_check)
-        {
             DebugUpdate(false, false);
-        }
+
+        isPointerFullSkip = false;
         return;
     }
+    // else
+    //{
+    //     show_debugger_pointer = true;
+    // }
 
     // skip_update_null_elements is a recursion that will keeping updating the current grid position
     // until it finds a element that is not null, so these grid positions that have null elements will be updated
@@ -149,6 +155,12 @@ void Grid::Draw()
         }
     }
 }
+
+void Grid::DrawDebuggerPointer()
+{
+    if (show_debugger_pointer)
+        mScreen->Draw(GetDebugCurrentX(), GetDebugCurrentY(), Color::Red());
+};
 
 void Grid::SetElement(uint32_t x, uint32_t y, Element *elm)
 {
