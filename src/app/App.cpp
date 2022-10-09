@@ -82,12 +82,16 @@ void App::Run()
         uint32_t frameTime = currentTick - lastTick;
 
         if (frameTime > 300)
+        {
             frameTime = 300;
+        }
 
         lastTick = currentTick;
 
         if (!debug)
+        {
             accumulator += frameTime;
+        }
 
         while (SDL_PollEvent(&sdlEvent))
         {
