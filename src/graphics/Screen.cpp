@@ -41,6 +41,7 @@ SDL_Window *Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
 
     mWidth = w;
     mHeight = h;
+    mMag = mag;
 
     // Create a window
 

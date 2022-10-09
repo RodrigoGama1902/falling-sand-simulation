@@ -5,7 +5,7 @@
 #include "simulation/Grid.h"
 #include "graphics/Screen.h"
 
-#include "editor/tools/PaintTool.h"
+#include "PaintTool.h"
 
 class Brush : public PaintTool
 {

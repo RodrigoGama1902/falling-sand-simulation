@@ -28,6 +28,8 @@ public:
     inline uint32_t Width() const { return mWidth; }
     inline uint32_t Height() const { return mHeight; }
 
+    uint32_t GetScreenMag() const { return mMag; }
+
     // Draw methods
     void Draw(int x, int y, const Color &color);
     void Draw(const Vec2D &point, const Color &color);
@@ -48,6 +50,7 @@ private:
 
     uint32_t mWidth;
     uint32_t mHeight;
+    uint32_t mMag;
 
     Color mClearColor;
     ScreenBuffer mBackBuffer;

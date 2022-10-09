@@ -50,7 +50,7 @@ void App::Run()
     }
 
     Simulation simulation(mScreen, debugMode);
-    Editor editor(&simulation);
+    Editor editor(&simulation, &mScreen);
 
     uint32_t lastTick = SDL_GetTicks();
     uint32_t currentTick = lastTick;
@@ -205,9 +205,6 @@ void App::Run()
             }
         }
 
-        int xMouse, yMouse;
-        SDL_GetMouseState(&xMouse, &yMouse);
-
         if (simulation.GetGrid()->GetPointerSkipping())
             accumulator += 1;
 
@@ -217,7 +214,8 @@ void App::Run()
         while (accumulator >= dt) // Update Scene
         {
             simulation.Update();
-            editor.GetToolHandler()->GetTool()->Draw(xMouse / screenMag, yMouse / screenMag, editor.GetActiveElement());
+            editor.Update();
+
             DisplayFPS(frameTime);
 
             accumulator -= dt;
@@ -225,7 +223,7 @@ void App::Run()
 
         // Render Scene
         simulation.Render();
-        editor.GetToolHandler()->GetTool()->DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
+        editor.Render();
 
         mScreen.SwapScreen();
     }

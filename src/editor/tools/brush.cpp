@@ -9,7 +9,7 @@
 #include "utils/Utils.h"
 #include <algorithm>
 
-#include "editor/tools/PaintTool.h"
+#include "PaintTool.h"
 
 #include "shapes/Circle.h"
 #include "graphics/Screen.h"
