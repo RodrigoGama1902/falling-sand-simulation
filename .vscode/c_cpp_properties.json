@@ -12,7 +12,9 @@
                 "${workspaceFolder}/src/elements/",
                 "${workspaceFolder}/src/grid/",
                 "${workspaceFolder}/src/tools/",
-                "${workspaceFolder}/src/simulation/"
+                "${workspaceFolder}/src/simulation/",
+                "${workspaceFolder}/src/editor/"
+
             ],
             "defines": [
                 "_DEBUG",

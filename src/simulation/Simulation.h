@@ -4,6 +4,11 @@
 #include "Grid.h"
 #include "ToolHandler.h"
 
+#include "Sand.h"
+#include "Water.h"
+#include "Honey.h"
+#include "Wall.h"
+
 class Screen;
 
 class Simulation
@@ -15,8 +20,15 @@ public:
     void Render();
     void Update();
 
+    Grid *GetGrid() { return mGrid; }
+
+    Sand *sand_element;
+    Water *water_element;
+    Wall *wall_element;
+    Honey *honey_element;
+
 private:
-    Grid mGrid;
+    Grid *mGrid;
     bool debugMode;
 };
 
