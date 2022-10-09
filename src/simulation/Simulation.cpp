@@ -3,6 +3,11 @@
 
 #include "graphics/Screen.h"
 
+#include "simulation/elements/Sand.h"
+#include "simulation/elements/Water.h"
+#include "simulation/elements/Honey.h"
+#include "simulation/elements/Wall.h"
+
 #include <time.h>
 
 Simulation::Simulation(Screen &screen, bool debug_mode)

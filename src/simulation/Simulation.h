@@ -7,8 +7,6 @@
 #include "simulation/elements/Honey.h"
 #include "simulation/elements/Wall.h"
 
-class Screen;
-
 class Simulation
 {
 public:

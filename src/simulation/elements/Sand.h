@@ -3,7 +3,6 @@
 
 #include "simulation/elements/base/Element.h"
 #include "simulation/elements/base/MovableSolid.h"
-#include "graphics/Color.h"
 
 #include <iostream>
 

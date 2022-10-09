@@ -3,7 +3,6 @@
 
 #include "simulation/elements/base/Element.h"
 #include "simulation/elements/base/Liquid.h"
-#include "graphics/Color.h"
 
 class Honey : public Liquid
 {

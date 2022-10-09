@@ -1,9 +1,6 @@
 #ifndef _GRID_H_
 #define _GRID_H_
 
-#include "simulation/elements/base/Element.h"
-#include "graphics/Screen.h"
-
 #include <stdint.h>
 #include <vector>
 
@@ -28,6 +25,9 @@
     the right update.
 
 */
+
+class Screen;
+class Element;
 
 class Grid
 {
