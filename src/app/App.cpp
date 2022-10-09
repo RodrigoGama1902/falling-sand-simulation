@@ -41,6 +41,126 @@ bool App::Init(bool debugMode)
     return mnoptrWindow != nullptr;
 }
 
+void App::SimulationInput(SDL_Event &sdlEvent, Simulation &simulation, Editor &editor)
+{
+    switch (sdlEvent.type)
+    {
+
+    case SDL_KEYDOWN:
+
+        if (sdlEvent.key.keysym.sym == SDLK_1)
+        {
+            editor.SetActiveElement(simulation.sand_element);
+            break;
+        }
+
+        if (sdlEvent.key.keysym.sym == SDLK_2)
+        {
+            editor.SetActiveElement(simulation.water_element);
+            break;
+        }
+
+        if (sdlEvent.key.keysym.sym == SDLK_3)
+        {
+            editor.SetActiveElement(simulation.wall_element);
+            break;
+        }
+
+        if (sdlEvent.key.keysym.sym == SDLK_4)
+        {
+            editor.SetActiveElement(simulation.honey_element);
+            break;
+        }
+
+        if (sdlEvent.key.keysym.sym == SDLK_BACKSPACE)
+        {
+            simulation.GetGrid()->Clear();
+            break;
+        }
+
+        if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debugMode)
+        {
+            simulation.GetGrid()->SetIsPointerSkipping(true);
+            break;
+        }
+
+        if (sdlEvent.key.keysym.sym == SDLK_DOWN && debugMode)
+        {
+            simulation.GetGrid()->SetIsPointerFullSkip(true);
+            break;
+        }
+
+        break;
+
+    case SDL_KEYUP:
+        if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debugMode)
+        {
+            simulation.GetGrid()->SetIsPointerSkipping(false);
+            break;
+        }
+
+        if (sdlEvent.key.keysym.sym == SDLK_DOWN && debugMode)
+        {
+            simulation.GetGrid()->SetIsPointerFullSkip(false);
+            break;
+        }
+
+        break;
+
+    case SDL_MOUSEWHEEL:
+
+        if (sdlEvent.wheel.y > 0)
+        {
+            editor.GetBrush()->SetBrushSize(editor.GetBrush()->GetBrushSize() + 1);
+            break;
+        }
+        else if (sdlEvent.wheel.y < 0)
+        {
+            editor.GetBrush()->SetBrushSize(editor.GetBrush()->GetBrushSize() - 1);
+            break;
+        }
+
+        break;
+
+    case SDL_MOUSEBUTTONUP:
+        editor.GetToolHandler()->GetTool()->ToggleDraw(false);
+
+        switch (sdlEvent.button.button)
+        {
+        case SDL_BUTTON_MIDDLE:
+            editor.GetToolHandler()->SetTool(editor.GetBrush());
+            break;
+        }
+
+        break;
+
+    case SDL_MOUSEBUTTONDOWN:
+
+        switch (sdlEvent.button.button)
+        {
+        case SDL_BUTTON_LEFT:
+            editor.GetToolHandler()->SetTool(editor.GetBrush());
+            editor.GetToolHandler()->GetTool()->ToggleDraw(true);
+            editor.GetToolHandler()->GetTool()->SetErasing(false);
+            break;
+        case SDL_BUTTON_RIGHT:
+            editor.GetToolHandler()->GetTool()->ToggleDraw(true);
+            editor.GetToolHandler()->GetTool()->SetErasing(true);
+            break;
+        case SDL_BUTTON_MIDDLE:
+            editor.GetToolHandler()->SetTool(editor.GetPencil());
+            editor.GetToolHandler()->GetTool()->ToggleDraw(true);
+            editor.GetToolHandler()->GetTool()->SetErasing(false);
+            break;
+        default:
+            break;
+        }
+        break;
+    default:
+        break;
+    }
+}
+
 void App::Run()
 {
     if (!mnoptrWindow)
@@ -77,126 +197,11 @@ void App::Run()
 
         while (SDL_PollEvent(&sdlEvent)) // App Input Handling
         {
+
+            SimulationInput(sdlEvent, simulation, editor);
+
             switch (sdlEvent.type)
             {
-
-            case SDL_KEYDOWN:
-
-                if (sdlEvent.key.keysym.sym == SDLK_ESCAPE)
-                {
-                    running = false;
-                    break;
-                }
-
-                if (sdlEvent.key.keysym.sym == SDLK_1)
-                {
-                    editor.SetActiveElement(simulation.sand_element);
-                    break;
-                }
-
-                if (sdlEvent.key.keysym.sym == SDLK_2)
-                {
-                    editor.SetActiveElement(simulation.water_element);
-                    break;
-                }
-
-                if (sdlEvent.key.keysym.sym == SDLK_3)
-                {
-                    editor.SetActiveElement(simulation.wall_element);
-                    break;
-                }
-
-                if (sdlEvent.key.keysym.sym == SDLK_4)
-                {
-                    editor.SetActiveElement(simulation.honey_element);
-                    break;
-                }
-
-                if (sdlEvent.key.keysym.sym == SDLK_BACKSPACE)
-                {
-                    simulation.GetGrid()->Clear();
-                    break;
-                }
-
-                if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debugMode)
-                {
-                    simulation.GetGrid()->SetIsPointerSkipping(true);
-                    break;
-                }
-
-                if (sdlEvent.key.keysym.sym == SDLK_DOWN && debugMode)
-                {
-                    simulation.GetGrid()->SetIsPointerFullSkip(true);
-                    break;
-                }
-
-                break;
-
-            case SDL_KEYUP:
-                if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debugMode)
-                {
-                    simulation.GetGrid()->SetIsPointerSkipping(false);
-                    break;
-                }
-
-                if (sdlEvent.key.keysym.sym == SDLK_DOWN && debugMode)
-                {
-                    simulation.GetGrid()->SetIsPointerFullSkip(false);
-                    break;
-                }
-
-                break;
-
-            case SDL_MOUSEWHEEL:
-
-                if (sdlEvent.wheel.y > 0)
-                {
-                    editor.GetBrush()->SetBrushSize(editor.GetBrush()->GetBrushSize() + 1);
-                    break;
-                }
-                else if (sdlEvent.wheel.y < 0)
-                {
-                    editor.GetBrush()->SetBrushSize(editor.GetBrush()->GetBrushSize() - 1);
-                    break;
-                }
-
-                break;
-
-            case SDL_MOUSEBUTTONUP:
-                editor.GetToolHandler()->GetTool()->ToggleDraw(false);
-
-                switch (sdlEvent.button.button)
-                {
-                case SDL_BUTTON_MIDDLE:
-                    editor.GetToolHandler()->SetTool(editor.GetBrush());
-                    break;
-                }
-
-                break;
-
-            case SDL_MOUSEBUTTONDOWN:
-
-                switch (sdlEvent.button.button)
-                {
-                case SDL_BUTTON_LEFT:
-                    editor.GetToolHandler()->SetTool(editor.GetBrush());
-                    editor.GetToolHandler()->GetTool()->ToggleDraw(true);
-                    editor.GetToolHandler()->GetTool()->SetErasing(false);
-                    break;
-                case SDL_BUTTON_RIGHT:
-                    editor.GetToolHandler()->GetTool()->ToggleDraw(true);
-                    editor.GetToolHandler()->GetTool()->SetErasing(true);
-                    break;
-                case SDL_BUTTON_MIDDLE:
-                    editor.GetToolHandler()->SetTool(editor.GetPencil());
-                    editor.GetToolHandler()->GetTool()->ToggleDraw(true);
-                    editor.GetToolHandler()->GetTool()->SetErasing(false);
-                    break;
-                default:
-                    break;
-                }
-                break;
-
             case SDL_QUIT:
                 running = false;
                 break;
