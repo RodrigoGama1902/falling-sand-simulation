@@ -9,6 +9,8 @@
 #include "shapes/Circle.h"
 #include "shapes/Line2D.h"
 
+#include "simulation/elements/base/Element.h"
+
 #include <ctime>
 #include <algorithm>
 #include <iostream>

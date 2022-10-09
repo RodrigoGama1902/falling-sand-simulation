@@ -4,14 +4,13 @@
 #include "graphics/ScreenBuffer.h"
 #include "graphics/Color.h"
 
-#include "simulation/elements/base/Element.h"
-
 #include <stdint.h>
 #include <vector>
 
 class Vec2D;
 class Line2D;
 class Circle;
+class Element;
 
 struct SDL_Window;
 struct SDL_Surface;

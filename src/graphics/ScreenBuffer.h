@@ -2,9 +2,9 @@
 #define _SCREEN_BUFFER_H_
 
 #include "graphics/Color.h"
-
 #include <stdint.h>
 
+class Color;
 struct SDL_Surface;
 
 class ScreenBuffer
