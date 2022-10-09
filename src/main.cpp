@@ -18,12 +18,10 @@ int main(int argc, const char *argv[])
 
 // GENERAL ---------------------------------------
 
-// Fix #include different name styles, organize and remove unused #includes
 // Optimization
 
 // ELEMENTS STRUCTURE ----------------------------
 
-// Add move and render method that will be called from update method.
 // Add Gas Element
 
 // SIMULATION ------------------------------------
