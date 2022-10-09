@@ -23,7 +23,7 @@ private:
     Screen mScreen;
     SDL_Window *mnoptrWindow;
 
-    bool debug;
+    bool debugMode;
 };
 
 #endif

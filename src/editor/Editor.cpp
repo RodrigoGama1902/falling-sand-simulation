@@ -11,7 +11,4 @@ Editor::Editor(Simulation *simulation)
 
 Editor::~Editor()
 {
-    delete mPencil;
-    delete mBrush;
-    delete mToolHandler;
 }

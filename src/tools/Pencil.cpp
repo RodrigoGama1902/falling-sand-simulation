@@ -10,13 +10,16 @@ Pencil::~Pencil()
 
 void Pencil::Draw(uint32_t x, uint32_t y, Element *elm)
 {
-    if (erasing)
-        mGrid->RemoveElement(x, y);
-    else
-        mGrid->SetElement(x, y, elm->clone());
+    if (is_drawing())
+    {
+        if (erasing)
+            mGrid->RemoveElement(x, y);
+        else
+            mGrid->SetElement(x, y, elm->clone());
 
-    last_x_pos = x;
-    last_y_pos = y;
+        last_x_pos = x;
+        last_y_pos = y;
+    }
 }
 
 void Pencil::DrawCursor(Screen &screen, uint32_t x, uint32_t y)

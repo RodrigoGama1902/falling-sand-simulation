@@ -1,14 +1,12 @@
+#include "SDL2/SDL.h"
 
 #include "App.h"
-#include "SDL2/SDL.h"
-#include "Line2D.h"
-
-#include <iostream>
-#include <time.h>
 #include "AppUtils.h"
 
 #include "Simulation.h"
 #include "Editor.h"
+
+#include <iostream>
 
 // DEBUG
 const int DEBUG_SCREEN_WIDTH = 648 * 0.1;
@@ -26,9 +24,9 @@ App &App::Singleton()
     return theApp;
 }
 
-bool App::Init(bool debug)
+bool App::Init(bool debugMode)
 {
-    if (debug)
+    if (debugMode)
     {
         mnoptrWindow = mScreen.Init(DEBUG_SCREEN_WIDTH, DEBUG_SCREEN_HEIGHT, DEBUG_SCREEN_MAG);
         screenMag = DEBUG_SCREEN_MAG;
@@ -39,7 +37,7 @@ bool App::Init(bool debug)
         screenMag = SCREEN_MAG;
     }
 
-    this->debug = debug;
+    this->debugMode = debugMode;
     return mnoptrWindow != nullptr;
 }
 
@@ -51,25 +49,13 @@ void App::Run()
         return;
     }
 
-    // uint32_t SDL_GetMouseState(int *x, int *y);
-    // Line2D line1(Vec2D(SCREEN_WIDTH, SCREEN_HEIGHT), Vec2D(0, 0));
-    // theScreen.Draw(line1, Color::Red());
-    // theScreen.SwapScreen();
-
-    srand(time(NULL)); // Seed the random number generator
-
-    // Init Elements
-
-    // Grid grid(mScreen, sand_element, 20, debug = debug); // Create a grid with 50% cells filled - 12 FPS with 80% sand_element fill
-    // Grid grid(mScreen);
-
-    Simulation simulation(mScreen, false);
+    Simulation simulation(mScreen, debugMode);
     Editor editor(&simulation);
 
     uint32_t lastTick = SDL_GetTicks();
     uint32_t currentTick = lastTick;
 
-    uint32_t dt = debug ? 50 : 10;
+    uint32_t dt = debugMode ? 50 : 10;
     uint32_t accumulator = 0;
 
     SDL_Event sdlEvent;
@@ -82,20 +68,15 @@ void App::Run()
         uint32_t frameTime = currentTick - lastTick;
 
         if (frameTime > 300)
-        {
             frameTime = 300;
-        }
 
         lastTick = currentTick;
 
-        if (!debug)
-        {
+        if (!debugMode)
             accumulator += frameTime;
-        }
 
-        while (SDL_PollEvent(&sdlEvent))
+        while (SDL_PollEvent(&sdlEvent)) // App Input Handling
         {
-
             switch (sdlEvent.type)
             {
 
@@ -137,13 +118,13 @@ void App::Run()
                     break;
                 }
 
-                if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debug)
+                if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debugMode)
                 {
                     simulation.GetGrid()->SetIsPointerSkipping(true);
                     break;
                 }
 
-                if (sdlEvent.key.keysym.sym == SDLK_DOWN && debug)
+                if (sdlEvent.key.keysym.sym == SDLK_DOWN && debugMode)
                 {
                     simulation.GetGrid()->SetIsPointerFullSkip(true);
                     break;
@@ -152,13 +133,13 @@ void App::Run()
                 break;
 
             case SDL_KEYUP:
-                if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debug)
+                if (sdlEvent.key.keysym.sym == SDLK_RIGHT && debugMode)
                 {
                     simulation.GetGrid()->SetIsPointerSkipping(false);
                     break;
                 }
 
-                if (sdlEvent.key.keysym.sym == SDLK_DOWN && debug)
+                if (sdlEvent.key.keysym.sym == SDLK_DOWN && debugMode)
                 {
                     simulation.GetGrid()->SetIsPointerFullSkip(false);
                     break;
@@ -233,22 +214,17 @@ void App::Run()
         if (simulation.GetGrid()->GetPointerFullSkip())
             accumulator += 50;
 
-        while (accumulator >= dt)
+        while (accumulator >= dt) // Update Scene
         {
-            // Update current scene by dt
-            if (editor.GetToolHandler()->GetTool()->is_drawing())
-                editor.GetToolHandler()->GetTool()->Draw(xMouse / screenMag, yMouse / screenMag, editor.GetActiveElement());
-
             simulation.Update();
+            editor.GetToolHandler()->GetTool()->Draw(xMouse / screenMag, yMouse / screenMag, editor.GetActiveElement());
+            DisplayFPS(frameTime);
 
-            // DisplayFPS(frameTime);
             accumulator -= dt;
         }
 
-        // Render
-
+        // Render Scene
         simulation.Render();
-
         editor.GetToolHandler()->GetTool()->DrawCursor(mScreen, xMouse / screenMag, yMouse / screenMag);
 
         mScreen.SwapScreen();

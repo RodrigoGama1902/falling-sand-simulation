@@ -2,10 +2,12 @@
 #include "grid.h"
 #include "Screen.h"
 
+#include <time.h>
+
 Simulation::Simulation(Screen &screen, bool debug_mode)
-    : debugMode(debug_mode)
+    : mGrid(screen), debugMode(debug_mode)
 {
-    mGrid = new Grid(screen);
+    srand(time(NULL)); // Seed the random number generator
 
     sand_element = new Sand();
     water_element = new Water();
@@ -15,7 +17,6 @@ Simulation::Simulation(Screen &screen, bool debug_mode)
 
 Simulation::~Simulation()
 {
-    delete mGrid;
     delete sand_element;
     delete water_element;
     delete wall_element;
@@ -24,16 +25,16 @@ Simulation::~Simulation()
 
 void Simulation::Render()
 {
-    mGrid->Draw();
+    mGrid.Draw();
 
     if (debugMode)
-        mGrid->DrawDebuggerPointer();
+        mGrid.DrawDebuggerPointer();
 }
 
 void Simulation::Update()
 {
     if (debugMode)
-        mGrid->DebugUpdate(true, mGrid->GetPointerFullSkip());
+        mGrid.DebugUpdate(true, mGrid.GetPointerFullSkip());
     else
-        mGrid->Update();
+        mGrid.Update();
 }

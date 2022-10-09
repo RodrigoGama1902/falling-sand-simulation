@@ -22,11 +22,9 @@ public:
     ToolHandler *GetToolHandler() { return mToolHandler; }
 
 private:
-    Simulation *mSimulation;
-    ToolHandler *mToolHandler;
-
     Element *activeElement;
 
+    ToolHandler *mToolHandler;
     Pencil *mPencil;
     Brush *mBrush;
 };

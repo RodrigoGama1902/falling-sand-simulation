@@ -19,7 +19,7 @@ public:
     void Render();
     void Update();
 
-    Grid *GetGrid() { return mGrid; }
+    Grid *GetGrid() { return &mGrid; }
 
     Sand *sand_element;
     Water *water_element;
@@ -27,7 +27,7 @@ public:
     Honey *honey_element;
 
 private:
-    Grid *mGrid;
+    Grid mGrid;
     bool debugMode;
 };
 

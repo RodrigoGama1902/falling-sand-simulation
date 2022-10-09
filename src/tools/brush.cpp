@@ -24,11 +24,14 @@ Brush::~Brush()
 
 void Brush::Draw(uint32_t x, uint32_t y, Element *elm)
 {
-    Circle elmCircle = Circle(Vec2D(x, y), brush_size);
-    DrawElementCircle(elmCircle, elm);
+    if (is_drawing())
+    {
+        Circle elmCircle = Circle(Vec2D(x, y), brush_size);
+        DrawElementCircle(elmCircle, elm);
 
-    last_x_pos = x;
-    last_y_pos = y;
+        last_x_pos = x;
+        last_y_pos = y;
+    }
 }
 
 void Brush::DrawCursor(Screen &screen, uint32_t x, uint32_t y)
