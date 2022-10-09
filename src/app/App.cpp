@@ -260,7 +260,7 @@ void App::Run()
             else
                 grid.Update();
 
-            // DisplayFPS(frameTime);
+            DisplayFPS(frameTime);
             accumulator -= dt;
         }
 
