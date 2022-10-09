@@ -2,7 +2,6 @@
 #define _SIMULATION_H_
 
 #include "Grid.h"
-#include "ToolHandler.h"
 
 #include "Sand.h"
 #include "Water.h"
