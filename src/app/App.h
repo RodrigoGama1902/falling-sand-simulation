@@ -18,7 +18,7 @@ public:
 
     void Run();
     void Render();
-    void SimulationInput(SDL_Event &sdlEvent, Simulation &simulation, Editor &editor);
+    bool SimulationInput(SDL_Event &sdlEvent, Simulation &simulation, Editor &editor);
 
     inline uint32_t Width() const { return mScreen.Width(); }
     inline uint32_t Height() const { return mScreen.Height(); }

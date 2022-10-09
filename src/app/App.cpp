@@ -41,12 +41,20 @@ bool App::Init(bool debugMode)
     return mnoptrWindow != nullptr;
 }
 
-void App::SimulationInput(SDL_Event &sdlEvent, Simulation &simulation, Editor &editor)
+bool App::SimulationInput(SDL_Event &sdlEvent, Simulation &simulation, Editor &editor)
 {
+    bool running = true;
+
     switch (sdlEvent.type)
     {
 
     case SDL_KEYDOWN:
+
+        if (sdlEvent.key.keysym.sym == SDLK_ESCAPE)
+        {
+            running = false;
+            break;
+        }
 
         if (sdlEvent.key.keysym.sym == SDLK_1)
         {
@@ -156,9 +164,14 @@ void App::SimulationInput(SDL_Event &sdlEvent, Simulation &simulation, Editor &e
             break;
         }
         break;
+    case SDL_QUIT:
+        running = false;
+        break;
     default:
         break;
     }
+
+    return running;
 }
 
 void App::Run()
@@ -196,19 +209,7 @@ void App::Run()
             accumulator += frameTime;
 
         while (SDL_PollEvent(&sdlEvent)) // App Input Handling
-        {
-
-            SimulationInput(sdlEvent, simulation, editor);
-
-            switch (sdlEvent.type)
-            {
-            case SDL_QUIT:
-                running = false;
-                break;
-            default:
-                break;
-            }
-        }
+            running = SimulationInput(sdlEvent, simulation, editor);
 
         if (simulation.GetGrid()->GetPointerSkipping())
             accumulator += 1;
