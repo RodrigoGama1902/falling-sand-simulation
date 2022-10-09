@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/include/",
+                "${workspaceFolder}/src/utils/",
+                "${workspaceFolder}/src/graphics/",
+                "${workspaceFolder}/src/shapes/",
+                "${workspaceFolder}/src/app/",
+                "${workspaceFolder}/src/base_elements/",
+                "${workspaceFolder}/src/elements/",
+                "${workspaceFolder}/src/grid/",
+                "${workspaceFolder}/src/tools/",
+                "${workspaceFolder}/src/simulation/"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\Program Files\\mingw-w64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "gcc-x64"
+
+        }
+    ],
+    "version": 4
+}

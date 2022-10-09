@@ -1,0 +1,53 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe arquivo de build ativo",
+            "command": "C:\\Program Files\\mingw-w64\\mingw64\\bin\\g++.exe",
+            "args": [
+                "${fileDirname}\\*.cpp",
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-std=c++17",
+                "-lmingw32",
+                "-I${workspaceFolder}\\src\\utils",
+                "-I${workspaceFolder}\\src\\graphics",
+                "-I${workspaceFolder}\\src\\shapes",
+                "-I${workspaceFolder}\\src\\app",
+                "-I${workspaceFolder}\\src\\base_elements",
+                "-I${workspaceFolder}\\src\\elements",
+                "-I${workspaceFolder}\\src\\grid",
+                "-I${workspaceFolder}\\src\\tools",
+                "-I${workspaceFolder}\\src\\simulation",
+                "-I${workspaceFolder}\\include",
+                "-L${workspaceFolder}\\lib",
+                "${fileDirname}\\utils\\*.cpp",  
+                "${fileDirname}\\graphics\\*.cpp",
+                "${fileDirname}\\shapes\\*.cpp",
+                "${fileDirname}\\app\\*.cpp",
+                "${fileDirname}\\elements\\*.cpp",
+                "${fileDirname}\\base_elements\\*.cpp",
+                "${fileDirname}\\grid\\*.cpp",
+                "${fileDirname}\\tools\\*.cpp",
+                "${fileDirname}\\simulation\\*.cpp",
+                "-lSDL2main",   
+                "-lSDL2",
+                "-o",
+                "${workspaceFolder}\\build\\main.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Tarefa gerada pelo Depurador."
+        }
+    ],
+    "version": "2.0.0"
+}
