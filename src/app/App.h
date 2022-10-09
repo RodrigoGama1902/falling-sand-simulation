@@ -1,11 +1,12 @@
 #ifndef _APP_H_
 #define _APP_H_
 
-#include "simulation/Simulation.h"
-#include "editor/Editor.h"
 #include "graphics/Screen.h"
 
 #include <stdint.h>
+
+class Simulation;
+class Editor;
 
 struct SDL_Window;
 union SDL_Event;

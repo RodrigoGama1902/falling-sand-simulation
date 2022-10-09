@@ -1,15 +1,12 @@
 #ifndef _EDITOR_H_
 #define _EDITOR_H_
 
-#include "simulation/Simulation.h"
-
-#include "editor/tools/ToolHandler.h"
-#include "editor/tools/Pencil.h"
-#include "editor/tools/Brush.h"
-
-#include "graphics/Screen.h"
-
-#include "simulation/elements/base/Element.h"
+class Simulation;
+class ToolHandler;
+class Pencil;
+class Brush;
+class Element;
+class Screen;
 
 class Editor
 {

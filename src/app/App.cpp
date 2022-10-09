@@ -4,7 +4,11 @@
 #include "app/AppUtils.h"
 
 #include "simulation/Simulation.h"
+
 #include "editor/Editor.h"
+#include "editor/tools/ToolHandler.h"
+#include "editor/tools/Pencil.h"
+#include "editor/tools/Brush.h"
 
 #include <iostream>
 

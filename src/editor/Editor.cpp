@@ -1,6 +1,11 @@
 #include "SDL2/SDL.h"
 
+#include "simulation/Simulation.h"
+
 #include "editor/Editor.h"
+#include "editor/tools/Pencil.h"
+#include "editor/tools/Brush.h"
+#include "editor/tools/ToolHandler.h"
 
 Editor::Editor(Simulation *simulation, Screen *screen)
 {
