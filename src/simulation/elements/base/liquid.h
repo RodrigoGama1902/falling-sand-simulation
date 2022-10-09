@@ -1,8 +1,8 @@
 #ifndef _LIQUID_H_
 #define _LIQUID_H_
 
-#include "Element.h"
-#include "Grid.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/Grid.h"
 
 #include <iostream>
 

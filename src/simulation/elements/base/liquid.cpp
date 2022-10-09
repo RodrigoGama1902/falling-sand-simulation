@@ -1,5 +1,5 @@
-#include "Liquid.h"
-#include "Element.h"
+#include "simulation/elements/base/Liquid.h"
+#include "simulation/elements/base/Element.h"
 
 #include <iostream>
 #include <typeinfo>

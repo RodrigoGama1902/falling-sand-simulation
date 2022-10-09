@@ -1,5 +1,5 @@
-#include "StaticSolid.h"
-#include "Solid.h"
+#include "simulation/elements/base/StaticSolid.h"
+#include "simulation/elements/base/Solid.h"
 #include <random>
 
 StaticSolid::StaticSolid() : Solid()

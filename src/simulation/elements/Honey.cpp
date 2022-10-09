@@ -1,5 +1,5 @@
-#include "Honey.h"
-#include "Color.h"
+#include "simulation/elements/Honey.h"
+#include "graphics/Color.h"
 
 Honey::Honey() : Liquid()
 {

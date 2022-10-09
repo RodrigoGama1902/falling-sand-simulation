@@ -1,7 +1,7 @@
 #ifndef _APP_H_
 #define _APP_H_
 
-#include "Screen.h"
+#include "graphics/Screen.h"
 #include <stdint.h>
 
 struct SDL_Window;

@@ -1,6 +1,6 @@
-#include "MovableSolid.h"
-#include "Sand.h"
-#include "Color.h"
+#include "simulation/elements/base/MovableSolid.h"
+#include "simulation/elements/Sand.h"
+#include "graphics/Color.h"
 
 Sand::Sand() : MovableSolid()
 {

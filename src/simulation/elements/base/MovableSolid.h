@@ -1,9 +1,9 @@
 #ifndef _MOVABLE_SOLID_H
 #define _MOVABLE_SOLID_H
 
-#include "Element.h"
-#include "Grid.h"
-#include "Solid.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/Grid.h"
+#include "simulation/elements/base/Solid.h"
 
 class MovableSolid : public Solid
 {

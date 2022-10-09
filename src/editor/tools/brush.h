@@ -1,11 +1,11 @@
 #ifndef _BRUSH_H_
 #define _BRUSH_H_
 
-#include "Element.h"
-#include "Grid.h"
-#include "Screen.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/Grid.h"
+#include "graphics/Screen.h"
 
-#include "PaintTool.h"
+#include "editor/tools/PaintTool.h"
 
 class Brush : public PaintTool
 {

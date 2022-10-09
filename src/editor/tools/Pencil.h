@@ -1,7 +1,7 @@
 #ifndef _PENCIL_H_
 #define _PENCIL_H_
 
-#include "PaintTool.h"
+#include "editor/tools/PaintTool.h"
 
 class Pencil : public PaintTool
 {

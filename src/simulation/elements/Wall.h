@@ -1,9 +1,9 @@
 #ifndef _WALL_H_
 #define _WALL_H_
 
-#include "Element.h"
-#include "StaticSolid.h"
-#include "Color.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/elements/base/StaticSolid.h"
+#include "graphics/Color.h"
 
 #include <iostream>
 

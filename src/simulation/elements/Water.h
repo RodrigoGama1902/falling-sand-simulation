@@ -1,9 +1,9 @@
 #ifndef _WATER_H_
 #define _WATER_H_
 
-#include "Element.h"
-#include "Liquid.h"
-#include "Color.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/elements/base/Liquid.h"
+#include "graphics/Color.h"
 
 #include <iostream>
 

@@ -1,7 +1,7 @@
 #ifndef _SHAPE_H_
 #define _SHAPE_H_
 
-#include "Vec2D.h"
+#include "utils/Vec2D.h"
 #include <vector>
 
 class Shape

@@ -1,9 +1,9 @@
 #ifndef _STATIC_SOLID_H_
 #define _STATIC_SOLID_H_
 
-#include "Element.h"
-#include "Grid.h"
-#include "Solid.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/Grid.h"
+#include "simulation/elements/base/Solid.h"
 
 class StaticSolid : public Solid
 {

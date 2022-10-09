@@ -1,4 +1,4 @@
-#include "Editor.h"
+#include "editor/Editor.h"
 
 Editor::Editor(Simulation *simulation)
 {

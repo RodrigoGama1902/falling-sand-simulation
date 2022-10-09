@@ -1,5 +1,5 @@
-#include "Element.h"
-#include "Grid.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/Grid.h"
 #include <iostream>
 
 Element::Element()

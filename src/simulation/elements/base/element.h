@@ -1,7 +1,7 @@
 #ifndef _ELEMENT_H_
 #define _ELEMENT_H_
 
-#include "Color.h"
+#include "graphics/Color.h"
 
 struct Grid;
 

@@ -1,6 +1,6 @@
-#include "Wall.h"
-#include "StaticSolid.h"
-#include "Color.h"
+#include "simulation/elements/Wall.h"
+#include "simulation/elements/base/StaticSolid.h"
+#include "graphics/Color.h"
 
 Wall::Wall() : StaticSolid()
 {

@@ -4,10 +4,10 @@
 #include <stdint.h>
 #include <vector>
 
-#include "Vec2D.h"
-#include "Grid.h"
-#include "Screen.h"
-#include "Element.h"
+#include "utils/Vec2D.h"
+#include "simulation/Grid.h"
+#include "graphics/Screen.h"
+#include "simulation/elements/base/Element.h"
 
 class Element;
 class Screen;

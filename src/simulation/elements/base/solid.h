@@ -1,8 +1,8 @@
 #ifndef _SOLID_H_
 #define _SOLID_H_
 
-#include "Element.h"
-#include "Grid.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/Grid.h"
 
 class Solid : public Element
 {

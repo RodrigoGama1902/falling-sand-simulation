@@ -5,8 +5,8 @@
 #include <vector>
 
 #include "ScreenBuffer.h"
-#include "Color.h"
-#include "Element.h"
+#include "graphics/Color.h"
+#include "simulation/elements/base/Element.h"
 
 class Vec2D;
 class Line2D;

@@ -1,6 +1,6 @@
-#include "Simulation.h"
+#include "simulation/Simulation.h"
 #include "grid.h"
-#include "Screen.h"
+#include "graphics/Screen.h"
 
 #include <time.h>
 

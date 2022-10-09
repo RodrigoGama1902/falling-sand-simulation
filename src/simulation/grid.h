@@ -2,8 +2,8 @@
 #define _GRID_H_
 
 #include <stdint.h>
-#include "Element.h"
-#include "Screen.h"
+#include "simulation/elements/base/Element.h"
+#include "graphics/Screen.h"
 #include <vector>
 
 /*

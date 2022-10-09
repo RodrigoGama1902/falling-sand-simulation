@@ -1,9 +1,9 @@
 #ifndef _HONEY_H_
 #define _HONEY_H_
 
-#include "Element.h"
-#include "Liquid.h"
-#include "Color.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/elements/base/Liquid.h"
+#include "graphics/Color.h"
 
 class Honey : public Liquid
 {

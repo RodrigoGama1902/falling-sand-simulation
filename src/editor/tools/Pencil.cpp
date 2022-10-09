@@ -1,4 +1,4 @@
-#include "Pencil.h"
+#include "editor/tools/Pencil.h"
 
 Pencil::Pencil(Grid *grid, Element &defaultElement) : PaintTool(grid, defaultElement)
 {

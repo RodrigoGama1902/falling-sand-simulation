@@ -1,5 +1,5 @@
-#include "MovableSolid.h"
-#include "Solid.h"
+#include "simulation/elements/base/MovableSolid.h"
+#include "simulation/elements/base/Solid.h"
 #include <random>
 
 MovableSolid::MovableSolid() : Solid()

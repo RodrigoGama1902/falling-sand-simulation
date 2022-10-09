@@ -4,16 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/include/",
-                "${workspaceFolder}/src/utils/",
-                "${workspaceFolder}/src/graphics/",
-                "${workspaceFolder}/src/shapes/",
-                "${workspaceFolder}/src/app/",
-                "${workspaceFolder}/src/base_elements/",
-                "${workspaceFolder}/src/elements/",
-                "${workspaceFolder}/src/grid/",
-                "${workspaceFolder}/src/tools/",
-                "${workspaceFolder}/src/simulation/",
-                "${workspaceFolder}/src/editor/"
+                "${workspaceFolder}/src/"
 
             ],
             "defines": [

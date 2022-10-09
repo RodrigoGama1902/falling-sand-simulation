@@ -1,8 +1,8 @@
 #ifndef _TOOL_HANDLER_H_
 #define _TOOL_HANDLER_H_
 
-#include "PaintTool.h"
-#include "Element.h"
+#include "editor/tools/PaintTool.h"
+#include "simulation/elements/base/Element.h"
 
 class ToolHandler
 {

@@ -1,12 +1,12 @@
 #ifndef _SIMULATION_H_
 #define _SIMULATION_H_
 
-#include "Grid.h"
+#include "simulation/Grid.h"
 
-#include "Sand.h"
-#include "Water.h"
-#include "Honey.h"
-#include "Wall.h"
+#include "simulation/elements/Sand.h"
+#include "simulation/elements/Water.h"
+#include "simulation/elements/Honey.h"
+#include "simulation/elements/Wall.h"
 
 class Screen;
 

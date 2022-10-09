@@ -1,9 +1,9 @@
 #ifndef _SAND_H_
 #define _SAND_H_
 
-#include "Element.h"
-#include "MovableSolid.h"
-#include "Color.h"
+#include "simulation/elements/base/Element.h"
+#include "simulation/elements/base/MovableSolid.h"
+#include "graphics/Color.h"
 
 #include <iostream>
 

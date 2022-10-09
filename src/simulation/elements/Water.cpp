@@ -1,5 +1,5 @@
-#include "Water.h"
-#include "Color.h"
+#include "simulation/elements/Water.h"
+#include "graphics/Color.h"
 
 Water::Water() : Liquid()
 {

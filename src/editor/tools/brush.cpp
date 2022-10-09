@@ -1,18 +1,18 @@
 #include "brush.h"
-#include "Element.h"
+#include "simulation/elements/base/Element.h"
 #include "SDL2/SDL.h"
-#include "Screen.h"
-#include "Color.h"
-#include "Line2D.h"
-#include "Grid.h"
-#include "Solid.h"
-#include "Utils.h"
+#include "graphics/Screen.h"
+#include "graphics/Color.h"
+#include "shapes/Line2D.h"
+#include "simulation/Grid.h"
+#include "simulation/elements/base/Solid.h"
+#include "utils/Utils.h"
 #include <algorithm>
 
-#include "PaintTool.h"
+#include "editor/tools/PaintTool.h"
 
-#include "Circle.h"
-#include "Screen.h"
+#include "shapes/Circle.h"
+#include "graphics/Screen.h"
 
 Brush::Brush(Grid *grid, Element &defaultElement) : PaintTool(grid, defaultElement)
 {

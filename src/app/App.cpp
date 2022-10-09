@@ -1,10 +1,10 @@
 #include "SDL2/SDL.h"
 
-#include "App.h"
+#include "app/App.h"
 #include "AppUtils.h"
 
-#include "Simulation.h"
-#include "Editor.h"
+#include "simulation/Simulation.h"
+#include "editor/Editor.h"
 
 #include <iostream>
 

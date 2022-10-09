@@ -1,4 +1,4 @@
-#include "ToolHandler.h"
+#include "editor/tools/ToolHandler.h"
 
 ToolHandler::ToolHandler(PaintTool &defaultTool)
 {
