@@ -208,14 +208,14 @@ void App::Run()
         if (!debugMode)
             accumulator += frameTime;
 
-        while (SDL_PollEvent(&sdlEvent)) // App Input Handling
+        while (SDL_PollEvent(&sdlEvent))
             running = SimulationInput(sdlEvent, simulation, editor);
 
         if (simulation.GetGrid()->GetPointerSkipping())
-            accumulator += 1;
+            accumulator += 1; // Skip 1 frame
 
         if (simulation.GetGrid()->GetPointerFullSkip())
-            accumulator += 50;
+            accumulator += 50; // Skip 50 frames
 
         while (accumulator >= dt) // Update Scene
         {
