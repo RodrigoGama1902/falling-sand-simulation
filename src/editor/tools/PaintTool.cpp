@@ -1,17 +1,20 @@
+#include "SDL2/SDL.h"
+
 #include "editor/tools/PaintTool.h"
 
 #include "simulation/elements/base/Element.h"
-#include "SDL2/SDL.h"
-#include "graphics/Screen.h"
-#include "graphics/Color.h"
-#include "shapes/Line2D.h"
 #include "simulation/Grid.h"
 #include "simulation/elements/base/Solid.h"
-#include "utils/Utils.h"
-#include <algorithm>
 
-#include "shapes/Circle.h"
 #include "graphics/Screen.h"
+#include "graphics/Color.h"
+
+#include "shapes/Line2D.h"
+#include "shapes/Circle.h"
+
+#include "utils/Utils.h"
+
+#include <algorithm>
 
 PaintTool::PaintTool(Grid *grid, Element &defaultElement)
 {

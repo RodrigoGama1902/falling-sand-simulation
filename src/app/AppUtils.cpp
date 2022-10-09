@@ -1,5 +1,7 @@
-#include "AppUtils.h"
 #include "SDL2/SDL.h"
+
+#include "app/AppUtils.h"
+
 #include <iostream>
 #include <iomanip>
 #include <ios>

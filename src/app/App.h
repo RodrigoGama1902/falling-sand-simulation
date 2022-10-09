@@ -3,8 +3,8 @@
 
 #include "simulation/Simulation.h"
 #include "editor/Editor.h"
-
 #include "graphics/Screen.h"
+
 #include <stdint.h>
 
 struct SDL_Window;

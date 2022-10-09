@@ -3,9 +3,10 @@
 
 #include "simulation/elements/base/Element.h"
 #include "simulation/Grid.h"
+
 #include "graphics/Screen.h"
 
-#include "PaintTool.h"
+#include "editor/tools/PaintTool.h"
 
 class Brush : public PaintTool
 {

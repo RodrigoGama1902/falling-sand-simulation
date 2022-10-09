@@ -1,9 +1,11 @@
-#include "Grid.h"
-#include <iostream>
-#include "graphics/Screen.h"
+#include "simulation/Grid.h"
 #include "simulation/elements/base/Element.h"
 #include "simulation/elements/Sand.h"
 #include "simulation/elements/Wall.h"
+
+#include "graphics/Screen.h"
+
+#include <iostream>
 
 Grid::Grid(Screen &srcScreen) : Grid(srcScreen, new Sand(), 0)
 {

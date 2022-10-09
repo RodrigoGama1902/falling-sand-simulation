@@ -1,17 +1,20 @@
-#include "graphics/Screen.h"
-#include "utils/Vec2D.h"
-#include "shapes/Line2D.h"
 #include "SDL2/SDL.h"
+
+#include "graphics/Color.h"
+#include "graphics/Screen.h"
+
+#include "utils/Utils.h"
+#include "utils/Vec2D.h"
+
+#include "shapes/Circle.h"
+#include "shapes/Line2D.h"
+
+#include <ctime>
+#include <algorithm>
 #include <iostream>
 #include <cassert>
 #include <cmath>
 #include <random>
-#include "graphics/Color.h"
-#include <ctime>
-#include <algorithm>
-
-#include "utils/Utils.h"
-#include "shapes/Circle.h"
 
 Screen::Screen() : mWidth(0), mHeight(0), moptrWindow(nullptr), mnoptrWindowSurface(nullptr)
 {

@@ -2,7 +2,6 @@
 #define _SIMULATION_H_
 
 #include "simulation/Grid.h"
-
 #include "simulation/elements/Sand.h"
 #include "simulation/elements/Water.h"
 #include "simulation/elements/Honey.h"

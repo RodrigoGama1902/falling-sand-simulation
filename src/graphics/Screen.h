@@ -1,12 +1,13 @@
 #ifndef _SCREEN_H_
 #define _SCREEN_H_
 
+#include "graphics/ScreenBuffer.h"
+#include "graphics/Color.h"
+
+#include "simulation/elements/base/Element.h"
+
 #include <stdint.h>
 #include <vector>
-
-#include "ScreenBuffer.h"
-#include "graphics/Color.h"
-#include "simulation/elements/base/Element.h"
 
 class Vec2D;
 class Line2D;

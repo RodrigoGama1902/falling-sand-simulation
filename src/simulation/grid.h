@@ -1,9 +1,10 @@
 #ifndef _GRID_H_
 #define _GRID_H_
 
-#include <stdint.h>
 #include "simulation/elements/base/Element.h"
 #include "graphics/Screen.h"
+
+#include <stdint.h>
 #include <vector>
 
 /*

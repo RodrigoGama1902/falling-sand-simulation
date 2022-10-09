@@ -1,13 +1,13 @@
 #ifndef _PAINT_TOOL_H_
 #define _PAINT_TOOL_H_
 
-#include <stdint.h>
-#include <vector>
-
 #include "utils/Vec2D.h"
 #include "simulation/Grid.h"
 #include "graphics/Screen.h"
 #include "simulation/elements/base/Element.h"
+
+#include <stdint.h>
+#include <vector>
 
 class Element;
 class Screen;

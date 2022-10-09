@@ -1,4 +1,3 @@
-
 #include "app/App.h"
 
 const bool DEBUG_MODE = false;

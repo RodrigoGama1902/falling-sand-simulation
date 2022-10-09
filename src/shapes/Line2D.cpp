@@ -1,5 +1,6 @@
 #include "shapes/Line2D.h"
 #include "utils/Utils.h"
+
 #include <cmath>
 
 Line2D::Line2D() : Line2D(Vec2D::Zero, Vec2D::Zero)

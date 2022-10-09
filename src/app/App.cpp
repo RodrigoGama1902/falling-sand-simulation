@@ -1,7 +1,7 @@
 #include "SDL2/SDL.h"
 
 #include "app/App.h"
-#include "AppUtils.h"
+#include "app/AppUtils.h"
 
 #include "simulation/Simulation.h"
 #include "editor/Editor.h"

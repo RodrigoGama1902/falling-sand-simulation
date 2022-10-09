@@ -1,7 +1,9 @@
 #ifndef _SCREEN_BUFFER_H_
 #define _SCREEN_BUFFER_H_
-#include <stdint.h>
+
 #include "graphics/Color.h"
+
+#include <stdint.h>
 
 struct SDL_Surface;
 
