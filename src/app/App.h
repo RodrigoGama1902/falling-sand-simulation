@@ -12,6 +12,7 @@ public:
     static App &Singleton();
     bool Init(bool debug);
     void Run();
+    void Render();
 
     inline uint32_t Width() const { return mScreen.Width(); }
     inline uint32_t Height() const { return mScreen.Height(); }

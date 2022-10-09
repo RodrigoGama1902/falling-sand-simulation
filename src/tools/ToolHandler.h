@@ -7,6 +7,7 @@
 class ToolHandler
 {
 public:
+    ToolHandler();
     ToolHandler(PaintTool &defaultTool);
     ~ToolHandler();
 
