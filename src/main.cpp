@@ -1,4 +1,3 @@
-
 #include "app/App.h"
 
 const bool DEBUG_MODE = false;
@@ -17,21 +16,15 @@ int main(int argc, const char *argv[])
 // TODO
 //------------------------------------------------
 
-// GENERAL ---------------------------------------
+// ELEMENTS ----------------------------
 
-// Better main app.cpp structure
-// Fix #include different name styles, organize and remove unused #includes
-// Optimization
-
-// ELEMENTS STRUCTURE ----------------------------
-
-// Add move and render method that will be called from update method.
 // Add Gas Element
 
 // SIMULATION ------------------------------------
 
 // Liquid density (Less dense liquids should swap with more dense liquids)
 // Add gravity
+// Optimization
 
 // RENDER ----------------------------------------
 

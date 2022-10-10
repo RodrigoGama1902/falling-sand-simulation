@@ -1,8 +1,10 @@
 #ifndef _SCREEN_BUFFER_H_
 #define _SCREEN_BUFFER_H_
-#include <stdint.h>
-#include "Color.h"
 
+#include "graphics/Color.h"
+#include <stdint.h>
+
+class Color;
 struct SDL_Surface;
 
 class ScreenBuffer

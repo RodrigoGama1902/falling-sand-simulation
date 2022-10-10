@@ -1,5 +1,7 @@
-#include "ScreenBuffer.h"
 #include "SDL2/SDL.h"
+
+#include "graphics/ScreenBuffer.h"
+
 #include <cassert>
 
 ScreenBuffer::ScreenBuffer() : mSurface(nullptr)

@@ -1,7 +1,7 @@
 #ifndef _LINE_2D_H_
 #define _LINE_2D_H_
 
-#include "Vec2D.h"
+#include "utils/Vec2D.h"
 
 class Line2D
 {

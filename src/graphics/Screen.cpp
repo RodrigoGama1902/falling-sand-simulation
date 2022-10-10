@@ -1,17 +1,22 @@
-#include "Screen.h"
-#include "Vec2D.h"
-#include "Line2D.h"
 #include "SDL2/SDL.h"
+
+#include "graphics/Color.h"
+#include "graphics/Screen.h"
+
+#include "utils/Utils.h"
+#include "utils/Vec2D.h"
+
+#include "shapes/Circle.h"
+#include "shapes/Line2D.h"
+
+#include "simulation/elements/base/Element.h"
+
+#include <ctime>
+#include <algorithm>
 #include <iostream>
 #include <cassert>
 #include <cmath>
 #include <random>
-#include "Color.h"
-#include <ctime>
-#include <algorithm>
-
-#include "Utils.h"
-#include "Circle.h"
 
 Screen::Screen() : mWidth(0), mHeight(0), moptrWindow(nullptr), mnoptrWindowSurface(nullptr)
 {
@@ -41,6 +46,7 @@ SDL_Window *Screen::Init(uint32_t w, uint32_t h, uint32_t mag)
 
     mWidth = w;
     mHeight = h;
+    mMag = mag;
 
     // Create a window
 

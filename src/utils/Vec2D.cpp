@@ -1,5 +1,5 @@
-#include "Vec2D.h"
-#include "Utils.h"
+#include "utils/Vec2D.h"
+#include "utils/Utils.h"
 
 #include <cassert>
 #include <cmath>

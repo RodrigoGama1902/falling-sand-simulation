@@ -1,16 +1,16 @@
 #ifndef _SCREEN_H_
 #define _SCREEN_H_
 
+#include "graphics/ScreenBuffer.h"
+#include "graphics/Color.h"
+
 #include <stdint.h>
 #include <vector>
-
-#include "ScreenBuffer.h"
-#include "Color.h"
-#include "Element.h"
 
 class Vec2D;
 class Line2D;
 class Circle;
+class Element;
 
 struct SDL_Window;
 struct SDL_Surface;
@@ -27,6 +27,8 @@ public:
     inline void SetClearColor(const Color &clearColor) { mClearColor = clearColor; }
     inline uint32_t Width() const { return mWidth; }
     inline uint32_t Height() const { return mHeight; }
+
+    uint32_t GetScreenMag() const { return mMag; }
 
     // Draw methods
     void Draw(int x, int y, const Color &color);
@@ -48,6 +50,7 @@ private:
 
     uint32_t mWidth;
     uint32_t mHeight;
+    uint32_t mMag;
 
     Color mClearColor;
     ScreenBuffer mBackBuffer;
