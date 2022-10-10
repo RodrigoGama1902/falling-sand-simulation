@@ -16,11 +16,7 @@ int main(int argc, const char *argv[])
 // TODO
 //------------------------------------------------
 
-// GENERAL ---------------------------------------
-
-// Optimization
-
-// ELEMENTS STRUCTURE ----------------------------
+// ELEMENTS ----------------------------
 
 // Add Gas Element
 
@@ -28,6 +24,7 @@ int main(int argc, const char *argv[])
 
 // Liquid density (Less dense liquids should swap with more dense liquids)
 // Add gravity
+// Optimization
 
 // RENDER ----------------------------------------
 

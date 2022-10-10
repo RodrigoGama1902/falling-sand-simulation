@@ -18,8 +18,8 @@ const int DEBUG_SCREEN_HEIGHT = 364 * 0.1;
 const int DEBUG_SCREEN_MAG = 20;
 
 // PRODUCTION
-const int SCREEN_WIDTH = 648 * 0.8;
-const int SCREEN_HEIGHT = 364 * 0.8;
+const int SCREEN_WIDTH = 648 * 0.6;
+const int SCREEN_HEIGHT = 364 * 0.6;
 const int SCREEN_MAG = 3;
 
 App &App::Singleton()
@@ -209,17 +209,21 @@ void App::Run()
 
         lastTick = currentTick;
 
-        if (!debugMode)
-            accumulator += frameTime;
-
         while (SDL_PollEvent(&sdlEvent))
             running = SimulationInput(sdlEvent, simulation, editor);
 
-        if (simulation.GetGrid()->GetPointerSkipping())
-            accumulator += 1; // Skip 1 frame
+        if (debugMode)
+        {
+            if (simulation.GetGrid()->GetPointerSkipping())
+                accumulator += 1; // Skip 1 frame
 
-        if (simulation.GetGrid()->GetPointerFullSkip())
-            accumulator += 50; // Skip 50 frames
+            if (simulation.GetGrid()->GetPointerFullSkip())
+                accumulator += 50; // Skip 50 frames
+        }
+        else
+        {
+            accumulator += frameTime;
+        }
 
         while (accumulator >= dt) // Update Scene
         {

@@ -19,7 +19,7 @@ void MovableSolid::UpdateColor()
 void MovableSolid::Move(Grid &grid, int x, int y)
 {
 
-    if (grid.GetElement(x, y + 1) != nullptr && !grid.GetElement(x, y + 1)->solid)
+    if (grid.GetElement(x, y + 1) != nullptr && !grid.GetElement(x, y + 1)->solid) // swap elements
     {
         grid.SwapElements(x, y, x, y + 1);
         y += 1;
