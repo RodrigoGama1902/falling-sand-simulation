@@ -67,6 +67,20 @@ void Liquid::Move(Grid &grid, int x, int y)
 
     moving = true;
 
+    if (dynamic_cast<Liquid *>(grid.GetElement(x, y + 1)))
+    {
+
+        // std::cout << grid.GetElement(x, y + 1)->density << std::endl;
+        // std::cout << density << std::endl;
+
+        if (grid.GetElement(x, y + 1)->liquid_density < liquid_density)
+        {
+
+            grid.SwapElements(x, y, x, y + 1);
+            y += 1;
+        }
+    }
+
     if (grid.GetElement(x, y + 1) == nullptr) // Check if is falling
     {
         grid.SetElement(x, y + 1, this);

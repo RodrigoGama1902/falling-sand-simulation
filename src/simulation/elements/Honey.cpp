@@ -7,6 +7,7 @@ Honey::Honey() : Liquid()
     elmMinColor = Color(137, 104, 0, 255);
     elmMaxColor = Color(249, 201, 1, 255);
     dispersion = 1;
+    liquid_density = 200;
 }
 
 Honey::~Honey()

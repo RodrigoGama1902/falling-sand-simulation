@@ -17,7 +17,6 @@ public:
         return new Water();
     }
 
-    int density = 0;
     int elmColorFadeFrequency = 0;
     int currentColorFadeFrequency = 0;
 

@@ -22,9 +22,13 @@ int main(int argc, const char *argv[])
 
 // SIMULATION ------------------------------------
 
-// Liquid density (Less dense liquids should swap with more dense liquids)
+// Liquid liquid_density (Less dense liquids should swap with more dense liquids)
 // Add gravity
-// Optimization
+
+// OPTIMIZATION ---------------------------------
+
+// Do not use vector
+// Do not use new keyword (use stack instead)
 
 // RENDER ----------------------------------------
 
