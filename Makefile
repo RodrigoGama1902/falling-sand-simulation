@@ -14,7 +14,7 @@ LINKER_FLAGS = -lSDL2 -lSDL2main
 #OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = build/FallingSandSimulation
 
-INCLUDES = -I include -I src -L lib
+INCLUDES = -IC:\SDL2-2.26.5\x86_64-w64-mingw32\include -I src -L C:\SDL2-2.26.5\x86_64-w64-mingw32\lib
 
 FILES = src/utils/*.cpp \
 		src/app/*.cpp \
@@ -29,5 +29,5 @@ FILES = src/utils/*.cpp \
 #This is the target that compiles our executable
 all : $(OBJS)
 	$(CC) $(OBJS) $(COMPILER_FLAGS) $(INCLUDES) $(FILES) $(LINKER_FLAGS) -o $(OBJ_NAME)
-	copy bin\SDL2.dll build\SDL2.dll
+
 

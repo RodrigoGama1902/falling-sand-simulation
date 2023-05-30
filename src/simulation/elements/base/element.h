@@ -14,6 +14,7 @@ public:
     virtual void UpdateColor() = 0;
     virtual void Move(Grid &grid, int x, int y) = 0;
     virtual void Update(Grid &grid, int x, int y) = 0;
+
     virtual Element *clone() const = 0;
 
     Color elmColor;
@@ -23,6 +24,7 @@ public:
     int x_direction;
 
     bool solid;
+    int liquid_density;
     int velocity_y;
     int friction;
 

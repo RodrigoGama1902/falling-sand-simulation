@@ -17,9 +17,7 @@ public:
     virtual void Update(Grid &grid, int x, int y) override;
 
 protected:
-    int density;
     bool solid = false;
-
     int elmColorFadeFrequency;
     int fadeStep;
     int currentColorFadeFrequency;

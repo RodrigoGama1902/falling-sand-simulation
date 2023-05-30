@@ -15,7 +15,6 @@ public:
         return new Honey();
     }
 
-    int density = 0;
     int elmColorFadeFrequency = 200;
     int currentColorFadeFrequency = 200;
 

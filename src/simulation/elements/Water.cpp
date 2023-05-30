@@ -7,6 +7,7 @@ Water::Water() : Liquid()
     elmMinColor = Color(0, 78, 200, 255);
     elmMaxColor = Color(0, 140, 200, 255);
     dispersion = 8;
+    liquid_density = 100;
 }
 
 Water::~Water()
