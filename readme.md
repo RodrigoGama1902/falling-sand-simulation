@@ -14,11 +14,13 @@ This is a C++ project that implements a Falling Sand Simulation using the SDL2 l
   <img src="docs/debug.gif" alt="Main">
 </div>
 
+
 - **Elements**: The user can change between elements by pressing keys 1, 2, 3, and 4. The available elements are:
   - Sand
   - Water
   - Honey
   - Concrete
+  
 
 <div align="center">
   <img src="docs/all_elements.gif" alt="Main">
