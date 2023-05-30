@@ -1,26 +1,26 @@
 # Falling Sand Simulation
 
-This is a C++ project that implements a Falling Sand Simulation using the SDL2 library. The simulation allows the user to interact with different elements such as sand, water, honey, and concrete.
+The Falling Sand Simulation is a C++ project that implements a visually interactive simulation using the SDL2 library. The simulation allows users to interact with various elements such as sand, water, honey, and concrete, creating dynamic and realistic behaviors.
 
 <div align="center">
   <img src="docs/main.gif" alt="Main">
 </div>
 
-## Features
+## Debug Mode
 
-- **Debug Mode**: The application can be executed in a lower resolution debug mode. In this mode, the user can fast-forward frame by frame by pressing the left arrow key.
+The application offers a debug mode that allows users to execute the simulation in a lower resolution, enabling them to analyze and observe the simulation frame by frame. By pressing the left arrow key, users can fast-forward the simulation.
 
 <div align="center">
   <img src="docs/debug.gif" alt="Main">
 </div>
 
+## Elements
 
-- **Elements**: The user can change between elements by pressing keys 1, 2, 3, and 4. The available elements are:
+Users can switch between different elements by pressing keys 1, 2, 3, and 4. The available elements include:
   - Sand
   - Water
   - Honey
   - Concrete
-  
 
 <div align="center">
   <img src="docs/all_elements.gif" alt="Main">
@@ -30,37 +30,44 @@ This is a C++ project that implements a Falling Sand Simulation using the SDL2 l
   <img src="docs/viscosity.gif" alt="Main">
 </div>
 
-## TODO List
+## Planned Updates
 
-The following is a list of features and improvements that are planned to be added in future updates:
+Based on user feedback and further development, the following features and improvements are planned for future updates:
 
 ### Elements
 
-- Add Gas Element
-- Add Fire Element
+- **Gas Element**: Introduce a gas element that exhibits behavior such as expansion and diffusion.
+
+- **Fire Element**: Implement a fire element that spreads and consumes other elements, with realistic fire dynamics.
 
 ### Simulation
 
-- Add gravity
+- **Gravity**: Add the effect of gravity to elements, enabling them to fall or sink based on their density.
 
 ### Optimization
 
-- Multithreading
-- Stack memory execution 
+- **Multithreading**: Optimize the simulation using multithreading techniques to enhance performance and efficiency.
+
+- **Stack Memory Execution**: Improve memory management and execution efficiency by utilizing stack memory where applicable.
 
 ### Render
 
-- Improve liquid color fade-in to change all colors and make it fade in with different speeds
+- **Enhanced Liquid Color Fade-In**: Enhance the liquid color fade-in effect to include gradual color transitions, providing a visually appealing and realistic representation.
 
-### Bugs
+### Bug Fixes
 
-- Fix crash when drawing outside the application screen
+- **Crash Outside Application Screen**: Fix the issue causing crashes when drawing outside the application screen boundaries.
 
 ### Future Plans
 
-- Add HSV color changes
-- Implement a way to save and load grids
-- Allow creation of custom elements
-- Enable mixing different fluid elements to create new ones with different colors
-- Add post-processing methods
-- Implement clone points, where pressing the space bar spawns a new element of the current type
+- **HSV Color Changes**: Implement HSV color changes for elements, allowing users to create a broader range of colors and visual effects.
+
+- **Save and Load Grids**: Enable users to save and load simulation grids, allowing them to preserve and revisit their creations.
+
+- **Custom Element Creation**: Provide functionality for users to create custom elements with unique properties and behaviors.
+
+- **Fluid Mixing**: Allow users to mix different fluid elements to create new elements with distinct colors and properties.
+
+- **Post-processing Methods**: Implement post-processing methods to enhance visual effects and create stunning simulations.
+
+- **Clone Points**: Introduce clone points where pressing the space bar spawns a new element of the currently selected type, enabling users to duplicate elements effortlessly.
