@@ -22,7 +22,6 @@ int main(int argc, const char *argv[])
 
 // SIMULATION ------------------------------------
 
-// Liquid liquid_density (Less dense liquids should swap with more dense liquids)
 // Add gravity
 
 // OPTIMIZATION ---------------------------------
