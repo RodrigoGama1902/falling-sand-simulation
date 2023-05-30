@@ -1,6 +1,6 @@
 # Falling Sand Simulation
 
-The Falling Sand Simulation is a C++ project that implements a visually interactive simulation using the SDL2 library. The simulation allows users to interact with various elements such as sand, water, honey, and concrete, creating dynamic and realistic behaviors.
+The Falling Sand Simulation is a C++ project that uses the SDL2 library to implement an interactive simulation. It incorporates cellular automata principles to model the behavior of particles such as sand, water, honey, and concrete. Users can observe and interact with these particles, creating dynamic and realistic behaviors. This simulation provides an immersive and educational experience, allowing users to explore the interactions of particles in a virtual environment.
 
 <div align="center">
   <img src="docs/main.gif" alt="Main">
